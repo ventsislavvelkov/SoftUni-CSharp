@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6BalancedBrackets", "6BalancedBrackets\6BalancedBrackets.csproj", "{5280A08A-DCF2-445D-A663-DFB4A8BD3F48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5280A08A-DCF2-445D-A663-DFB4A8BD3F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5280A08A-DCF2-445D-A663-DFB4A8BD3F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5280A08A-DCF2-445D-A663-DFB4A8BD3F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5280A08A-DCF2-445D-A663-DFB4A8BD3F48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {047AD3BA-B350-4731-91BE-C3510F7BCA63}
+	EndGlobalSection
+EndGlobal

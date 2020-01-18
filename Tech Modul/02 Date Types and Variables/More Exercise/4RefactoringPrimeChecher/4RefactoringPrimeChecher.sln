@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4RefactoringPrimeChecher", "4RefactoringPrimeChecher\4RefactoringPrimeChecher.csproj", "{73FAAEED-FF4A-4C51-993A-C45EA41B072B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73FAAEED-FF4A-4C51-993A-C45EA41B072B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73FAAEED-FF4A-4C51-993A-C45EA41B072B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73FAAEED-FF4A-4C51-993A-C45EA41B072B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73FAAEED-FF4A-4C51-993A-C45EA41B072B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BED58BB-F833-4DCA-9705-F14D40023C35}
+	EndGlobalSection
+EndGlobal
