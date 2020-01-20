@@ -6,8 +6,8 @@ namespace _02PoundsToDollars
     {
         static void Main(string[] args)
         {
-            double pounds = double.Parse(Console.ReadLine());
-            double dollars = pounds * 1.31;
+            decimal pounds = decimal.Parse(Console.ReadLine());
+            decimal dollars = pounds * 1.31M;
 
             Console.WriteLine($"{dollars:f3}");
         }
