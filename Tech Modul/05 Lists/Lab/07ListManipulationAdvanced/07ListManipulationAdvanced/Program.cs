@@ -18,9 +18,6 @@ namespace _07ListManipulationAdvanced
             int counter = 0;
             int sum = 0;
             string input = "";
-            bool IsOrigin = true;
-
-
 
             while ((input = Console.ReadLine()) != "end")
             {
