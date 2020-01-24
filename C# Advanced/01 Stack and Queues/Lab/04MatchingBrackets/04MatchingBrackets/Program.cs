@@ -21,9 +21,9 @@ namespace _04MatchingBrackets
                 }
                 else if (symbol == ')')
                 {
-                    var indexOfOpenBracket = stack.Pop();
+                    int indexOfOpenBracket = stack.Pop();
 
-                    var result = text.Substring(indexOfOpenBracket,
+                    string result = text.Substring(indexOfOpenBracket,
                                             i - indexOfOpenBracket + 1);
                     
                     Console.WriteLine(result);
