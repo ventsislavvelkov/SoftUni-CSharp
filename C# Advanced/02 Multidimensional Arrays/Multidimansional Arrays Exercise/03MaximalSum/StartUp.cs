@@ -5,7 +5,7 @@ using System.Threading.Channels;
 
 namespace _03MaximalSum
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
