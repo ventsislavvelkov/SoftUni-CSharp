@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace _06JaggedArrayManipulator
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
