@@ -1,5 +1,7 @@
 ﻿using System;
+
 using System.Linq;
+
 
 namespace _09KaminoFactory
 {
@@ -7,78 +9,72 @@ namespace _09KaminoFactory
     {
         static void Main(string[] args)
         {
-            int number = int.Parse(Console.ReadLine());
+            int length = int.Parse(Console.ReadLine());
+            int longestSubsequence = -1;
+            int longestSubSum = -1;
+            int longestSubIndex = -1;
+            int indexOfSequence = 1;
+            int longestIndex = 0;
+            int[] printArr = new int[length];
+            string command = Console.ReadLine();
 
-            int bestSubsequence = 0;
-            int[] bestDNA = new int[number];
-            int bestIndex = 0;
-            int bestSum = 0;
-
-            int row = 0;
-            int bestRow = 0;
-
-            string input = "";
-
-            while ((input = Console.ReadLine()) != "Clone them!")
+            while (command != "Clone them!")
             {
-                int[] currentDNА = input.Split("!", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-
                 int counter = 0;
-                int subsequence = 0;
-                int index = 0;
-                int sum = 0;
+                int subSequence = 0;
+                int subIndex = -1;
+                int subSum = 0;
+                int[] arr = command.Split("!", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
-                row++;
-
-                for (int i = 0; i < currentDNА.Length; i++)
+                for (int i = 0; i < arr.Length; i++)
                 {
-                    if (currentDNА[i] == 1)
+                    if (arr[i] == 1)
                     {
+
                         counter++;
-                        sum++;
-                        if (counter > subsequence)
-                        {
-                            subsequence = counter;
-                            index = i;
-                        }
+                        subSum++;
                     }
                     else
                     {
+                        if (counter > subSequence)
+                        {
+                            subSequence = counter;
+                            subIndex = i - counter;
+                        }
                         counter = 0;
                     }
                 }
 
-                if (subsequence > bestSubsequence)
+                if (subSequence > longestSubsequence)
                 {
-                    bestSubsequence = subsequence;
-                    bestDNA = currentDNА;
-                    bestIndex = index;
-                    bestSum = sum;
-                    bestRow = row;
+                    longestSubIndex = subIndex;
+                    longestSubsequence = subSequence;
+                    longestSubSum = subSum;
+                    printArr = arr;
+                    longestIndex = indexOfSequence;
                 }
-                else if (subsequence == bestSubsequence && index < bestIndex)
+                else if (subSequence == longestSubsequence && longestSubIndex > subIndex)
                 {
-                    bestSubsequence = subsequence;
-                    bestDNA = currentDNА;
-                    bestIndex = index;
-                    bestSum = sum;
-                    bestRow = row;
+                    longestSubIndex = subIndex;
+                    longestSubsequence = subSequence;
+                    longestSubSum = subSum;
+                    longestIndex = indexOfSequence;
+                    printArr = arr;
                 }
-                else if (subsequence == bestSubsequence && index == bestIndex && bestSum < sum)
+                else if (subSequence == longestSubsequence && longestSubIndex == subIndex && longestSubSum < subSum)
                 {
-                    bestSubsequence = subsequence;
-                    bestDNA = currentDNА;
-                    bestIndex = index;
-                    bestSum = sum;
-                    bestRow = row;
+
+                    longestSubSum = subSum;
+                    longestIndex = indexOfSequence;
+                    printArr = arr;
                 }
 
-
+                indexOfSequence++;
+                command = Console.ReadLine();
             }
 
-            Console.WriteLine($"Best DNA sample {bestRow} with sum: {bestSum}.");
-            Console.WriteLine(string.Join(" ", bestDNA));
-
+            Console.WriteLine($"Best DNA sample { longestIndex} with sum: { longestSubSum}.");
+            Console.WriteLine(String.Join(" ", printArr));
         }
     }
 }
