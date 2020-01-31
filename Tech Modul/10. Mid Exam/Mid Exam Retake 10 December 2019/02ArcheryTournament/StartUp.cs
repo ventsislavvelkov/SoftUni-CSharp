@@ -3,19 +3,20 @@ using System.Linq;
 
 namespace _02ArcheryTournament
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
             var field = Console.ReadLine().Split("|", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
             var archaryPoint = 0;
+            var indexCounter = -1;
 
             while (true)
             {
-                var input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+                var input = Console.ReadLine().Split("@", StringSplitOptions.RemoveEmptyEntries).ToArray();
 
-                if (input[0] == "Game" )
+                if (input[0] == "Game over" )
                 {
                     break;
                 }
@@ -25,14 +26,13 @@ namespace _02ArcheryTournament
                 }
                 else
                 {
-                    var archaryCommand = input[1].Split("@").ToArray();
-                    var command = archaryCommand[0];
-                    var startIndex = int.Parse(archaryCommand[1]);
-                    var lenght = int.Parse(archaryCommand[2]);
+                    var command = input[0];
+                    var startIndex = int.Parse(input[1]);
+                    var lenght = int.Parse(input[2]);
 
                     var target = 0;
 
-                    if (command == "Right")
+                    if (command == "Shoot Right")
                     {
                         if (startIndex < field.Length && startIndex >=0) 
                         {
@@ -43,7 +43,7 @@ namespace _02ArcheryTournament
                                 target -= field.Length;
                             }
 
-                            if (field[target] > 0)
+                            if (field[target] >= 0)
                             {
                                 if (field[target] < 5)
                                 {
@@ -62,27 +62,29 @@ namespace _02ArcheryTournament
                     {
                         if (startIndex < field.Length && startIndex >= 0)
                         {
-                            target = Math.Abs(startIndex + lenght);
-
-                            while (target > field.Length)
+                            for (int i = startIndex; i < field.Length; i--)
                             {
-                                target -= field.Length;
-                            }
-
-                            target = field.Length - target;
-
-                            if (field[target] > 0)
-                            {
-                                if (field[target] < 5)
+                                indexCounter++;
+                                if (indexCounter == lenght)
                                 {
-                                    archaryPoint += field[target];
-                                    field[target] = 0;
+                                    if (field[i] < 5)
+                                    {
+                                        archaryPoint += field[i];
+                                        field[i] = 0;
+                                    }
+                                    else
+                                    {
+                                        field[i] -= 5;
+                                        archaryPoint += 5;
+                                    }
+                                    indexCounter = -1;
+                                    break;
                                 }
-                                else
+                                if (i <= 0)
                                 {
-                                    archaryPoint += 5;
-                                    field[target] -= 5;
+                                    i = field.Length;
                                 }
+
                             }
                         }
                     }
