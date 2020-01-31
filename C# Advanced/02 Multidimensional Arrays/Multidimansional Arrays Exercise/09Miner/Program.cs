@@ -18,7 +18,6 @@ namespace _09Miner
             var counterCoals = 0;
             var totalCoals = 0;
 
-
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
                 char[] currentValue = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(char.Parse).ToArray();
