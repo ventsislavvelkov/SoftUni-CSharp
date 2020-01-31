@@ -56,9 +56,7 @@ namespace _10LadyBugs
                                             {
                                                 ladyBug[fromIndex + endIndex + 1] = 1;
                                             }
-
                                         }
-
                                     }
                                     else
                                     {
@@ -90,7 +88,6 @@ namespace _10LadyBugs
                                             ladyBug[fromIndex - endIndex - 1] = 1;
                                         }
                                     }
-                                   
                                 }
                                 else
                                 {
