@@ -4,32 +4,31 @@ using System.Linq;
 
 namespace _01Train
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            List<int> wagons = Console.ReadLine()
-                                .Split()
-                                .Select(int.Parse)
-                                .ToList();
+            var wagons = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
 
-            int maxPassengerInWagon = int.Parse(Console.ReadLine());
+            var maxPassengerInWagon = int.Parse(Console.ReadLine());
 
-            string input = "";
+            var input = "";
 
             while ((input = Console.ReadLine()) != "end")
             {
-                string[] inputinformation = input.Split();
+                var inputinformation = input.Split();
 
                 if (inputinformation[0] == "Add")
                 {
-                    int passengers = int.Parse(inputinformation[1]);
+                    var passengers = int.Parse(inputinformation[1]);
                     wagons.Add(passengers);
-
                 }
                 else
                 {
-                    int addPassengers = int.Parse(inputinformation[0]);
+                    var addPassengers = int.Parse(inputinformation[0]);
 
                     for (int i = 0; i < wagons.Count; i++)
                     {

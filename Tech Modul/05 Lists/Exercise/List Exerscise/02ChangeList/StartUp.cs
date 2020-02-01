@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace _02ChangeList
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            List<int> numbers = Console.ReadLine()
-                                .Split()
-                                .Select(int.Parse)
-                                .ToList();
+            var numbers = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
 
-            string operation = "";
+            var operation = "";
 
             while ((operation = Console.ReadLine()) != "end")
             {
 
-                string[] input = operation.Split();
-                string command = input[0];
-                int element = int.Parse(input[1]);
+                var input = operation.Split();
+                var command = input[0];
+                var element = int.Parse(input[1]);
 
                 switch (command)
                 {
@@ -35,16 +34,13 @@ namespace _02ChangeList
                         break;
 
                     case "Insert":
-                        int position = int.Parse(input[2]);
+                        var position = int.Parse(input[2]);
                         numbers.Insert(position, element);
                         break;
                 }
-
-
             }
 
             Console.WriteLine(string.Join(" ", numbers));
-
         }
     }
 }
