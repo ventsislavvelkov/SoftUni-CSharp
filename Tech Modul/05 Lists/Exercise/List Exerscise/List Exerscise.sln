@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01Train", "01Train\01Train.csproj", "{223B1E64-0135-4E86-9523-ED30B1C5C0DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01Train", "01Train\01Train.csproj", "{223B1E64-0135-4E86-9523-ED30B1C5C0DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02ChangeList", "02ChangeList\02ChangeList.csproj", "{73E2E4CA-E141-4F3F-8191-3DC382754CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02ChangeList", "02ChangeList\02ChangeList.csproj", "{73E2E4CA-E141-4F3F-8191-3DC382754CA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03HouseParty", "03HouseParty\03HouseParty.csproj", "{9E13ADC4-C67E-4C30-B1F0-61DA5E75B324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03HouseParty", "03HouseParty\03HouseParty.csproj", "{9E13ADC4-C67E-4C30-B1F0-61DA5E75B324}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04ListOperations", "04ListOperations\04ListOperations.csproj", "{01AD599C-033E-4584-AC0C-0F5EFE025036}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04ListOperations", "04ListOperations\04ListOperations.csproj", "{01AD599C-033E-4584-AC0C-0F5EFE025036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05BombNumbers", "05BombNumbers\05BombNumbers.csproj", "{CD65117E-93EB-4B91-9BB4-A867E17DC0AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05BombNumbers", "05BombNumbers\05BombNumbers.csproj", "{CD65117E-93EB-4B91-9BB4-A867E17DC0AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06CardsGame", "06CardsGame\06CardsGame.csproj", "{B07209F9-7E29-4B79-9CA1-E8E7F0EA1A44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06CardsGame", "06CardsGame\06CardsGame.csproj", "{B07209F9-7E29-4B79-9CA1-E8E7F0EA1A44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07AppendArrays", "07AppendArrays\07AppendArrays.csproj", "{9CCB3FE7-C667-4843-A956-09FDF565103B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08AnonymousThreat", "08AnonymousThreat\08AnonymousThreat.csproj", "{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{B07209F9-7E29-4B79-9CA1-E8E7F0EA1A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B07209F9-7E29-4B79-9CA1-E8E7F0EA1A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B07209F9-7E29-4B79-9CA1-E8E7F0EA1A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CCB3FE7-C667-4843-A956-09FDF565103B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CCB3FE7-C667-4843-A956-09FDF565103B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CCB3FE7-C667-4843-A956-09FDF565103B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CCB3FE7-C667-4843-A956-09FDF565103B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
