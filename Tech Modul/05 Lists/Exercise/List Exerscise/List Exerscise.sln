@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05BombNumbers", "05BombNumb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06CardsGame", "06CardsGame\06CardsGame.csproj", "{B07209F9-7E29-4B79-9CA1-E8E7F0EA1A44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07AppendArrays", "07AppendArrays\07AppendArrays.csproj", "{9CCB3FE7-C667-4843-A956-09FDF565103B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07AppendArrays", "07AppendArrays\07AppendArrays.csproj", "{9CCB3FE7-C667-4843-A956-09FDF565103B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08AnonymousThreat", "08AnonymousThreat\08AnonymousThreat.csproj", "{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08AnonymousThreat", "08AnonymousThreat\08AnonymousThreat.csproj", "{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09PokemonDontGo", "09PokemonDontGo\09PokemonDontGo.csproj", "{9873DC4B-04AD-46F1-8A3B-4C0B95755E52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED8D010E-A5EA-4EE7-BBDC-60901F15EBEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9873DC4B-04AD-46F1-8A3B-4C0B95755E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9873DC4B-04AD-46F1-8A3B-4C0B95755E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9873DC4B-04AD-46F1-8A3B-4C0B95755E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9873DC4B-04AD-46F1-8A3B-4C0B95755E52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
