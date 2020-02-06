@@ -6,9 +6,7 @@ namespace _09PokemonDontGo
     {
         static void Main(string[] args)
         {
-           
-
-
+            
         }
     }
 }

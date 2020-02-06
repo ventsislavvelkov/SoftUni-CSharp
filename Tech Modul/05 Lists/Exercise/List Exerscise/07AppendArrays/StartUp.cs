@@ -9,6 +9,7 @@ namespace _07AppendArrays
         static void Main(string[] args)
         {
             var numbers = Console.ReadLine().Split("|").Reverse().ToList();
+           
             var result = new List<int>();
 
             foreach (var number in numbers)

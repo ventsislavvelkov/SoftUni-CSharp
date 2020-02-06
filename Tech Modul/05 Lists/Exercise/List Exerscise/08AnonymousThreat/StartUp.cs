@@ -55,7 +55,6 @@ namespace _08AnonymousThreat
                             break;
                         case "divide":
                             var startIndex = int.Parse(inputCommand[1]);
-
                             var divideWord = input[startIndex];
                             var partitions = int.Parse(inputCommand[2]);
 
