@@ -60,9 +60,9 @@ namespace _08AnonymousThreat
                             var partitions = int.Parse(inputCommand[2]);
 
                             var divideElements = new List<string>();
-                            input.RemoveAt(startIndex);
-
                             var parts = divideWord.Length / partitions;
+
+                            input.RemoveAt(startIndex);
 
                             for (int i = 0; i < partitions; i++)
                             {
