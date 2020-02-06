@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace _08AnonymousThreat
@@ -24,6 +25,7 @@ namespace _08AnonymousThreat
                     switch (commands)
                     {
                         case "merge":
+
                             var mergeStartIndex = int.Parse(inputCommand[1]);
                             var mergeEndIndex = int.Parse(inputCommand[2]);
 
@@ -35,12 +37,11 @@ namespace _08AnonymousThreat
                             {
                                 var diferense = mergeEndIndex - mergeStartIndex;
                                 var number = 1;
+
                                 while (number <= diferense)
                                 {
                                     input[mergeStartIndex] += input[mergeStartIndex + number];
                                     number++;
-                                 //   Console.WriteLine(string.Join(" ", input));
-                                   // Console.WriteLine();
                                 }
 
                                 number = diferense;
@@ -51,20 +52,34 @@ namespace _08AnonymousThreat
                                 }
                             }
 
-                          //  Console.WriteLine(string.Join(" ", input));
-                          //  Console.WriteLine();
-
                             break;
-                        case "devide":
-                            var devideIndex = int.Parse(inputCommand[1]);
-                            var devideParts = int.Parse(inputCommand[2]);
+                        case "divide":
+                            var startIndex = int.Parse(inputCommand[1]);
 
+                            var divideWord = input[startIndex];
+                            var partitions = int.Parse(inputCommand[2]);
+
+                            var divideElements = new List<string>();
+                            input.RemoveAt(startIndex);
+
+                            var parts = divideWord.Length / partitions;
+
+                            for (int i = 0; i < partitions; i++)
+                            {
+                                if (i == partitions -1)
+                                {
+                                    divideElements.Add(divideWord.Substring(i * parts));
+                                }
+                                else
+                                {
+                                    divideElements.Add(divideWord.Substring(i * parts, parts));
+                                }
+                            }
+
+                            input.InsertRange(startIndex, divideElements);
                             
-
                             break;
                     }
-
-
                 }
             }
 
