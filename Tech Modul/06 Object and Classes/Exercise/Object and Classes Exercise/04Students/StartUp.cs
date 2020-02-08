@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace _03Article_2._0
+namespace _04Students
 {
     class StartUp
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine("Hello World!");
         }
     }
 }
