@@ -5,7 +5,7 @@ namespace _02Articles
 {
     class StartUp
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var ArticleArgs = Console.ReadLine().Split(", ").ToArray();
 
