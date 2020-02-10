@@ -13,7 +13,7 @@ namespace _02Articles
             var content = ArticleArgs[1];
             var author = ArticleArgs[2];
 
-            Article article = new Article(title,content,author);
+            var article = new Article(title,content,author);
 
             var countOfCommands = int.Parse(Console.ReadLine());
 

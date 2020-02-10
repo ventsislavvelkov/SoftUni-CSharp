@@ -11,7 +11,7 @@ namespace _04Students
         {
             var countOfStudents = int.Parse(Console.ReadLine());
 
-            Storage storage = new Storage();
+            var storage = new Storage();
 
             for (int i = 0; i < countOfStudents; i++)
             {

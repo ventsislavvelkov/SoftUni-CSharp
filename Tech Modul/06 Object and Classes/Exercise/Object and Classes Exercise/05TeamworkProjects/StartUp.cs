@@ -4,19 +4,19 @@ using System.Linq;
 
 namespace _05TeamworkProjects
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            int teamCounter = int.Parse(Console.ReadLine());
+            var teamCounter = int.Parse(Console.ReadLine());
 
-            List<Teams> listOfTeams = new List<Teams>();
+            var listOfTeams = new List<Teams>();
 
             for (int i = 1; i <= teamCounter; i++)
             {
-                string[] tokens = Console.ReadLine().Split("-");
-                string creatorOfTeam = tokens[0];
-                string currentTeam = tokens[1];
+                var tokens = Console.ReadLine().Split("-");
+                var creatorOfTeam = tokens[0];
+                var currentTeam = tokens[1];
 
                 if (listOfTeams.Any(x => x.TeamCreator == creatorOfTeam))
                 {
@@ -33,13 +33,13 @@ namespace _05TeamworkProjects
                 }
             }
 
-            string input = string.Empty;
+            var input = string.Empty;
 
             while ((input = Console.ReadLine()) != "end of assignment")
             {
-                string[] tokens = input.Split("->");
-                string userToJoinTeam = tokens[0];
-                string currentTeam = tokens[1];
+                var tokens = input.Split("->");
+                var userToJoinTeam = tokens[0];
+                var currentTeam = tokens[1];
 
                 if (!listOfTeams.Any(t => t.Team == currentTeam))
                 {
@@ -52,13 +52,13 @@ namespace _05TeamworkProjects
                 }
                 else
                 {
-                    int indexToAdd = listOfTeams.FindIndex(x => x.Team == currentTeam);
+                    var indexToAdd = listOfTeams.FindIndex(x => x.Team == currentTeam);
                     listOfTeams[indexToAdd].teamMembers.Add(userToJoinTeam);
                 }
             }
 
             listOfTeams = listOfTeams.OrderByDescending(x => x.teamMembers.Count).ThenBy(y => y.Team).ToList();
-            List<string> disbandedTeams = new List<string>();
+            var disbandedTeams = new List<string>();
 
             for (int currentTeam = 0; currentTeam < listOfTeams.Count; currentTeam++)
             {

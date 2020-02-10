@@ -8,9 +8,9 @@ namespace _03Article_2._0
     {
         static void Main(string[] args)
         {
-            int numberOfArticles = int.Parse(Console.ReadLine());
+            var numberOfArticles = int.Parse(Console.ReadLine());
 
-            Storage storage = new Storage(); 
+            var storage = new Storage(); 
             for (int i = 1; i <= numberOfArticles; i++)
             {
                 string[] currentArticle = Console.ReadLine().Split(", ");
@@ -21,7 +21,7 @@ namespace _03Article_2._0
                 storage.Articles.Add(new Article(title, content, author));
             }
 
-            string inputCriteria = Console.ReadLine();
+            var inputCriteria = Console.ReadLine();
 
             if (inputCriteria == "title")
             {
