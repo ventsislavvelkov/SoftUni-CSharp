@@ -48,9 +48,9 @@ namespace _03Article_2._0
 
         public Article(string title, string content, string author)
         {
-            Title = title;
-            Content = content;
-            Author = author;
+            this.Title = title;
+            this.Content = content;
+            this.Author = author;
         }
 
         public override string ToString()
