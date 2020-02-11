@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
+
 
 namespace _02AMinerTask
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            string input = Console.ReadLine();
+            var input = Console.ReadLine();
             var resource = new Dictionary<string, int>();
 
             while (input != "stop")
             {
-                int quantity = int.Parse(Console.ReadLine()); ;
+                var quantity = int.Parse(Console.ReadLine()); ;
 
                 if (!resource.ContainsKey(input))
                 {

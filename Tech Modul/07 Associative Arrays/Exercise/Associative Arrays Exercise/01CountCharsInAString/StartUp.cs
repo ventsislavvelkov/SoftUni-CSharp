@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
+
 
 namespace _01CountCharsInAString
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            string word = Console.ReadLine();
+            var word = Console.ReadLine();
 
             var letters = new Dictionary<char, int>();
 
             for (int i = 0; i < word.Length; i++)
             {
-                char letter = word[i];
+                var letter = word[i];
 
                 if (letter != ' ')
                 {
