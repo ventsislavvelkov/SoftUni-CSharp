@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _05SoftUniParking
 {
@@ -16,10 +17,11 @@ namespace _05SoftUniParking
                 var input = Console.ReadLine().Split();
                 var command = input[0];
                 var name = input[1];
-                var plateNumber = input[2];
 
                 if (command == "register")
                 {
+                    var plateNumber = input[2];
+
                     if (!softUniParking.ContainsKey(name))
                     {
                         softUniParking[name] = plateNumber;
@@ -34,7 +36,8 @@ namespace _05SoftUniParking
                 {
                     if (softUniParking.ContainsKey(name))
                     {
-                        softUniParking[name] = plateNumber;
+                        softUniParking.Remove(name);
+
                         Console.WriteLine($"{name} unregistered successfully");
                     }
                     else
@@ -42,6 +45,11 @@ namespace _05SoftUniParking
                         Console.WriteLine($"ERROR: user {name} not found");
                     }
                 }
+            }
+
+            foreach (var kvp in softUniParking)
+            {
+                Console.WriteLine($"{kvp.Key} => {kvp.Value}");
             }
         }
     }
