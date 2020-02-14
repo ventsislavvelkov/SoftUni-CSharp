@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03LegendaryFarming", "03Leg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04Orders", "04Orders\04Orders.csproj", "{DDCFD56E-6FB3-447F-9C67-100F4F672CC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05SoftUniParking", "05SoftUniParking\05SoftUniParking.csproj", "{7A424279-2A20-4D3E-B0A2-B4D6C192D59A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05SoftUniParking", "05SoftUniParking\05SoftUniParking.csproj", "{7A424279-2A20-4D3E-B0A2-B4D6C192D59A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06Courses", "06Courses\06Courses.csproj", "{B4DB2765-6816-4241-B881-C6BE93EE3513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7A424279-2A20-4D3E-B0A2-B4D6C192D59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A424279-2A20-4D3E-B0A2-B4D6C192D59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A424279-2A20-4D3E-B0A2-B4D6C192D59A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4DB2765-6816-4241-B881-C6BE93EE3513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4DB2765-6816-4241-B881-C6BE93EE3513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4DB2765-6816-4241-B881-C6BE93EE3513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4DB2765-6816-4241-B881-C6BE93EE3513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
