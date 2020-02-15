@@ -6,7 +6,6 @@ namespace _06Courses
     {
         static void Main(string[] args)
         {
-            var 
         }
     }
 }
