@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace _06Courses
 {
@@ -6,7 +7,7 @@ namespace _06Courses
     {
         static void Main(string[] args)
         {
-            
+           
         }
     }
 }
