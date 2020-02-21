@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01GiftboxCoverage", "01GiftboxCoverage\01GiftboxCoverage.csproj", "{80FC5021-F3B5-41E3-A03B-B4057BC59146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01GiftboxCoverage", "01GiftboxCoverage\01GiftboxCoverage.csproj", "{80FC5021-F3B5-41E3-A03B-B4057BC59146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02TasksPlanner", "02TasksPlanner\02TasksPlanner.csproj", "{5E2BF36A-95FA-4B7E-88B5-718A7D212848}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{80FC5021-F3B5-41E3-A03B-B4057BC59146}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80FC5021-F3B5-41E3-A03B-B4057BC59146}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80FC5021-F3B5-41E3-A03B-B4057BC59146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2BF36A-95FA-4B7E-88B5-718A7D212848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2BF36A-95FA-4B7E-88B5-718A7D212848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2BF36A-95FA-4B7E-88B5-718A7D212848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2BF36A-95FA-4B7E-88B5-718A7D212848}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
