@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace _07StudentAcademy
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
