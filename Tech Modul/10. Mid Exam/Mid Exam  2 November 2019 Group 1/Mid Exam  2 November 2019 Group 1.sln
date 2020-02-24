@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01BiscuitsFactory", "01BiscuitsFactory\01BiscuitsFactory.csproj", "{A9C55E84-4281-424D-BF2D-5B4BCD3D01E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02Weaponsmith", "02Weaponsmith\02Weaponsmith.csproj", "{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A9C55E84-4281-424D-BF2D-5B4BCD3D01E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9C55E84-4281-424D-BF2D-5B4BCD3D01E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9C55E84-4281-424D-BF2D-5B4BCD3D01E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
