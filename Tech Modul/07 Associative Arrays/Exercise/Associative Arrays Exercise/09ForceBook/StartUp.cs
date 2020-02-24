@@ -2,7 +2,7 @@
 
 namespace _09ForceBook
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
