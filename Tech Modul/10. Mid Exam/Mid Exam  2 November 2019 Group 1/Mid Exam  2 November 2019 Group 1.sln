@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01BiscuitsFactory", "01Bisc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02Weaponsmith", "02Weaponsmith\02Weaponsmith.csproj", "{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03WizardPoker", "03WizardPoker\03WizardPoker.csproj", "{C1316D9F-36F2-40C2-8E7F-357CB7049741}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA8B97FF-912E-4CA5-97A6-FF8C43BECF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1316D9F-36F2-40C2-8E7F-357CB7049741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1316D9F-36F2-40C2-8E7F-357CB7049741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1316D9F-36F2-40C2-8E7F-357CB7049741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1316D9F-36F2-40C2-8E7F-357CB7049741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
