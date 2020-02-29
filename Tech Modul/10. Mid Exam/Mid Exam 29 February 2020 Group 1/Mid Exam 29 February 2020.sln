@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01BonusScoringSystem", "1\01BonusScoringSystem.csproj", "{FBE96E26-356E-4B30-83A8-36453D84566B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02MuOnline", "2\02MuOnline.csproj", "{21EB25E0-176F-408A-9164-546548C24E95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03Inventory", "3\03Inventory.csproj", "{3BBF3A85-F947-451B-B17A-3A19E2530706}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBE96E26-356E-4B30-83A8-36453D84566B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE96E26-356E-4B30-83A8-36453D84566B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE96E26-356E-4B30-83A8-36453D84566B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE96E26-356E-4B30-83A8-36453D84566B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21EB25E0-176F-408A-9164-546548C24E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21EB25E0-176F-408A-9164-546548C24E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21EB25E0-176F-408A-9164-546548C24E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21EB25E0-176F-408A-9164-546548C24E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BBF3A85-F947-451B-B17A-3A19E2530706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BBF3A85-F947-451B-B17A-3A19E2530706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BBF3A85-F947-451B-B17A-3A19E2530706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BBF3A85-F947-451B-B17A-3A19E2530706}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BB4341E-94A5-4CC9-961E-B12F0D7CEFC8}
+	EndGlobalSection
+EndGlobal
