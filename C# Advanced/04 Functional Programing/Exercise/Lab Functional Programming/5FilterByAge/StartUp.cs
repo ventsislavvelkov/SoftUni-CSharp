@@ -21,7 +21,6 @@ namespace _5FilterByAge
         static void Main(string[] args)
         {
             var numberOfLines = int.Parse(Console.ReadLine());
-
             var people = new List<Person>();
 
             for (int i = 0; i < numberOfLines; i++)
@@ -31,8 +30,8 @@ namespace _5FilterByAge
 
                 var name = input[0];
                 var age = int.Parse(input[1]);
-
                 var person = new Person(name, age);
+
                 people.Add(person);
             }
 
