@@ -36,6 +36,9 @@
             set { this.age = value; }
         }
 
-
+        public override string ToString()
+        {
+            return $"{this.Name} {this.Age}";
+        }
     }
 }
