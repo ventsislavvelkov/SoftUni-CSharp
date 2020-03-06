@@ -2,7 +2,7 @@
 
 namespace DefiningClasses
 {
-    class StartUp
+    public class StartUp
     {
         static void Main(string[] args)
         {
@@ -11,12 +11,12 @@ namespace DefiningClasses
 
             Person person = new Person()
             {
-                Name = name,
-                Age = age
+                Name = "Pesho",
+                Age = 20
             };
 
 
-           Console.WriteLine($"{person.Name} -> {person.Age}");
+            Console.WriteLine($"{person.Name} -> {person.Age}");
         }
     }
 }
