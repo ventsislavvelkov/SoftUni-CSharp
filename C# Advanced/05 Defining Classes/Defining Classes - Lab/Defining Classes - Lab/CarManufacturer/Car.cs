@@ -1,6 +1,4 @@
-﻿using  System;
-
-namespace CarManufacturer
+﻿namespace CarManufacturer
 {
     public class Car
     {
@@ -8,22 +6,13 @@ namespace CarManufacturer
         private string model;
         private int year;
 
-        public string Make
-        {
-            get => this.make;
-            set => this.make = value;
-        }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int Year { get; set; }
 
-        public string Model
+        public Car()
         {
-            get => this.model;
-            set => this.model = value;
-        }
 
-        public int Year
-        {
-            get => this.year;
-            set => this.year = value;
         }
     }
 }
