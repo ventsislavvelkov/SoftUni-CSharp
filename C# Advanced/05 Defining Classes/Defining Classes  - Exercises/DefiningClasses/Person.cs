@@ -38,7 +38,7 @@
 
         public override string ToString()
         {
-            return $"{this.Name} {this.Age}";
+            return $"{this.Name} - {this.Age}";
         }
     }
 }

@@ -23,8 +23,16 @@ namespace DefiningClasses
             Person oldestPerson = this.members
                 .OrderByDescending(p => p.Age)
                 .FirstOrDefault();
-
             return oldestPerson;
+        }
+
+        public HashSet<Person> GetAllPeopleAbove30()
+        {
+            return this.members
+                .Where(p => p.Age > 30)
+                .OrderBy(p => p.Name)
+                .ToHashSet();
+
         }
 
     }

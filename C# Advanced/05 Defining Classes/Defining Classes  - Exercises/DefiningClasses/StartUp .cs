@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DefiningClasses
 {
@@ -20,7 +21,9 @@ namespace DefiningClasses
                 family.AddMember(person);
             }
 
-            Console.WriteLine(family.GetOldestMember());
+            HashSet<Person> result = family.GetAllPeopleAbove30();
+
+            Console.WriteLine(string.Join(Environment.NewLine, result));
         }
     }
 }
