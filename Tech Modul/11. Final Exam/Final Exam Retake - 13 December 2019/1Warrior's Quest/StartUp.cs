@@ -3,7 +3,7 @@ using System.Text;
 
 namespace _1Warrior_s_Quest
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
