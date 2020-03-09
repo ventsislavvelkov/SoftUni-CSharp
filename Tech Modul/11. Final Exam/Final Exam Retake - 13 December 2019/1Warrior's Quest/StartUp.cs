@@ -59,7 +59,7 @@ namespace _1Warrior_s_Quest
                     else if (secondCommand == "Remove")
                     {
                         var takeIndex = skills.IndexOf(subString);
-                        skills = skills.Remove(takeIndex);
+                        skills = skills.Remove(takeIndex,subString.Length);
                     }
 
                     Console.WriteLine(skills);
