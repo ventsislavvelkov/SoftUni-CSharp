@@ -55,14 +55,21 @@ namespace _1Warrior_s_Quest
                     {
                         var secondSubstring = input[3];
                        skills = skills.Replace(subString, secondSubstring);
+                       Console.WriteLine(skills);
                     }
                     else if (secondCommand == "Remove")
                     {
-                        var takeIndex = skills.IndexOf(subString);
-                        skills = skills.Remove(takeIndex,subString.Length);
+                        if (!skills.Contains(subString))
+                        {
+                            Console.WriteLine("Command doesn't exist!");
+                        }
+                        else
+                        {
+                            var takeIndex = skills.IndexOf(subString);
+                            skills = skills.Remove(takeIndex, subString.Length);
+                            Console.WriteLine(skills);
+                        }
                     }
-
-                    Console.WriteLine(skills);
                 }
                 else
                 {
