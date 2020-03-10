@@ -114,6 +114,15 @@ namespace CarManufacturer
             this.Tires = tires;
         }
 
+        public override string ToString()
+        {
+            return $"Make: {this.Make}" + Environment.NewLine +
+                   $"Model: {this.Model}" + Environment.NewLine +
+                   $"Year: {this.Year}" + Environment.NewLine +
+                   $"HorsePowers: {this.Engine.HorsePower}" + Environment.NewLine +
+                   $"FuelQuantity: {this.FuelQuantity}";
+        }
+
     }
 }
 
