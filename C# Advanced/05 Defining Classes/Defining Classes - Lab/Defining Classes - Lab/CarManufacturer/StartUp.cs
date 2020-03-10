@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using  System;
+using System.Globalization;
 
 namespace CarManufacturer
 {
@@ -7,16 +8,15 @@ namespace CarManufacturer
     {
         static void Main(string[] args)
         {
-            Car car = new Car();
+            var make = Console.ReadLine();
+            var model = Console.ReadLine();
+            var year = int.Parse(Console.ReadLine());
+            var fuelQuantity = double.Parse(Console.ReadLine());
+            var fuelConsumption = double.Parse(Console.ReadLine());
 
-            car.Make = "VW";
-            car.Model = "MK3";
-            car.Year = 1992;
-            car.FuelQuantity = 200;
-            car.FuelConsumption = 200;
-            car.Drive(2000);
-
-            Console.WriteLine(car.WhoAmI());
+            Car firstCar = new Car();
+            Car secondCar = new Car(make,model,year);
+            Car thirdCar = new Car(make, model, year,fuelQuantity, fuelConsumption);
 
 
         }
