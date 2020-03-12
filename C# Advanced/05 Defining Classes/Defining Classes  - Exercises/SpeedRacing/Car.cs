@@ -36,6 +36,32 @@ namespace SpeedRacing
             set { this.travelledDistance = value; }
         }
 
+        public Car(string model, double fuelAmount, double fuelConsumptionPerKilometer)
+        {
+            this.Model = model;
+            this.FuelAmount = fuelAmount;
+            this.FuelConsumptionPerKilometer = fuelConsumptionPerKilometer;
 
+        }
+
+        public void Drive(string modelCar, double amountOfKilometers)
+        {
+            var usedFuel = amountOfKilometers * this.FuelConsumptionPerKilometer;
+
+            if (usedFuel > this.FuelAmount)
+            {
+                Console.WriteLine("Insufficient fuel for the drive");
+            }
+            else
+            {
+                this.FuelAmount -= usedFuel;
+                this.TravelledDistance += amountOfKilometers;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Model} {this.FuelAmount:F2} {this.TravelledDistance}";
+        }
     }
 }
