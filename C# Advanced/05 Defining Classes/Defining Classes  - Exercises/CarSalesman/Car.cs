@@ -11,6 +11,29 @@ namespace CarSalesman
         private int weight;
         private string color;
 
+        public Car (string model, string engine)
+        {
+            this.Model = model;
+            this.Engine = engine;
+        }
+
+        public Car(string model, string engine, int weight)
+             : this(model, engine)
+        {
+            this.Weight = weight;
+        }
+
+        public Car(string model, string engine, string color)
+            : this(model, engine)
+        {
+            this.Color = color;
+        }
+
+        public Car(string model, string engine, int weight, string color)
+            : this(model, engine, weight)
+        {
+            this.Color = color;
+        }
         public string Model
         {
             get => this.model;
