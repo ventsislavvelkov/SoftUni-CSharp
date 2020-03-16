@@ -58,5 +58,19 @@ namespace CarSalesman
             get => this.efficiency;
             set => this.efficiency = value;
         }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            var displacementStr = this.Displacement.Equals(0) ? "n/a" : this.Displacement.ToString();
+            var efficiencyStr = String.IsNullOrEmpty(this.efficiency) ? "n/a" :this.Efficiency;
+
+            sb.AppendLine($"{this.Model}:")
+                .AppendLine($"    Power: {this.Power}")
+                .AppendLine($"    Displacement: {displacementStr}")
+                .AppendLine($"    Efficiency: {efficiencyStr}");
+
+            return sb.ToString().TrimEnd();
+        }
     }
 }

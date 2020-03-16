@@ -7,29 +7,29 @@ namespace CarSalesman
     public class Car
     {
         private string model;
-        private string engine;
+        private Engine engine;
         private int weight;
         private string color;
 
-        public Car (string model, string engine)
+        public Car (string model, Engine engine)
         {
             this.Model = model;
             this.Engine = engine;
         }
 
-        public Car(string model, string engine, int weight)
+        public Car(string model, Engine engine, int weight)
              : this(model, engine)
         {
             this.Weight = weight;
         }
 
-        public Car(string model, string engine, string color)
+        public Car(string model, Engine engine, string color)
             : this(model, engine)
         {
             this.Color = color;
         }
 
-        public Car(string model, string engine, int weight, string color)
+        public Car(string model, Engine engine, int weight, string color)
             : this(model, engine, weight)
         {
             this.Color = color;
@@ -40,7 +40,7 @@ namespace CarSalesman
             set => this.model = value;
         }
 
-        public string Engine
+        public Engine Engine
         {
             get => this.engine;
             set => this.engine = value;
@@ -56,6 +56,19 @@ namespace CarSalesman
         {
             get => this.color;
             set => this.color = value;
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            var weightStr = this.Weight.Equals(0) ? "n/a" : this.Weight.ToString();
+            var colorSrt = String.IsNullOrEmpty(this.Color)? "n/a" : this.Color;
+
+            sb.AppendLine($"{this.Model}:")
+                .AppendLine($"  {this.Engine}")
+                .AppendLine($"  Weight: {weightStr}")
+                .AppendLine($"  Color: {colorSrt}");
+            return sb.ToString().TrimEnd();
         }
     }
 }

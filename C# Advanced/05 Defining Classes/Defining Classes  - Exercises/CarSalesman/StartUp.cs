@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Tracing;
+using System.Linq;
 
 namespace CarSalesman
 {
@@ -56,16 +57,17 @@ namespace CarSalesman
 
             for (int i = 0; i < m; i++)
             {
+                Car car = null;
                 var carInfo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 var model = carInfo[0];
-                var engine = carInfo[1];
+                Engine engine = engines.First(e => e.Model == carInfo[1]);
                 var weight = 0;
                 var color = "";
-                Car car = null;
+                
 
                 if (carInfo.Length == 2)
                 {
-                    car = new Car(model,engine);
+                    car = new Car(model, engine);
                 }
                 else if (carInfo.Length == 3)
                 {
@@ -90,6 +92,11 @@ namespace CarSalesman
                 }
 
                 cars.Add(car);
+            }
+
+            foreach (var car in cars)
+            {
+                Console.WriteLine(car);   
             }
         }
     }
