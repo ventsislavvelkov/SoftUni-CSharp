@@ -10,7 +10,7 @@ namespace CarSalesman
         private string model;
         private int power;
         private int displacement;
-        private double efficiency;
+        private string efficiency;
 
         public Engine(string model, int power)
         {
@@ -24,13 +24,13 @@ namespace CarSalesman
             this.Displacement = displacement;
         }
 
-        public Engine(string model, int power, double efficiency)
+        public Engine(string model, int power, string efficiency)
             : this(model, power)
         {
             this.Efficiency = efficiency;
         }
 
-        public Engine(string model, int power, int displacement, double efficiency)
+        public Engine(string model, int power, int displacement, string efficiency)
             : this(model, power, displacement)
         {
             this.Efficiency = efficiency;
@@ -53,7 +53,7 @@ namespace CarSalesman
             set => this.displacement = value;
         }
 
-        public double Efficiency
+        public string Efficiency
         {
             get => this.efficiency;
             set => this.efficiency = value;
