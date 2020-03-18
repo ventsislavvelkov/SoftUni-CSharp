@@ -32,6 +32,8 @@ namespace p01Furniture
                 }
             }
 
+            Console.WriteLine("Bought furniture:");
+
             foreach (var name in furniture)
             {
                 Console.WriteLine(name);
