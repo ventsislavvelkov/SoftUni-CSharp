@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace p02Race
 {
-    class SrartUp
+    class StartUp
     {
         static void Main(string[] args)
         {

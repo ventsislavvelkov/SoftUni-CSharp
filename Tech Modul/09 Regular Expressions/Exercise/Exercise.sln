@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p01Furniture", "p01Furnitur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p02Race", "p02Race\p02Race.csproj", "{CFC39193-AD5B-4C92-99B6-8B037014E52D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p03SoftUniBarIncome", "p03SoftUniBarIncome\p03SoftUniBarIncome.csproj", "{AD37A94B-070F-4BB5-8E26-6F331D327059}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CFC39193-AD5B-4C92-99B6-8B037014E52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFC39193-AD5B-4C92-99B6-8B037014E52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFC39193-AD5B-4C92-99B6-8B037014E52D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD37A94B-070F-4BB5-8E26-6F331D327059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD37A94B-070F-4BB5-8E26-6F331D327059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD37A94B-070F-4BB5-8E26-6F331D327059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD37A94B-070F-4BB5-8E26-6F331D327059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
