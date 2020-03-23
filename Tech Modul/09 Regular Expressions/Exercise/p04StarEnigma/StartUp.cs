@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace p04StarEnigma
 {
@@ -12,36 +13,78 @@ namespace p04StarEnigma
         static void Main(string[] args)
         {
             var n = int.Parse(Console.ReadLine());
-            var sb = new StringBuilder();
-
+            var attackedPlanets = new List<string>();
+            var destroyedPlanets = new List<string>();
+            var pattern = @"@(?<planet>[A-Z][a-z]+)[^@\-!:>]*\:(?<population>\d+)[^@\-!:>]*!(?<attackType>A|D)![^@\-!:>]*->(?<solderCount>\d+)";
+           
             for (int i = 0; i < n; i++)
             {
-                var input = Console.ReadLine();
-                var key = 3;
+                var encryptedMessage = Console.ReadLine();
 
+                var key = SpecialLetterCount(encryptedMessage);
 
+                var decriptedMessage = DecryptMessage(encryptedMessage, key);
 
-                for (int j = 0; j < input.Length; j++)
+                var matches = Regex.Match(decriptedMessage, pattern);
+
+                if (matches.Success)
                 {
-                    var currentCh = input[j];
-                    var decryptedCh = (char)(currentCh - key);
-                    sb.Append(decryptedCh);
+                    var planetName = matches.Groups["planet"].Value;
+                    var attackType = matches.Groups["attackType"].Value;
 
+                    if (attackType == "A")
+                    {
+                       attackedPlanets.Add(planetName);
+                    }
+                    else
+                    {
+                        destroyedPlanets.Add(planetName);
+                    }
                 }
-
-
             }
-            Console.WriteLine(string.Join(" ", sb));
+
+            PrintPlanet(attackedPlanets, "Attacked");
+            PrintPlanet(destroyedPlanets, "Destroyed");
+
         }
+
+        private static void PrintPlanet(List<string> planets, string attackType)
+        {
+            Console.WriteLine($"{attackType} planets: {planets.Count}");
+            
+            foreach (var planet in planets.OrderBy(pn=>pn))
+            {
+                Console.WriteLine($@"-> {planet}");
+            }
+        }
+        private static string DecryptMessage(string encryptedMessage, int key)
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < encryptedMessage.Length; i++)
+            {
+                var currentCh = encryptedMessage[i];
+                var newCh = (char) (currentCh - key);
+                sb.Append(newCh);
+            }
+
+            return sb.ToString();
+        }
+
+
 
         public static int SpecialLetterCount(string message)
         {
             var specialLetter = new char[] {'s', 't', 'r', 'a'};
             var specialLettersCount = 0;
 
-            if (specialLetter.Contains(message))
+            for (int i = 0; i < message.Length; i++)
             {
-                specialLettersCount++;
+                var currentCh = message[i];
+                if (specialLetter.Contains(Char.ToLower(currentCh)))
+                {
+                    specialLettersCount ++;
+                }
             }
 
             return specialLettersCount;
