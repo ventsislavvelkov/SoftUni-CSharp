@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1Warrior's Quest", "1Warrior's Quest\1Warrior's Quest.csproj", "{72AD6A84-A470-46E0-A039-770F5DFE20B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1Warrior's Quest", "1Warrior's Quest\1Warrior's Quest.csproj", "{72AD6A84-A470-46E0-A039-770F5DFE20B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3HeroRecruitment", "3HeroRecruitment\3HeroRecruitment.csproj", "{09F9A659-B878-4484-AB95-4F6DB072388B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3HeroRecruitment", "3HeroRecruitment\3HeroRecruitment.csproj", "{09F9A659-B878-4484-AB95-4F6DB072388B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p2BossRush", "p2BossRush\p2BossRush.csproj", "{572302C7-7BF1-4737-9CFD-CA4A7DD7B7C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{09F9A659-B878-4484-AB95-4F6DB072388B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09F9A659-B878-4484-AB95-4F6DB072388B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09F9A659-B878-4484-AB95-4F6DB072388B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{572302C7-7BF1-4737-9CFD-CA4A7DD7B7C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{572302C7-7BF1-4737-9CFD-CA4A7DD7B7C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{572302C7-7BF1-4737-9CFD-CA4A7DD7B7C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{572302C7-7BF1-4737-9CFD-CA4A7DD7B7C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
