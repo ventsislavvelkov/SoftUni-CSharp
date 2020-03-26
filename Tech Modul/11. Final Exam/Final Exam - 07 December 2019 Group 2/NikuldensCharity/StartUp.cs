@@ -101,7 +101,7 @@ namespace NikuldensCharity
         {
             var isInRange = false;
 
-            if (startIndex >= 0 &&  strings.Length > startIndex && endIndex > 0 && strings.Length > endIndex)
+            if (startIndex >= 0 &&  strings.Length > startIndex && endIndex >= 0 && strings.Length > endIndex)
             {
                 isInRange = true;
             }
