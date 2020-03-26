@@ -25,8 +25,14 @@ namespace NikuldensCharity
                     var currentChar = input[1];
                     var newChar = input[2];
 
-                   strings =  strings.Replace(currentChar, newChar);
-                   Console.WriteLine(strings);
+                    var isContains = strings.Contains(currentChar);
+
+                    if (isContains)
+                    {
+                        strings = strings.Replace(currentChar, newChar);
+                    }
+
+                    Console.WriteLine(strings);
                 }
                 else if (command == "Cut")
                 {
@@ -95,7 +101,7 @@ namespace NikuldensCharity
         {
             var isInRange = false;
 
-            if (startIndex >= 0 && strings.Length > endIndex)
+            if (startIndex >= 0 &&  strings.Length > startIndex && endIndex > 0 && strings.Length > endIndex)
             {
                 isInRange = true;
             }
