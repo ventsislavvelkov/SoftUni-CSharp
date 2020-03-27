@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P09SimpleTextEditor", "P09S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P10Crossroads", "P10Crossroads\P10Crossroads.csproj", "{0E578B43-AEFA-4F41-A768-FDAD4A937C14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P11KeyRevolver", "P11KeyRevolver\P11KeyRevolver.csproj", "{98A308BD-1245-43BF-8DD6-8FC236F1F819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P12CapsAndBottles", "P12CapsAndBottles\P12CapsAndBottles.csproj", "{93BF0F02-CE1A-4591-8233-4467426AA928}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{0E578B43-AEFA-4F41-A768-FDAD4A937C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E578B43-AEFA-4F41-A768-FDAD4A937C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E578B43-AEFA-4F41-A768-FDAD4A937C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98A308BD-1245-43BF-8DD6-8FC236F1F819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A308BD-1245-43BF-8DD6-8FC236F1F819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A308BD-1245-43BF-8DD6-8FC236F1F819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A308BD-1245-43BF-8DD6-8FC236F1F819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93BF0F02-CE1A-4591-8233-4467426AA928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93BF0F02-CE1A-4591-8233-4467426AA928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93BF0F02-CE1A-4591-8233-4467426AA928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93BF0F02-CE1A-4591-8233-4467426AA928}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
