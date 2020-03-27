@@ -5,21 +5,21 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01DiagonalDifference", "01DiagonalDifference\01DiagonalDifference.csproj", "{192E1B76-9DD8-4FC4-BAE0-337BE28E0AF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "022X2SquaresInMatrix", "022X2SquaresInMatrix\022X2SquaresInMatrix.csproj", "{2D2FB656-9168-4AB5-B1EC-1E644B790E59}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03MaximalSum", "03MaximalSum\03MaximalSum.csproj", "{0604A1AA-FED2-48F1-9967-2B8D35F82C8D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04MatrixShuffling", "04MatrixShuffling\04MatrixShuffling.csproj", "{9AACF7D7-D15C-42BA-823F-B44F720BAF22}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05SnakeMovie", "05SnakeMovie\05SnakeMovie.csproj", "{8898F19A-B430-431E-9C78-68AE707CBFFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06JaggedArrayManipulator", "06JaggedArrayManipulator\06JaggedArrayManipulator.csproj", "{3BE6747E-B749-46D4-A136-F672FAEB3D8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06JaggedArrayManipulator", "06JaggedArrayManipulator\06JaggedArrayManipulator.csproj", "{3BE6747E-B749-46D4-A136-F672FAEB3D8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07KnightGame", "07KnightGame\07KnightGame.csproj", "{6D3E92EB-2B9C-4E8D-A267-BAA70D73DC97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07KnightGame", "07KnightGame\07KnightGame.csproj", "{6D3E92EB-2B9C-4E8D-A267-BAA70D73DC97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10RadioactiveMutantVampireBunnies", "10RadioactiveMutantVampireBunnies\10RadioactiveMutantVampireBunnies.csproj", "{756BE636-F4E5-4C94-B491-FEC9F0758B22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10RadioactiveMutantVampireBunnies", "10RadioactiveMutantVampireBunnies\10RadioactiveMutantVampireBunnies.csproj", "{756BE636-F4E5-4C94-B491-FEC9F0758B22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09Miner", "09Miner\09Miner.csproj", "{BF906AC1-BF2F-4327-8843-A5AFB710F103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09Miner", "09Miner\09Miner.csproj", "{BF906AC1-BF2F-4327-8843-A5AFB710F103}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02X2SquaresInMatrix", "02X2SquaresInMatrix\02X2SquaresInMatrix.csproj", "{03E3D9BD-94C7-4D9B-842D-E8996F986575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,6 @@ Global
 		{192E1B76-9DD8-4FC4-BAE0-337BE28E0AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{192E1B76-9DD8-4FC4-BAE0-337BE28E0AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{192E1B76-9DD8-4FC4-BAE0-337BE28E0AF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D2FB656-9168-4AB5-B1EC-1E644B790E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D2FB656-9168-4AB5-B1EC-1E644B790E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D2FB656-9168-4AB5-B1EC-1E644B790E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D2FB656-9168-4AB5-B1EC-1E644B790E59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0604A1AA-FED2-48F1-9967-2B8D35F82C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0604A1AA-FED2-48F1-9967-2B8D35F82C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0604A1AA-FED2-48F1-9967-2B8D35F82C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{BF906AC1-BF2F-4327-8843-A5AFB710F103}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF906AC1-BF2F-4327-8843-A5AFB710F103}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF906AC1-BF2F-4327-8843-A5AFB710F103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03E3D9BD-94C7-4D9B-842D-E8996F986575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03E3D9BD-94C7-4D9B-842D-E8996F986575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03E3D9BD-94C7-4D9B-842D-E8996F986575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03E3D9BD-94C7-4D9B-842D-E8996F986575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
