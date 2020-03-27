@@ -13,7 +13,13 @@ namespace P06SongsQueue
 
             while (true)
             {
-                string commandAndSong = Console.ReadLine();
+                var commandAndSong = Console.ReadLine();
+
+                if (queue.Count == 0)
+                {
+                    Console.WriteLine("No more songs!");
+                    break;
+                }
 
                 if (commandAndSong.Contains("Play") && queue.Count > 0)
                 {
@@ -35,11 +41,6 @@ namespace P06SongsQueue
                 else if (commandAndSong.Contains("Show") && queue.Count > 0)
                 {
                     Console.WriteLine(string.Join(", ", queue));
-                }
-                else if (queue.Count == 0)
-                {
-                    Console.WriteLine("No more songs!");
-                    break;
                 }
             }
         }
