@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P07TruckTour", "P07TruckTou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P08BalancedParentheses", "P08BalancedParentheses\P08BalancedParentheses.csproj", "{EA8747CC-0CAE-4A2F-B92A-7BD17E7B6BFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P09SimpleTextEditor", "P09SimpleTextEditor\P09SimpleTextEditor.csproj", "{A4A96DCD-8018-4425-A29C-CD6E99AD829B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{EA8747CC-0CAE-4A2F-B92A-7BD17E7B6BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA8747CC-0CAE-4A2F-B92A-7BD17E7B6BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA8747CC-0CAE-4A2F-B92A-7BD17E7B6BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4A96DCD-8018-4425-A29C-CD6E99AD829B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4A96DCD-8018-4425-A29C-CD6E99AD829B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4A96DCD-8018-4425-A29C-CD6E99AD829B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4A96DCD-8018-4425-A29C-CD6E99AD829B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
