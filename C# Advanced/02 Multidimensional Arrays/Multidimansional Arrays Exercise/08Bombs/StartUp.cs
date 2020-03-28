@@ -57,13 +57,12 @@ namespace _08Bombs
                                ExplodeBomb(matrix, row+1, col, currentNumber);
                                matrix[row, col] = 0;
                             }
-
                         }
                     }
                 }
             }
 
-            AliveCells(matrix);
+            AliveCellsAndSum(matrix);
             PrintMatrix(matrix);
         }
 
@@ -112,7 +111,7 @@ namespace _08Bombs
             }
         }
 
-        static void AliveCells(int[,] matrix)
+        static void AliveCellsAndSum(int[,] matrix)
         {
             var alliveCells = 0;
             var sum = 0;
