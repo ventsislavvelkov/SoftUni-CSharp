@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace P02SetsOfElements
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
