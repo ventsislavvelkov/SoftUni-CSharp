@@ -7,27 +7,45 @@ namespace _05SnakeMovie
     {
         static void Main()
         {
-            int[] n = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            var n = Console.ReadLine()
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
 
-            int matrixRow = n[0];
-            int matrixCol = n[1];
-            int counter = 0;
-            string snake = Console.ReadLine();
+            var matrixRow = n[0];
+            var matrixCol = n[1];
+            var counter = 0;
+            var snake = Console.ReadLine();
+            var matrix = new char[matrixRow, matrixCol];
 
-            char[,] matrix = new char[matrixRow, matrixCol];
-
-
-
-            for (int row = 0; row < matrix.GetLength(0); row++)
+            for (int row = 0; row < matrixRow; row++)
             {
-                for (int col = 0; col < matrix.GetLength(1); col++)
-                {
-                    matrix[row, col] = snake[counter];
-                    counter++;
 
-                    if (counter == snake.Length)
+                if (row % 2 == 0)
+                {
+                    for (int col = 0; col < matrixCol; col++)
                     {
-                        counter = 0;
+
+                        if (counter == snake.Length)
+                        {
+                            counter = 0;
+                        }
+
+                        matrix[row, col] = snake[counter];
+                        counter++;
+                    }
+                }
+                else
+                {
+                    for (int col = matrixCol-1; col >= 0; col--)
+                    {
+                        if (counter == snake.Length)
+                        {
+                            counter = 0;
+                        }
+
+                        matrix[row, col] = snake[counter];
+                        counter++;
                     }
                 }
             }
