@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace _09Miner
 {
-    class Program
+    class StartUp
     {
         static void Main()
         {
@@ -20,7 +20,7 @@ namespace _09Miner
 
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                char[] currentValue = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(char.Parse).ToArray();
+                var currentValue = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(char.Parse).ToArray();
 
                 for (int col = 0; col < n; col++)
                 {
