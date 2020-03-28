@@ -6,11 +6,11 @@ namespace _07KnightGame
     {
         static void Main(string[] args)
         {
-            int dim = int.Parse(Console.ReadLine());
+            var dim = int.Parse(Console.ReadLine());
 
-            char[,] matrix = new char[dim, dim];
+            var matrix = new char[dim, dim];
 
-            int[] indexes = new int[]
+            var indexes = new int[]
             {
                 1, 2,
                 1, -2,
@@ -24,7 +24,7 @@ namespace _07KnightGame
 
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                string input = Console.ReadLine();
+                var input = Console.ReadLine();
 
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
@@ -32,19 +32,19 @@ namespace _07KnightGame
                 }
             }
 
-            int count = 0;
+            var count = 0;
 
             while (true)
             {
-                int maxCount = 0;
-                int knightRow = 0;
-                int knightCol = 0;
+                var maxCount = 0;
+                var knightRow = 0;
+                var knightCol = 0;
 
                 for (int row = 0; row < matrix.GetLength(0); row++)
                 {
                     for (int col = 0; col < matrix.GetLength(1); col++)
                     {
-                        int currentCount = 0;
+                        var currentCount = 0;
 
                         if (matrix[row, col] == 'K')
                         {
