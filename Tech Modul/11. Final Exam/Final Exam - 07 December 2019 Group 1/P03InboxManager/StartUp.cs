@@ -54,24 +54,17 @@ namespace P03InboxManager
             Console.WriteLine($"Users count: {inboxManager.Keys.Count}");
 
 
-            //foreach (var (key,value) in inboxManager
-            //            .OrderByDescending(x=>x.Value.Count)
-            //            .ThenBy(x=>x.Key))
-            //{
-            //    Console.WriteLine(key);
-            //    Console.WriteLine($" - {string.Join(Environment.NewLine + " - ", value)}");
-            //}
-
-            foreach (var kvp in inboxManager
-                .OrderByDescending(x => x.Value.Count)
-                .ThenBy(x => x.Key))
+            foreach (var (key, value) in inboxManager
+                        .OrderByDescending(x => x.Value.Count)
+                        .ThenBy(x => x.Key))
             {
-                Console.WriteLine($"{kvp.Key}");
-
-                foreach (var mail in kvp.Value)
+                Console.WriteLine(key);
+               
+                if (value.Count > 0)
                 {
-                    Console.WriteLine($" - {mail}");
+                    Console.WriteLine($" - {string.Join(Environment.NewLine + " - ", value)}");
                 }
+              
             }
         }
     }
