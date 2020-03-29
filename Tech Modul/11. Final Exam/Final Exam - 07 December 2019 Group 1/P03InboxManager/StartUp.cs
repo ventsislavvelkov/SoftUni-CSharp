@@ -68,9 +68,9 @@ namespace P03InboxManager
             {
                 Console.WriteLine($"{kvp.Key}");
 
-                foreach (var item in kvp.Value)
+                foreach (var mail in kvp.Value)
                 {
-                    Console.WriteLine($" - {item}");
+                    Console.WriteLine($" - {mail}");
                 }
             }
         }
