@@ -14,7 +14,7 @@ namespace P03CustomMinFunction
 
             Func<int[], int> minNumbers = numbers =>
             {
-                int minValue = int.MaxValue;
+                var minValue = int.MaxValue;
 
                 foreach (var number in numbers)
                 {
