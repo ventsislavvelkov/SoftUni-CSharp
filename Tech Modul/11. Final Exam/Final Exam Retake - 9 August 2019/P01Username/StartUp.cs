@@ -45,13 +45,8 @@ namespace P01Username
                             var currentCh = text[i];
                             Console.Write(currentCh);
                         }
-
                         Console.WriteLine();
-                        
-                        
                     }
-
-
                 }
                 else if (command == "Cut")
                 {
@@ -92,9 +87,7 @@ namespace P01Username
                     }
                 }
             }
-
         }
-
         private static bool IsValidIndex(string text,  int startIndex, int endIndex)
         {
             if (startIndex >=0 || text.Length > startIndex && 
