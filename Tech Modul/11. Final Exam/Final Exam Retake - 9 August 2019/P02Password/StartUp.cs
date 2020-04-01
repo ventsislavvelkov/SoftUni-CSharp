@@ -13,7 +13,7 @@ namespace P02Password
             for (int i = 0; i < n; i++)
             {
                 var input = Console.ReadLine();
-                var pattern = @">(?<digit>\d{3})\|(?<small>[a-z]{3})\|(?<big>[A-Z]{3})\|(?<sumbol>[^<>]{3})<";
+                var pattern = @"([\s\S]+)>(?<digit>[0-9]{3})\|(?<small>[a-z]{3})\|(?<big>[A-Z]{3})\|(?<sumbol>[^<>]{3})<(\1)";
 
                 var match = Regex.Match(input, pattern);
 

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01Username", "P01Username\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02Password", "P02Password\P02Password.csproj", "{70641C4D-3AB7-482D-9DE3-F6F455E7782F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03Followers", "P03Followers\P03Followers.csproj", "{D71685A1-A21B-4164-A8EB-272BFBCE3A54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{70641C4D-3AB7-482D-9DE3-F6F455E7782F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70641C4D-3AB7-482D-9DE3-F6F455E7782F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70641C4D-3AB7-482D-9DE3-F6F455E7782F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D71685A1-A21B-4164-A8EB-272BFBCE3A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71685A1-A21B-4164-A8EB-272BFBCE3A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71685A1-A21B-4164-A8EB-272BFBCE3A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71685A1-A21B-4164-A8EB-272BFBCE3A54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
