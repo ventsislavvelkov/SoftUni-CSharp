@@ -7,7 +7,7 @@ namespace P03BattleManager
 {
     class PersonHelthEnergy
     {
-        public PersonHelthEnergy(int helth = 0, int energy= 0)
+        public PersonHelthEnergy(int helth = 0, int energy = 0)
         {
             this.Helth = helth;
             this.Energy = energy;
@@ -19,10 +19,10 @@ namespace P03BattleManager
     {
         static void Main(string[] args)
         {
-            var people = new Dictionary<string,PersonHelthEnergy>();
+            var people = new Dictionary<string, PersonHelthEnergy>();
             var input = string.Empty;
 
-            while ((input =Console.ReadLine()) != "Results")
+            while ((input = Console.ReadLine()) != "Results")
             {
                 var tokens = input.Split(":");
                 var command = tokens[0];
@@ -33,11 +33,12 @@ namespace P03BattleManager
                     var energy = int.Parse(tokens[3]);
                     if (!people.ContainsKey(name))
                     {
-                        people.Add(name,new PersonHelthEnergy());
+                        people.Add(name, new PersonHelthEnergy());
+                        people[name].Energy += energy;
                     }
 
-                    people[name].Helth +=health;
-                    people[name].Energy += energy;
+                    people[name].Helth += health;
+                   
                 }
                 else if (command == "Attack")
                 {
@@ -59,9 +60,7 @@ namespace P03BattleManager
                             people.Remove(name);
                             Console.WriteLine($"{name} was disqualified!");
                         }
-
                     }
-
                 }
                 else if (command == "Delete")
                 {
@@ -78,15 +77,15 @@ namespace P03BattleManager
             }
 
             Console.WriteLine($"People count: {people.Count}");
+
             people = people.OrderByDescending(h => h.Value.Helth)
                 .ThenBy(n => n.Key)
                 .ToDictionary(x => x.Key, x => x.Value);
+
             foreach (var person in people)
             {
                 Console.WriteLine($"{person.Key} - {person.Value.Helth} - {person.Value.Energy}");
             }
-
-
         }
     }
 }
