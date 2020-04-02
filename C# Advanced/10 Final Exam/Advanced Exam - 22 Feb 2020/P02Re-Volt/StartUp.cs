@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace P02Re_Volt
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
