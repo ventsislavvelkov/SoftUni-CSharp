@@ -13,10 +13,12 @@ namespace P01Lootbox
             var claimedIthem = new List<int>();
             var queue = Console.ReadLine()
                                         .Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                                        .Select(int.Parse).ToArray();
+                                        .Select(int.Parse)
+                                        .ToArray();
             var stack = Console.ReadLine()
                                         .Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                                        .Select(int.Parse).ToArray();
+                                        .Select(int.Parse)
+                                        .ToArray();
 
             foreach (var queues in queue)
             {
@@ -32,7 +34,6 @@ namespace P01Lootbox
             while (firstLootBox.Count != 0 && secondLootBox.Count != 0)
             {
                 var count = firstLootBox.Count > secondLootBox.Count ? secondLootBox.Count : firstLootBox.Count;
-
                 var first = firstLootBox.Peek();
                 var second = secondLootBox.Peek();
                 var sum = first + second;
@@ -45,11 +46,9 @@ namespace P01Lootbox
                 }
                 else
                 {
-                   
                     firstLootBox.Enqueue(second);
                     secondLootBox.Pop();
                 }
-
             }
 
             if (firstLootBox.Count == 0)
@@ -61,20 +60,20 @@ namespace P01Lootbox
                 Console.WriteLine("Second lootbox is empty");
             }
 
-            var sumOFClaimed = 0;
+            var sumOfClaimed = 0;
 
             foreach (var num in claimedIthem)
             {
-                sumOFClaimed += num;
+                sumOfClaimed += num;
             }
 
-            if (sumOFClaimed >= 100 )
+            if (sumOfClaimed >= 100 )
             {
-                Console.WriteLine($"Your loot was epic! Value: {sumOFClaimed}");
+                Console.WriteLine($"Your loot was epic! Value: {sumOfClaimed}");
             }
             else
             {
-                Console.WriteLine($"Your loot was poor... Value: {sumOFClaimed}");
+                Console.WriteLine($"Your loot was poor... Value: {sumOfClaimed}");
             }
         }
     }
