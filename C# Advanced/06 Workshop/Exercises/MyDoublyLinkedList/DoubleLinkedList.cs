@@ -1,27 +1,42 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 
 namespace MyDoublyLinkedList
 {
-    public class DoubleLinkedList
+    public class DoubleLinkedList<T> : IEnumerable<T>
     {
-        private ListNode head;
-        private ListNode tail;
+        private ListNode<T> head;
+        private ListNode<T> tail;
 
         public int Count { get; private set; }
 
-        public void AddFirst(int element)
+        public T this[int index]
+        {
+            get
+            {
+                T[] arr = this.ToArray();
+
+                if (index < 0 || index>= arr.Length)
+                {
+                    throw new ArgumentException("Index outside of the bounds of the list!", nameof(index));
+                }
+
+                return arr[index];
+            }
+        }
+        public void AddFirst(T element)
         {
             if (this.Count == 0)
             {
-                this.head = this.tail = new ListNode(element);
+                this.head = this.tail = new ListNode<T>(element); 
             }
             else
             {
-                ListNode newHead = new ListNode(element);
-                ListNode oldHead = this.head;
+                ListNode<T> newHead = new ListNode<T>(element);
+                ListNode<T> oldHead = this.head;
 
                 this.head = newHead;
                 oldHead.PreviousNode = newHead;
@@ -32,17 +47,17 @@ namespace MyDoublyLinkedList
             this.Count++;
         }
 
-        public void AddLast(int element)
+        public void AddLast(T element)
 
         {
             if (this.Count == 0)
             {
-                this.head = this.tail = new ListNode(element);
+                this.head = this.tail = new ListNode<T>(element);
             }
             else
             {
-                ListNode newTail = new ListNode(element);
-                ListNode oldTail = this.tail;
+                ListNode<T> newTail = new ListNode<T>(element);
+                ListNode<T> oldTail = this.tail;
 
                 this.tail = newTail;
                 oldTail.NextNode = newTail;
@@ -52,7 +67,7 @@ namespace MyDoublyLinkedList
             Count++;
         }
 
-        public int RemoveFirst()
+        public T RemoveFirst()
         {
 
 
@@ -60,7 +75,7 @@ namespace MyDoublyLinkedList
             {
                 throw new InvalidOperationException("List is empty!");
             }
-            int removedElement = this.head.Value;
+            T removedElement = this.head.Value;
 
             if (this.Count == 1)
             {
@@ -69,7 +84,7 @@ namespace MyDoublyLinkedList
             }
             else
             {
-                ListNode newNode = this.head.NextNode;
+                ListNode<T> newNode = this.head.NextNode;
                 newNode.PreviousNode = null;
                 this.head = newNode;
             }
@@ -79,7 +94,7 @@ namespace MyDoublyLinkedList
             return removedElement;
         }
 
-        public int RemoveLast()
+        public T RemoveLast()
         {
 
             if (this.Count == 0)
@@ -87,7 +102,7 @@ namespace MyDoublyLinkedList
                 throw new InvalidOperationException("List is empty!");
             }
 
-            int removedEl = this.tail.Value;
+            T removedEl = this.tail.Value;
 
             if (this.Count == 1)
             {
@@ -96,7 +111,7 @@ namespace MyDoublyLinkedList
             }
             else
             {
-                ListNode newTail = this.tail.PreviousNode;
+                ListNode<T> newTail = this.tail.PreviousNode;
                 newTail.NextNode = null;
                 this.tail = newTail;
             }
@@ -106,9 +121,9 @@ namespace MyDoublyLinkedList
             return removedEl;
         }
 
-        public void ForEach(Action<int> action)
+        public void ForEach(Action<T> action)
         {
-            ListNode currentEl = this.head;
+            ListNode<T> currentEl = this.head;
 
             while (currentEl != null)
             {
@@ -117,13 +132,13 @@ namespace MyDoublyLinkedList
             }
         }
 
-        public int[] ToArray()
+        public T[] ToArray()
         {
-            int[] arr = new int[this.Count];
+            T[] arr = new T[this.Count];
 
             int cnt = 0;
 
-            ListNode currentEl = this.head;
+            ListNode<T> currentEl = this.head;
             while (currentEl != null)
             {
                 arr[cnt++] = currentEl.Value;
@@ -134,6 +149,21 @@ namespace MyDoublyLinkedList
             return arr;
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            ListNode<T> currentNode = this.head;
+
+            while (currentNode != null)
+            {
+                yield return currentNode.Value;
+                currentNode = currentNode.NextNode;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
     }
 
 }

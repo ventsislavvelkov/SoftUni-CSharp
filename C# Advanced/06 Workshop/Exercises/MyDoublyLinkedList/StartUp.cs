@@ -7,7 +7,7 @@ namespace MyDoublyLinkedList
     {
         public static void Main(string[] args)
         {
-            var list = new DoubleLinkedList();
+            var list = new DoubleLinkedList<int>();
 
             for (int i = 1; i < 10; i++)
             {
@@ -25,7 +25,10 @@ namespace MyDoublyLinkedList
 
             list.ToArray();
 
-
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 } 

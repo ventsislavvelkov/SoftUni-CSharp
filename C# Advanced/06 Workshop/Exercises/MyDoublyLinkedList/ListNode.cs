@@ -2,17 +2,17 @@
 
 namespace MyDoublyLinkedList
 {
-    public class ListNode
+    public class ListNode<T>
     {
-        public int Value  { get; set; }
+        public T Value  { get; set; }
 
-        public ListNode(int value)
+        public ListNode(T value)
         {
             this.Value = value;
         }
-        public ListNode NextNode { get; set; }
+        public ListNode<T> NextNode { get; set; }
 
-        public ListNode PreviousNode { get; set; }
+        public ListNode<T> PreviousNode { get; set; }
     }
 }
  
