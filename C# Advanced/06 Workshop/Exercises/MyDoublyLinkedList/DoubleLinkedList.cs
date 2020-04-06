@@ -10,7 +10,7 @@ namespace MyDoublyLinkedList
         private ListNode head;
         private ListNode tail;
 
-        public int Count { get; private  set; }
+        public int Count { get; private set; }
 
         public void AddFirst(int element)
         {
@@ -35,12 +35,12 @@ namespace MyDoublyLinkedList
         public void AddLast(int element)
 
         {
-            if (this.Count == 0 )
+            if (this.Count == 0)
             {
                 this.head = this.tail = new ListNode(element);
             }
             else
-            { 
+            {
                 ListNode newTail = new ListNode(element);
                 ListNode oldTail = this.tail;
 
@@ -54,14 +54,14 @@ namespace MyDoublyLinkedList
 
         public int RemoveFirst()
         {
-           
+
 
             if (this.Count == 0)
             {
                 throw new InvalidOperationException("List is empty!");
             }
             int removedElement = this.head.Value;
-            
+
             if (this.Count == 1)
             {
                 this.head = null;
@@ -76,12 +76,12 @@ namespace MyDoublyLinkedList
 
             this.Count--;
 
-            return removedElement; 
+            return removedElement;
         }
 
         public int RemoveLast()
         {
-           
+
             if (this.Count == 0)
             {
                 throw new InvalidOperationException("List is empty!");
@@ -117,7 +117,23 @@ namespace MyDoublyLinkedList
             }
         }
 
+        public int[] ToArray()
+        {
+            int[] arr = new int[this.Count];
+
+            int cnt = 0;
+
+            ListNode currentEl = this.head;
+            while (currentEl != null)
+            {
+                arr[cnt++] = currentEl.Value;
+                currentEl = currentEl.NextNode;
+
+            }
+
+            return arr;
+        }
+
     }
 
 }
- 

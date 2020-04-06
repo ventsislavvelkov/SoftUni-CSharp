@@ -21,10 +21,11 @@ namespace MyDoublyLinkedList
 
             list.ForEach(x=> Console.Write(x + " "));
 
-            for (int i = 1; i < 10; i++)
-            {
-                list.ForEach(x=>Console.Write(x + " "));
-            }
+            Console.WriteLine();
+
+            list.ToArray();
+
+
         }
     }
 } 
