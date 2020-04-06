@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace CreateCustomDataStructures
+namespace CustomList
 {
     class MyList<T>
     {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using CustomList;
 
-namespace CreateCustomDataStructures
+namespace CustomList
 {
     class StartUp
     {
