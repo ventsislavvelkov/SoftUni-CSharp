@@ -14,7 +14,7 @@ namespace Threeuple
             var second = Console.ReadLine().Split();
             var nameSecond = second[0];
             var litresOfBeer = int.Parse(second[1]);
-            var drink = second[2];
+            var drink = second[2] == "drunk" ? true : false;
 
             var thurd = Console.ReadLine().Split();
             var nameThurd = thurd[0];
@@ -22,7 +22,7 @@ namespace Threeuple
             var bankName = thurd[2];
 
             var firstThreeple = new Threeuple<string,string,string>(fullName,address,town);
-            var secondThreeple = new Threeuple<string,int,string>(nameSecond,litresOfBeer,drink);
+            var secondThreeple = new Threeuple<string,int,bool>(nameSecond,litresOfBeer,drink);
             var thurdThreeple = new Threeuple<string,double,string>(nameThurd,accountBalance,bankName);
 
             Console.WriteLine(firstThreeple);
