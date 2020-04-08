@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace P01GenericBoxOfString
 {
-    public class Box<T>
+    public class Box<T> where T: IComparable
     {
         public Box(List<T> value)
         {
@@ -29,6 +29,21 @@ namespace P01GenericBoxOfString
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+        public int CountElements(List<T> list, T element)
+        {
+            var countOfElements = 0;
+
+            foreach (var item in list)
+            {
+                if (element.CompareTo(item) < 0)
+                {
+                    countOfElements++;
+                }
+            }
+
+            return countOfElements;
         }
     }
 }

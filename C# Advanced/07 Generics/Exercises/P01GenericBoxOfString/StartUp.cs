@@ -9,21 +9,24 @@ namespace P01GenericBoxOfString
         static void Main(string[] args)
         {
             var n = int.Parse(Console.ReadLine());
-            var names =  new List<int>();
+            var elements =  new List<double>();
 
             for (int i = 0; i < n; i++)
             {
-                var input = int.Parse(Console.ReadLine());
-                names.Add(input);
+                var input = double.Parse(Console.ReadLine());
+                elements.Add(input);
             }
-            var box = new Box<int>(names);
 
-            var indexexToSwap = Console.ReadLine()
-                .Split()
-                .Select(int.Parse)
-                .ToArray();
-            box.Swap(names, indexexToSwap[0], indexexToSwap[1]);
-            Console.WriteLine(box);
+            var box = new Box<double>(elements);
+            var element = double.Parse(Console.ReadLine());
+
+           var countOfGreaterElements = box.CountElements(elements, element);
+           Console.WriteLine(countOfGreaterElements);
+
+
+
+
+
         }
     }
 }
