@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ListyIterator
 {
@@ -6,8 +8,6 @@ namespace ListyIterator
     {
         static void Main(string[] args)
         {
-
-
         }
     }
 }
