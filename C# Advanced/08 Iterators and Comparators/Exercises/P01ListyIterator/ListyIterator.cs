@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace ListyIterator
 {
-    public class ListyIterator<T>
+    public class ListyIterator<T> : IEnumerable<T>
     {
         private int currentIndex;
 
@@ -20,7 +21,7 @@ namespace ListyIterator
 
         public ListyIterator(List<T> store)
         {
-            this.store = new List<T>(store);
+            this.store = store;
             currentIndex = 0;
         }
 
@@ -31,10 +32,9 @@ namespace ListyIterator
 
         public bool Move()
         {
-
             if (this.HasNext())
             {
-                currentIndex++;
+                this.currentIndex++;
                 return true;
             }
 
@@ -43,14 +43,12 @@ namespace ListyIterator
 
         public void Print()
         {
-            if (this.store.Any())
+            if (this.store.Count == 0)
             {
-                Console.WriteLine(this.store[currentIndex]);
+                throw new InvalidOperationException("Invalid Operation!");
             }
-            else
-            {
-                Console.WriteLine("Invalid Operation!");
-            }
+
+            Console.WriteLine(this.store[currentIndex]);
         }
 
         public bool HasNext()
@@ -60,6 +58,19 @@ namespace ListyIterator
                 return true;
             }
             return false;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in this.store)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

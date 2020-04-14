@@ -8,32 +8,52 @@ namespace ListyIterator
     {
         static void Main(string[] args)
         {
-            var create = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                .Skip(1)
-                .ToList();
-            var listyiterator = new ListyIterator<string>(create);
-            
+            ListyIterator<string> listyIterator = new ListyIterator<string>();
 
-            var input = string.Empty;
-
+            string input = string.Empty;
             while ((input = Console.ReadLine()) != "END")
             {
-                switch (input)
+                try
                 {
-                    case "Move":
-                        Console.WriteLine(listyiterator.Move());
-                        break;
-                    case "Print":
-                        listyiterator.Print();
-                        break;
-                    case "HasNext":
-                        Console.WriteLine(listyiterator.HasNext());
-                        break;
+                    if (!input.Contains("Create"))
+                    {
+                        if (input == "Move")
+                        {
+                            Console.WriteLine(listyIterator.Move());
+                        }
+                        else if (input == "HasNext")
+                        {
+                            Console.WriteLine(listyIterator.HasNext());
+                        }
+                        else if (input == "Print")
+                        {
+                            listyIterator.Print();
+                        }
+                        else if (input == "PrintAll")
+                        {
+                            foreach (var item in listyIterator)
+                            {
+                                Console.Write($"{item} ");
+                            }
+
+                            Console.WriteLine();
+                        }
+                    }
+                    else
+                    {
+                        List<string> elements = input
+                            .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                            .Skip(1)
+                            .ToList();
+
+                        listyIterator.Add(elements);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
-
-
-
         }
     }
 }
