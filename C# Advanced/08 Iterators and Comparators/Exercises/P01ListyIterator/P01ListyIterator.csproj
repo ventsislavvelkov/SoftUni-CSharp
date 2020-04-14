@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>ListyIterator</AssemblyName>
+    <RootNamespace>ListyIterator</RootNamespace>
   </PropertyGroup>
 
 </Project>
