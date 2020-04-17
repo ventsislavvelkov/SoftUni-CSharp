@@ -13,8 +13,8 @@ namespace P01_RawData
             this.Power = power;
 
         }
-        public int  Speed { get; set; }
-        public int  Power { get; set; }
+        public int  Speed { get; }
+        public int  Power { get; }
 
     }
 }
