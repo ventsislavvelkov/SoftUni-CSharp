@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace P04_Hospital
 {
     public class Room
     {
-        private List<Patient> patient;
+        private const int MAX_CAPACITY = 3;
+        private readonly List<Patient> patients;
 
         public Room()
         {
-            this.patient = new List<Patient>();
+            this.patients = new List<Patient>();
         }
         public Room(byte number)
         :this()
@@ -19,7 +21,28 @@ namespace P04_Hospital
         }
         public byte  Number { get; }
 
-        public IReadOnlyCollection<Patient> Patient { get => this.patient;}
+        public int Count => this.Patient.Count;
 
+        public IReadOnlyCollection<Patient> Patient { get => this.patients;}
+
+        public void AddPatient(Patient patient)
+        {
+            if (this.Count > MAX_CAPACITY)
+            {
+                this.patients.Add(patient);
+            }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var patient in patients)
+            {
+                sb.Append(patient.ToString());
+            }
+
+            return sb.ToString().TrimEnd();
+        }
     }
 }

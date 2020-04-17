@@ -10,6 +10,11 @@ namespace P04_Hospital
         {
             this.Name = name;
         }
-        public string Name { get; }     
+        public string Name { get; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }
