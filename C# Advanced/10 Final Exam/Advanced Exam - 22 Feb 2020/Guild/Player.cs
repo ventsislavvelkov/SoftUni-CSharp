@@ -4,27 +4,39 @@ using System.Text;
 
 namespace Guild
 {
-    class Player
+    public class Player
     {
-        public string Name { get; set; }
-        public string Class { get; set; }
-        public string Rank { get; set; } = "Trail";
-        public string Description { get; set; } = "n/a";
+        private Player()
+        {
+            this.Rank = "Trail";
+            this.Description = "n/a";
+        }
 
-        public Player(string name, string clas)
-
+        public Player(string name, string playerClass)
+             :this()
         {
             this.Name = name;
-            this.Class = clas;
+            this.Class = playerClass;
         }
+
+        public string Name { get; set; }
+        public string Class { get; set; }
+        public string Rank { get; set; }
+        public string Description { get; set; }
+
+
 
         public override string ToString()
         {
-            return $"Player {Name}: {Class}" + Environment.NewLine +
-                   $"Rank: {Rank}" + Environment.NewLine +
-                   $"Description: {Description}";
+            var sb = new StringBuilder();
+
+            sb
+                .AppendLine($"Player {this.Name}: {this.Class}")
+                .AppendLine($"Rank: {this.Rank}")
+                .AppendLine($"Description: {this.Description}");
+
+            return sb.ToString().TrimEnd();
         }
     }
-
 }
 
