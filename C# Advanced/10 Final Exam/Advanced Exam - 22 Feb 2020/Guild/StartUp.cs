@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace Guild
+﻿namespace Guild
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     public class StartUp
     {
         public static void Main(string[] args)
@@ -13,8 +13,8 @@ namespace Guild
             Player player = new Player("Mark", "Rogue");
             //Print player
             Console.WriteLine(player); //Player Mark: Rogue
-            //Rank: Trial
-            //Description: n/a
+                                       //Rank: Trial
+                                       //Description: n/a
 
             //Add player
             guild.AddPlayer(player);
@@ -52,7 +52,6 @@ namespace Guild
             //Player Marlin: Mage
             //Rank: Trial
             //Description: n/a
-
 
         }
     }
