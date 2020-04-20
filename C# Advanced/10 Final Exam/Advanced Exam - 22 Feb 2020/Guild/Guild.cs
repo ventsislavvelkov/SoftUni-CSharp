@@ -10,8 +10,6 @@ namespace Guild
     {
         private List<Player> romster;
 
-        private int capacity;
-
         public Guild(string name, int capacity)
         {
             this.Name = name;
@@ -21,18 +19,17 @@ namespace Guild
 
         public string Name { get; set; }
 
-        public int Capacity
-        {
-            get => this.capacity;
-            set => this.capacity = value;
-        }
+        public int Capacity { get; set; }
 
 
         public void AddPlayer(Player player)
         {
             if (this.romster.Count < this.Capacity)
             {
-                romster.Add(player);
+                if (!this.romster.Contains(player))
+                {
+                    romster.Add(player);
+                }
             }
         }
 
@@ -54,19 +51,27 @@ namespace Guild
         public void PromotePlayer(string name)
         {
             var player = this.romster.First(p => p.Name == name);
-            player.Rank = "Member";
+            if (player.Rank != "Member")
+            {
+                player.Rank = "Member";
+            }
+           
         }
 
         public void DemotePlayer(string name)
         {
             var player = this.romster.First(p => p.Name == name);
-            player.Rank = "Trial";
+            if (player.Rank != "Trial")
+            {
+                player.Rank = "Trial";
+            }
+           
         }
 
         public Player[] KickPlayersByClass(string playerClass)
         {
             var kickedPlayers = new List<Player>();
-            var newPlayersList = new List<Player>(this.capacity);
+            var newPlayersList = new List<Player>(Capacity);
 
             foreach (var player in this.romster)
             {
@@ -82,9 +87,6 @@ namespace Guild
             }
 
             romster = newPlayersList;
-
-
-
 
             return kickedPlayers.ToArray();
         }
