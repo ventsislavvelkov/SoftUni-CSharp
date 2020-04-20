@@ -6,14 +6,7 @@ namespace Guild
 {
     public class Player
     {
-        private Player()
-        {
-            this.Rank = "Trail";
-            this.Description = "n/a";
-        }
-
         public Player(string name, string playerClass)
-             :this()
         {
             this.Name = name;
             this.Class = playerClass;
@@ -21,8 +14,8 @@ namespace Guild
 
         public string Name { get; set; }
         public string Class { get; set; }
-        public string Rank { get; set; }
-        public string Description { get; set; }
+        public string Rank { get; set; } = "Trail";
+        public string Description { get; set; } = "n/a";
 
 
 

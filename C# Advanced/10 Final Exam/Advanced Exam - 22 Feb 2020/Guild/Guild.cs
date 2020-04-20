@@ -8,13 +8,18 @@ namespace Guild
 {
     public class Guild
     {
-        private List<Player> romster;
+        private List<Player> roster;
 
+        private Guild()
+        {
+            this.roster = new List<Player>();
+        }
         public Guild(string name, int capacity)
+          : this()
         {
             this.Name = name;
             this.Capacity = capacity;
-            this.romster = new List<Player>(capacity);
+
         }
 
         public string Name { get; set; }
@@ -24,12 +29,9 @@ namespace Guild
 
         public void AddPlayer(Player player)
         {
-            if (this.romster.Count < this.Capacity)
+            if (this.roster.Count + 1 <= this.Capacity)
             {
-                if (!this.romster.Contains(player))
-                {
-                    romster.Add(player);
-                }
+                this.roster.Add(player);
             }
         }
 
@@ -37,12 +39,18 @@ namespace Guild
         {
             var isExist = false;
 
-            if (this.romster.Any(p => p.Name == name))
+            if (this.roster.Any(p => p.Name == name))
             {
-                var player = this.romster.First(p => p.Name == name);
-                this.romster.Remove(player);
+                var player = this.roster.FirstOrDefault(p => p.Name == name);
 
-                isExist = true;
+                if (player != null)
+                {
+                    this.roster.Remove(player);
+                    isExist = true;
+                }
+
+
+
             }
 
             return isExist;
@@ -50,30 +58,32 @@ namespace Guild
 
         public void PromotePlayer(string name)
         {
-            var player = this.romster.First(p => p.Name == name);
-            if (player.Rank != "Member")
+            var player = this.roster.FirstOrDefault(p => p.Name == name);
+
+            if (player != null)
             {
                 player.Rank = "Member";
             }
-           
+
         }
 
         public void DemotePlayer(string name)
         {
-            var player = this.romster.First(p => p.Name == name);
-            if (player.Rank != "Trial")
+            var player = this.roster.FirstOrDefault(p => p.Name == name);
+
+            if (player != null)
             {
                 player.Rank = "Trial";
             }
-           
+
         }
 
         public Player[] KickPlayersByClass(string playerClass)
         {
             var kickedPlayers = new List<Player>();
-            var newPlayersList = new List<Player>(Capacity);
+            var newPlayersList = new List<Player>();
 
-            foreach (var player in this.romster)
+            foreach (var player in this.roster)
             {
                 if (player.Class == playerClass)
                 {
@@ -86,12 +96,12 @@ namespace Guild
 
             }
 
-            romster = newPlayersList;
+            roster = newPlayersList;
 
             return kickedPlayers.ToArray();
         }
 
-        public int Count => this.romster.Count;
+        public int Count => this.roster.Count;
 
         public string Report()
         {
@@ -99,12 +109,17 @@ namespace Guild
 
             sb.AppendLine($"Players in the guild: {this.Name}");
 
-            foreach (var player in this.romster)
+            if (this.roster.Count > 0)
             {
-                sb.AppendLine($"{player.Name}: {player.Class}");
-                sb.AppendLine(player.Rank);
-                sb.AppendLine(player.Description);
 
+
+                foreach (var player in this.roster)
+                {
+                    sb.AppendLine($"{player.Name}: {player.Class}");
+                    sb.AppendLine(player.Rank);
+                    sb.AppendLine(player.Description);
+
+                }
             }
 
             return sb.ToString().TrimEnd();
