@@ -6,7 +6,7 @@ namespace P03.ShoppingSpree
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
