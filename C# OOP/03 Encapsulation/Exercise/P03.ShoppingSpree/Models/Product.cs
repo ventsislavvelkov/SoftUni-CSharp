@@ -11,9 +11,10 @@ namespace P03.ShoppingSpree.Models
        private string name;
        private decimal cost;
 
-       public Product()
+       public Product(string name, decimal cost)
        {
-           
+           this.Name = name;
+           this.Cost = cost;
        }
 
        public string Name
@@ -42,6 +43,11 @@ namespace P03.ShoppingSpree.Models
 
                this.cost = value;
            }
+       }
+
+       public override string ToString()
+       {
+           return $"{this.Name}";
        }
    }
 }
