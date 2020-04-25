@@ -2,7 +2,7 @@
 
 namespace P03.ShoppingSpree
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
