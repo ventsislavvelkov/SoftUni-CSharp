@@ -1,4 +1,5 @@
 ﻿using System;
+using P04.PizzaCalories.Core;
 
 namespace P04.PizzaCalories
 {
@@ -6,7 +7,9 @@ namespace P04.PizzaCalories
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Engine engine = new Engine();
+            engine.Run();
+            
         }
     }
 }
