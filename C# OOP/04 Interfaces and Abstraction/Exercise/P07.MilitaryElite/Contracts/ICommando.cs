@@ -4,7 +4,9 @@ using System.Text;
 
 namespace P07.MilitaryElite.Contracts
 {
-    interface ICommando
+   public  interface ICommando : ISpecialisedSolder
     {
+
+
     }
 }
