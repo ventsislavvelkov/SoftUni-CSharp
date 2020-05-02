@@ -5,10 +5,10 @@ using System.Text;
 
 namespace P07.MilitaryElite.Contracts
 {
-   public interface ISoldier
+    public interface ISoldier
     {
-        string Id { get; }
+        int Id { get; }
         string FirstName { get; }
-        string   LastName { get; }
+        string LastName { get; }
     }
 }

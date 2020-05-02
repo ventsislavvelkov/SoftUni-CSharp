@@ -6,6 +6,9 @@ namespace P07.MilitaryElite.Contracts
 {
    public  interface ICommando : ISpecialisedSolder
     {
+        IReadOnlyCollection<IMission> Missions { get; }
+
+        void AddMission(IMission mission);
 
 
     }

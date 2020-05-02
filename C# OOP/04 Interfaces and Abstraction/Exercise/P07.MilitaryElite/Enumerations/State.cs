@@ -4,9 +4,9 @@ using System.Text;
 
 namespace P07.MilitaryElite.Enumerations
 {
-    public enum Corps
+    public enum State
     {
-        Airforces = 1,
-        Marines = 2,
+        inProgress = 1,
+        Finished = 2,
     }
 }
