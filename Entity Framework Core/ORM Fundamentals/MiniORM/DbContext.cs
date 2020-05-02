@@ -67,7 +67,7 @@
             // Open connection to database and loop all dbSets
             using (new ConnectionManager(connection))
             {
-                using var transaction = this.connection.StartTransaction();
+                 var transaction = this.connection.StartTransaction();
 
                 // Find the current dbSet and invoke the Persist method with handling exceptions
                 foreach (IEnumerable dbSet in dbSets)

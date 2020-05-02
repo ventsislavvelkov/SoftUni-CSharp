@@ -6,7 +6,7 @@
 
     public class StartUp
     {
-        private static string connectionString = @"Server=.\SQLEXPRESS;Database=MiniORM;Integrated Security=True";
+        private static string connectionString = @"Server=.\VARNA-PC\SQLEXPRESS;Database=MiniORM;Integrated Security=True";
 
         public static void Main(string[] args)
         {
