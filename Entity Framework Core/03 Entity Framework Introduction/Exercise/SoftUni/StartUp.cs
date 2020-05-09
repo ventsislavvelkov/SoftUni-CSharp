@@ -12,7 +12,7 @@ namespace SoftUni
         {
             var context = new SoftUniContext();
 
-            var result = GetEmployeesWithSalaryOver50000(context);
+            var result = GetEmployeesFromResearchAndDevelopment(context);
             Console.WriteLine(result);
 
 
@@ -65,7 +65,35 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
+
+        // 5.	Employees from Research and Development
+
+        public static string GetEmployeesFromResearchAndDevelopment(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            var result = context
+                .Employees
+                .Where(e=>e.Department.Name == "Research and Development")
+                .Select(e => new
+                {
+                    e.FirstName, 
+                    e.LastName,
+                    DepartmentName = e.Department.Name,
+                    e.Salary
+                })
+                .OrderBy(e=>e.Salary)
+                .ThenByDescending(e=>e.FirstName)
+                .ToList();
+
+            foreach (var r in result)
+            {
+                sb.AppendLine($"{r.FirstName} {r.LastName} {r.DepartmentName} - {r.Salary:f2}");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
     }
-    
- 
+
+
 }
