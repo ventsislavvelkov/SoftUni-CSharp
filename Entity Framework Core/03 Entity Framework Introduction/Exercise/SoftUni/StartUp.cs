@@ -12,7 +12,7 @@ namespace SoftUni
         {
             var context = new SoftUniContext();
 
-            var result = GetEmployeesFromResearchAndDevelopment(context);
+            var result = AddNewAddressToEmployee(context);
             Console.WriteLine(result);
 
 
@@ -92,6 +92,13 @@ namespace SoftUni
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+        //6.	Adding a New Address and Updating Employee
+
+        public static string AddNewAddressToEmployee(SoftUniContext context)
+        {
+
         }
     }
 
