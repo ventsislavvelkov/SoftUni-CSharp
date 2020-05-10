@@ -4,7 +4,7 @@ namespace Homework
 {
     public class BankAccount
     {
-        decimal amount;
+        private decimal amount;
 
         public BankAccount(decimal initAmount)
         {
@@ -30,7 +30,7 @@ namespace Homework
             }
         }
 
-        public void Deposit(decimal amount)
+        public object Deposit(decimal amount)
         {
             if (amount < 0)
             {

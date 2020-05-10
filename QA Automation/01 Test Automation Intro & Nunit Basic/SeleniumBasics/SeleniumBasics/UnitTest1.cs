@@ -48,7 +48,16 @@ namespace SeleniumBasics
             sut.Withdraw(1000);
 
             var amount = sut.Amount;
-            Assert.AreEqual(480, sut.Amount);
+            Assert.AreNotEqual(500, sut.Amount);
+        }
+
+        [Test]
+        public void BankAccountHaveCorrectAmount()
+        {
+            var sut = new BankAccount(1500);
+            sut.Withdraw(2000);
+
+            Assert.Negative(sut.Amount );
         }
     }
 }
