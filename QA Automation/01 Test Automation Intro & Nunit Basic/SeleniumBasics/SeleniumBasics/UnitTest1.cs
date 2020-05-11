@@ -52,12 +52,13 @@ namespace SeleniumBasics
         }
 
         [Test]
-        public void BankAccountHaveCorrectAmount()
+        public void BankAccountHaveCorrectAmount_When_WithdrawMoreThen1000_2()
         {
             var sut = new BankAccount(1500);
-            sut.Withdraw(2000);
+            sut.Withdraw(1000);
 
-            Assert.Negative(sut.Amount );
+            var amount = sut.Amount;
+            Assert.AreEqual(480, sut.Amount);
         }
     }
 }
