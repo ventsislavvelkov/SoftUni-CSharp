@@ -130,5 +130,11 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
+
+
+        public static string GetEmployeesInPeriod(SoftUniContext context)
+        {
+
+        }
     }
 }
