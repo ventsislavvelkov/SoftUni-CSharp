@@ -50,15 +50,23 @@ namespace GoogleSearch
             
         }
 
+        [Test]
+
         public void checkHomePageTitle()
         {
+            SearchSeleniumWebsite();
+
             var seleniumTitle = _driver.Title;
 
             Assert.AreEqual("Selenium - Web Browser Automation", seleniumTitle);
         }
 
+        [Test]
+
         public void checkHomePageURL()
         {
+            SearchSeleniumWebsite();
+
             var seleniumTitle = _driver.Url;
 
             Assert.AreEqual("http://www.seleniumhq.org", seleniumTitle);
