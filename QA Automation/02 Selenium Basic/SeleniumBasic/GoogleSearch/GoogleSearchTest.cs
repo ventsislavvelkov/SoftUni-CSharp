@@ -48,11 +48,27 @@ namespace GoogleSearch
            
             firstResult.Click();
 
-            var seleniumTitle = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.XPath("/html/head/title")));
-
-            Assert.AreEqual(seleniumTitle, "Selenium - Web Browser Automation");
+            
         }
+
+        [Test]
+
+        public void checkHomePageTitle()
+        {
+            var seleniumTitle = _driver.Title;
+
+            Assert.AreEqual("Selenium - Web Browser Automation", seleniumTitle);
+        }
+
+        [Test]
+
+        public void checkHomePageURL()
+        {
+            var seleniumTitle = _driver.Url;
+
+            Assert.AreEqual("http://www.seleniumhq.org", seleniumTitle);
+        }
+
 
     }
 }

@@ -2,7 +2,8 @@
 
 namespace QaAutomation
 {
-    public class Class1
+    public class SoftUniTest
     {
+
     }
 }
