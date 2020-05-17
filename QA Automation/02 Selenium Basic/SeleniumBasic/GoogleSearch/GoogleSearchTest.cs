@@ -26,7 +26,7 @@ namespace GoogleSearch
         [TearDown]
         public void TearDown()
         {
-         //   _driver.Quit();
+            _driver.Quit();
         }
 
         [Test]
@@ -47,11 +47,8 @@ namespace GoogleSearch
                 d.FindElement(By.XPath("//*[@id='rso']/div[1]//a")));
            
             firstResult.Click();
-
             
         }
-
-        [Test]
 
         public void checkHomePageTitle()
         {
@@ -59,8 +56,6 @@ namespace GoogleSearch
 
             Assert.AreEqual("Selenium - Web Browser Automation", seleniumTitle);
         }
-
-        [Test]
 
         public void checkHomePageURL()
         {
