@@ -17,8 +17,10 @@ namespace GoogleSearch
         [SetUp]
         public void SetUp()
         {
-            _driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            _driver.Url = "http://www.google.com";
+            _driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
+            {
+                Url = "http://www.google.com"
+            };
 
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(2));
         }
