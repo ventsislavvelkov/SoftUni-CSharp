@@ -49,7 +49,6 @@ namespace GoogleSearch
                 d.FindElement(By.XPath("//*[@id='rso']/div[1]//a")));
            
             firstResult.Click();
-            
         }
 
         [Test]
@@ -73,7 +72,5 @@ namespace GoogleSearch
 
             Assert.AreEqual("http://www.seleniumhq.org", seleniumTitle);
         }
-
-
     }
 }

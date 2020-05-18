@@ -28,7 +28,6 @@ namespace QaAutomation
         public void TearDown()
         {
             
-
             foreach (var window in _driver.WindowHandles)
             {
                 _driver.SwitchTo().Window(window);

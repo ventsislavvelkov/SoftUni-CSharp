@@ -59,6 +59,5 @@ namespace AutomationPracticeRegistration
             Assert.AreEqual(email, curValue);
 
         }
-
     }
 }
