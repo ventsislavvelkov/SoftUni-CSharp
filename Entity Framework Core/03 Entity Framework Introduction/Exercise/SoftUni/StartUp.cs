@@ -1,5 +1,6 @@
 ﻿using SoftUni.Data;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -13,7 +14,7 @@ namespace SoftUni
         {
             var context = new SoftUniContext();
 
-            var result = AddNewAddressToEmployee(context);
+            var result = GetEmployeesInPeriod(context);
             Console.WriteLine(result);
 
 
@@ -131,10 +132,55 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
-
+        //7.	Employees and Projects
         public static string GetEmployeesInPeriod(SoftUniContext context)
         {
+            var employees = context.Employees
+                .Where(e => e.EmployeesProjects
+                    .Any(p => p.Project.StartDate.Year >= 2001 && p.Project.StartDate.Year <= 2003))
+                .Select(e => new
+                {
+                    FullName = e.FirstName + " " + e.LastName,
+                    ManagerFullName = e.Manager.FirstName + " " + e.Manager.LastName,
+                    EmployeesProject = e.EmployeesProjects
+                        .Select(p => new
+                        {
+                            ProjectName = p.Project.Name,
+                            ProjectStartDate = p.Project.StartDate,
+                            ProjectEndDate = p.Project.EndDate
+                        })
+                        .ToList()
+                })
+                .Take(10)
+                .ToList();
 
+            var sb = new StringBuilder();
+
+            foreach (var employee in employees)
+            {
+                sb.AppendLine($"{employee.FullName} - Manager: {employee.ManagerFullName}");
+
+                foreach (var project in employee.EmployeesProject)
+                {
+                    var projectStartDate = project.ProjectStartDate.ToString("M/d/yyyy h:mm:ss tt",
+                        CultureInfo.InvariantCulture);
+
+                    var projectEndDate = project.ProjectEndDate == null ?
+                        "not finished" :
+                        project.ProjectEndDate.Value.ToString("M/d/yyyy h:mm:ss tt",
+                            CultureInfo.InvariantCulture);
+                    sb.AppendLine($"--{project.ProjectName} - {projectStartDate} - {projectEndDate}");
+                }
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //8.	Addresses by Town
+        public static string GetAddressesByTown(SoftUniContext context)
+        {
+            var addresses = context.Addresses
+                .OrderBy(e=>e.)
         }
     }
 }
