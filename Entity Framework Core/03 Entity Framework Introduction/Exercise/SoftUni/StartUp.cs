@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using Remotion.Linq.Clauses;
+using Remotion.Linq.Parsing.Structure.IntermediateModel;
 using SoftUni.Models;
 
 namespace SoftUni
@@ -14,7 +16,7 @@ namespace SoftUni
         {
             var context = new SoftUniContext();
 
-            var result = GetEmployee147(context);
+            var result = GetLatestProjects(context);
             Console.WriteLine(result);
 
 
@@ -233,6 +235,83 @@ namespace SoftUni
             
 
             return sb.ToString().TrimEnd();
+        }
+
+        // 10.	Departments with More Than 5 Employees
+
+        public static string GetDepartmentsWithMoreThan5Employees(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            var departments = context.Departments
+                .Where(d => d.Employees.Count > 5)
+                .OrderBy(d=>d.Employees.Count)
+                .ThenBy(d=>d.Name)
+                .Select(d => new
+                {
+                    DepartmentName = d.Name,
+                    ManagerFirstName = d.Manager.FirstName,
+                    ManagerLastName = d.Manager.LastName,
+                    EmployeesCount = d.Employees.Count,
+                    Employee = d.Employees
+                        .Select(e => new
+                        {
+                            EmployeeFirstName = e.FirstName,
+                            EmployeeLastName = e.LastName,
+                            EmployeeJobTitle = e.JobTitle
+                        })
+                        .OrderBy(e=>e.EmployeeFirstName)
+                        .ThenBy(e=>e.EmployeeLastName)
+                        
+                        .ToList()
+
+                });
+
+            foreach (var d in departments)
+            {
+                sb.AppendLine($"{d.DepartmentName} - {d.ManagerFirstName} {d.ManagerLastName}");
+
+                foreach (var employee in d.Employee)
+                {
+                    sb.AppendLine(
+                        $"{employee.EmployeeFirstName} {employee.EmployeeLastName} - {employee.EmployeeJobTitle}");
+                }
+            }
+
+            return sb.ToString().TrimEnd();
+
+        }
+
+        //11.	Find Latest 10 Projects
+
+        public static string GetLatestProjects(SoftUniContext context)
+        {
+             var sb = new StringBuilder();
+
+             var projects = context.Projects
+                 .OrderByDescending(p => p.StartDate)
+                 .Take(10)
+                 .Select(p => new
+                 {
+                     Name = p.Name,
+                     Description = p.Description,
+                     StartDate = p.StartDate
+
+                 })
+                 .OrderBy(p => p.Name)
+                 .ToList();
+
+             foreach (var p in projects)
+             {
+                 var startDate = p.StartDate.ToString("M/d/yyyy h:mm:ss tt",
+                     CultureInfo.InvariantCulture);
+
+                sb.AppendLine($"{p.Name}");
+                 sb.AppendLine($"{p.Description}");
+                 sb.AppendLine($"{startDate}");
+             }
+
+             return sb.ToString().TrimEnd();
         }
     }
 }
