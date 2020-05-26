@@ -4,8 +4,8 @@ using System.Text;
 
 namespace P01_HospitalDatabase.Data
 {
-    class Configuration
+    static class Configuration
     {
-      internal  static string ConnectionString = @"Server=.;Database;Integrated Security=true;";
+      internal  static string ConnectionString = @"Server=.;Database=HospitalDatabase;Integrated Security=True;";
     }
 }
