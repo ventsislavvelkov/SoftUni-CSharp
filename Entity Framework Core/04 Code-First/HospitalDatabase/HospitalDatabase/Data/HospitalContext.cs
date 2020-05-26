@@ -41,7 +41,11 @@ namespace P01_HospitalDatabase.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Diagnose>(entity =>
+            {
+                entity.HasKey(d => d.DiagnoseId);
+
+            });
         }
     }
 }
