@@ -15,6 +15,6 @@ namespace P01_HospitalDatabase.Data.Models
         [MaxLength(CommentsMaxLength)]
         public string Comments { get; set; }
 
-        public  string Patient { get; set; }
+        public  ICollection<Patient> Patient { get; set; }
     }
 }
