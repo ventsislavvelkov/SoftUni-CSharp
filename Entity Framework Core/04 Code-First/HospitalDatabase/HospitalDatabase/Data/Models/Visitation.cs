@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using static P01_HospitalDatabase.Data.DataValidations.Visitation;
 
 namespace P01_HospitalDatabase.Data.Models
@@ -12,9 +13,14 @@ namespace P01_HospitalDatabase.Data.Models
 
         public  DateTime Date { get; set; }
 
-        [MaxLength(CommentsMaxLength)]
         public string Comments { get; set; }
 
-        public  ICollection<Patient> Patient { get; set; }
+        public int PatientId { get; set; }
+
+        public Patient Patient { get; set; }
+
+        public int DoctorId { get; set; }
+
+        public Doctor Doctor { get; set; }
     }
 }
