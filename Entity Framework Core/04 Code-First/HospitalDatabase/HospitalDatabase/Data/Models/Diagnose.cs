@@ -12,13 +12,15 @@ namespace P01_HospitalDatabase.Data.Models
     {
         public int DiagnoseId { get; set; }
 
-        [MaxLength(NameMaxLength)]
+
         public  string Name { get; set; }
 
-        [MaxLength(CommentsMaxLength)]
+
         public string Comments { get; set; }
 
-        public ICollection<Patient> Patient { get; set; }
+        public int PatientId { get; set; }
+
+        public Patient Patient { get; set; }
     
     }
 }

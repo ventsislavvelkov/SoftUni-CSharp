@@ -23,5 +23,14 @@ namespace P01_HospitalDatabase.Data.Models
         public string Email { get; set; }
 
         public bool HasInsurance { get; set; }
+
+        public ICollection<Visitation> Visitations { get; set; }
+            = new HashSet<Visitation>();
+
+        public ICollection<Diagnose> Diagnoses { get; set; }
+            = new HashSet<Diagnose>();
+
+        public ICollection<PatientMedicament> Prescriptions { get; set; }
+            = new HashSet<PatientMedicament>();
     }
 }
