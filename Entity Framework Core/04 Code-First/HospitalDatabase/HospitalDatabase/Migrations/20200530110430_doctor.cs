@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace P01_HospitalDatabase.Migrations
 {
-    public partial class Initial : Migration
+    public partial class doctor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +13,7 @@ namespace P01_HospitalDatabase.Migrations
                 columns: table => new
                 {
                     DoctorId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Specialty = table.Column<string>(maxLength: 100, nullable: false)
                 },
@@ -26,7 +27,7 @@ namespace P01_HospitalDatabase.Migrations
                 columns: table => new
                 {
                     MedicamentId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -39,7 +40,7 @@ namespace P01_HospitalDatabase.Migrations
                 columns: table => new
                 {
                     PatientId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     Address = table.Column<string>(maxLength: 250, nullable: false),
@@ -56,7 +57,7 @@ namespace P01_HospitalDatabase.Migrations
                 columns: table => new
                 {
                     DiagnoseId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Comments = table.Column<string>(maxLength: 250, nullable: false),
                     PatientId = table.Column<int>(nullable: false)
@@ -101,7 +102,7 @@ namespace P01_HospitalDatabase.Migrations
                 columns: table => new
                 {
                     VisitationId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<DateTime>(type: "DATETIME2", nullable: false),
                     Comments = table.Column<string>(maxLength: 250, nullable: false),
                     PatientId = table.Column<int>(nullable: false),
