@@ -14,7 +14,7 @@ namespace P01_StudentSystem.Data.Models
 
         public DateTime RegisteredOn { get; set; }
 
-        public string Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
 
 
     }
