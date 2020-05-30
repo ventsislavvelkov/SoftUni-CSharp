@@ -15,6 +15,7 @@ namespace P03_SalesDatabase.Data.Models
 
         public string CreditCardNumber { get; set; }
 
-        public Sale Sales { get; set; }
+        public ICollection<Sale> Sales { get; set; }
+            = new HashSet<Sale>();
     }
 }
