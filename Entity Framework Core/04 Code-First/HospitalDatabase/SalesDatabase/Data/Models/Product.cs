@@ -11,6 +11,8 @@ namespace P03_SalesDatabase.Data.Models
 
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public double Quantity  { get; set; }
 
         public decimal Price { get; set; }

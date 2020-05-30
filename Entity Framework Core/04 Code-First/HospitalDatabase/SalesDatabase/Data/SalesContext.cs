@@ -75,6 +75,13 @@ namespace P03_SalesDatabase.Data
                     .IsRequired(true);
 
                 entity
+                    .Property(p => p.Description)
+                    .HasMaxLength(250)
+                    .IsRequired(false)
+                    .IsUnicode(true)
+                    .HasDefaultValue("No description");
+
+                entity
                     .Property(p => p.Quantity)
                     .IsRequired(true);
 
@@ -102,7 +109,8 @@ namespace P03_SalesDatabase.Data
                 entity
                     .Property(s => s.Date)
                     .IsRequired(true)
-                    .HasColumnType("DATETIME2");
+                    .HasColumnType("DATETIME2")
+                    .HasDefaultValueSql("GETDATE()");
 
                 entity
                     .HasOne(s => s.Product)
