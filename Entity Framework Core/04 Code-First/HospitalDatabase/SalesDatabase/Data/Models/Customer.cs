@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Text;
 
 namespace P03_SalesDatabase.Data.Models
 {
-    public class Product
+   public class Customer
     {
-        public int ProductId { get; set; }
+
+        public int CustomerId { get; set; }
 
         public string Name { get; set; }
 
-        public double Quantity  { get; set; }
+        public string Email { get; set; }
 
-        public decimal Price { get; set; }
+        public string CreditCardNumber { get; set; }
 
         public Sale Sales { get; set; }
     }

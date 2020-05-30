@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Text;
 
 namespace P03_SalesDatabase.Data.Models
 {
-    public class Product
+    public class Store
     {
-        public int ProductId { get; set; }
+        public int  StoreId { get; set; }
 
         public string Name { get; set; }
 
-        public double Quantity  { get; set; }
-
-        public decimal Price { get; set; }
-
         public Sale Sales { get; set; }
+
     }
 }
