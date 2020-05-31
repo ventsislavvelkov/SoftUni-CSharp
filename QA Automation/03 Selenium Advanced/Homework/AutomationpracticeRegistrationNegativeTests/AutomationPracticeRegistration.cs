@@ -46,7 +46,7 @@ namespace AutomationPracticeRegistrationNegativeTests
             createAccount.SendKeys(email);
 
             var clickCreateAnAccountBtn = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.XPath("//*[@id=\"SubmitCreate\"]")));
+                d.FindElement(By.Id("SubmitCreate")));
 
             clickCreateAnAccountBtn.Click();
         }

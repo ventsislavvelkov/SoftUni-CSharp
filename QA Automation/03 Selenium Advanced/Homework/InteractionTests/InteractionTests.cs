@@ -22,13 +22,15 @@ namespace InteractionTests
             _driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             _driver.Manage().Window.Maximize();
             _driver.Navigate().GoToUrl("http://demoqa.com/");
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(6));
 
             _builder = new Actions(_driver);
 
             //Navigate to Inmteractions
-            var clickInteractions = _driver.FindElement(By.XPath("//*[@id='app']/div/div/div[2]/div/div[5]"));
+            var clickInteractions = _driver.FindElement(By.XPath("//h5[normalize-space(text())= 'Interactions']/ancestor::*[@class='card mt-4 top-card']"));
             clickInteractions.Click();
+
+            //*[normalize-space(text())= 'Interactions']//ancestor::div[@class='element-group']//li
 
             // scroll down
             var js = _driver as IJavaScriptExecutor;
@@ -38,7 +40,7 @@ namespace InteractionTests
         [TearDown]
         public void TearDown()
         {
-           _driver.Quit();
+          // _driver.Quit();
         }
 
 
@@ -48,16 +50,14 @@ namespace InteractionTests
 
 
             var clickDraggableBtn = _wait.Until(d =>
-                d.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[1]/div/div/div[5]/div/ul/li[5]")));
+                d.FindElements(By.XPath("//*[normalize-space(text())= 'Interactions']//ancestor::div[@class='element-group']//li")));
 
-            clickDraggableBtn.Click();
+            clickDraggableBtn[4].Click();
 
             var draggableBox = _wait.Until(b =>
                 b.FindElement(By.Id("dragBox")));
 
             var positionXBefore = draggableBox.Location.X;
-
-            Thread.Sleep(500);
 
             _builder.DragAndDropToOffset(draggableBox,336, 242).Perform();
 
@@ -73,9 +73,9 @@ namespace InteractionTests
 
 
             var clickDraggableBtn = _wait.Until(d =>
-                d.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[1]/div/div/div[5]/div/ul/li[5]")));
+                d.FindElements(By.XPath("//*[normalize-space(text())= 'Interactions']//ancestor::div[@class='element-group']//li")));
 
-            clickDraggableBtn.Click();
+            clickDraggableBtn[4].Click();
 
             var draggableBox = _wait.Until(b =>
                 b.FindElement(By.Id("dragBox")));
