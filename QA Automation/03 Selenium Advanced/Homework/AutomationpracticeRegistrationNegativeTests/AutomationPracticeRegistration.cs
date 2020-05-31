@@ -15,7 +15,7 @@ namespace AutomationPracticeRegistrationNegativeTests
         private IWebDriver _driver;
         private WebDriverWait _wait;
 
-        public string email = "asrtd7687@abv.bg";
+        public string email = "asrtd7654547@abv.bg";
 
         [SetUp]
         public void Setup()
@@ -32,7 +32,7 @@ namespace AutomationPracticeRegistrationNegativeTests
         [TearDown]
         public void TearDown()
         { 
-            _driver.Quit();
+           _driver.Quit();
         }
 
         public void GoToPageCreateAccount()
@@ -56,17 +56,43 @@ namespace AutomationPracticeRegistrationNegativeTests
         {
             GoToPageCreateAccount();
 
+            var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
+            radioButton.Click();
+
             var firstName = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("customer_firstname")));
             firstName.SendKeys("Ivan");
 
-            var lastName = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("customer_lastname")));
+            var lastName = _wait.Until<IWebElement>(d => d.FindElement(By.Id("customer_lastname")));
             lastName.SendKeys("Ivanov");
 
-            var password = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("passwd")));
+            var password = _wait.Until<IWebElement>(d => d.FindElement(By.Id("passwd")));
             password.SendKeys("99884411");
+
+            var dateDD = _wait.Until(d => d.FindElement(By.Id("days")));
+            var date = new SelectElement(dateDD);
+            date.SelectByValue("11");
+             
+            var monthDD = _wait.Until(d => d.FindElement(By.Id("months")));
+            var months = new SelectElement(monthDD);
+            months.SelectByValue("5");
+
+            var yearDD = _wait.Until(d => d.FindElement(By.Id("years")));
+            var years = new SelectElement(yearDD);
+            years.SelectByValue("2010");
+
+
+            var realFirstName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("firstname")));
+            realFirstName.SendKeys("Ivan");
+
+            var realLastName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("lastname")));
+            realLastName.SendKeys("Ivanov");
+
+            var company = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("company")));
+            company.SendKeys("Smart");
 
             var address = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("address1")));
@@ -84,9 +110,21 @@ namespace AutomationPracticeRegistrationNegativeTests
                 d.FindElement(By.Id("postcode")));
             postalCode.SendKeys("00000");
 
+            var additionalInformation = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("other")));
+            additionalInformation.SendKeys("I like this website!");
+
+            var homePhone = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("phone")));
+            homePhone.SendKeys("");
+
             var mobilePhone = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("phone_mobile")));
             mobilePhone.SendKeys("");
+
+            var AssignAddress = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("alias")));
+            AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
 
             var submitRegistration = _wait.Until<IWebElement>(d =>
@@ -107,17 +145,44 @@ namespace AutomationPracticeRegistrationNegativeTests
         {
             GoToPageCreateAccount();
 
+
+            var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
+            radioButton.Click();
+
             var firstName = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("customer_firstname")));
             firstName.SendKeys("Ivan");
 
-            var lastName = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("customer_lastname")));
+            var lastName = _wait.Until<IWebElement>(d => d.FindElement(By.Id("customer_lastname")));
             lastName.SendKeys("Ivanov");
 
-            var password = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("passwd")));
+            var password = _wait.Until<IWebElement>(d => d.FindElement(By.Id("passwd")));
             password.SendKeys("99884411");
+
+            var dateDD = _wait.Until(d => d.FindElement(By.Id("days")));
+            var date = new SelectElement(dateDD);
+            date.SelectByValue("11");
+
+            var monthDD = _wait.Until(d => d.FindElement(By.Id("months")));
+            var months = new SelectElement(monthDD);
+            months.SelectByValue("5");
+
+            var yearDD = _wait.Until(d => d.FindElement(By.Id("years")));
+            var years = new SelectElement(yearDD);
+            years.SelectByValue("2010");
+
+
+            var realFirstName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("firstname")));
+            realFirstName.SendKeys("Ivan");
+
+            var realLastName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("lastname")));
+            realLastName.SendKeys("Ivanov");
+
+            var company = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("company")));
+            company.SendKeys("Smart");
 
             var address = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("address1")));
@@ -135,9 +200,21 @@ namespace AutomationPracticeRegistrationNegativeTests
                 d.FindElement(By.Id("postcode")));
             postalCode.SendKeys("");
 
+            var additionalInformation = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("other")));
+            additionalInformation.SendKeys("I like this website!");
+
+            var homePhone = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("phone")));
+            homePhone.SendKeys("0888888888");
+
             var mobilePhone = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("phone_mobile")));
-            mobilePhone.SendKeys("00359889889889");
+            mobilePhone.SendKeys("08888888888");
+
+            var AssignAddress = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("alias")));
+            AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
 
             var submitRegistration = _wait.Until<IWebElement>(d =>
@@ -158,17 +235,44 @@ namespace AutomationPracticeRegistrationNegativeTests
         {
             GoToPageCreateAccount();
 
+
+            var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
+            radioButton.Click();
+
             var firstName = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("customer_firstname")));
             firstName.SendKeys("");
 
-            var lastName = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("customer_lastname")));
-            lastName.SendKeys("Ivanov");
+            var lastName = _wait.Until<IWebElement>(d => d.FindElement(By.Id("customer_lastname")));
+            lastName.SendKeys("ivanov");
 
-            var password = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("passwd")));
+            var password = _wait.Until<IWebElement>(d => d.FindElement(By.Id("passwd")));
             password.SendKeys("99884411");
+
+            var dateDD = _wait.Until(d => d.FindElement(By.Id("days")));
+            var date = new SelectElement(dateDD);
+            date.SelectByValue("11");
+
+            var monthDD = _wait.Until(d => d.FindElement(By.Id("months")));
+            var months = new SelectElement(monthDD);
+            months.SelectByValue("5");
+
+            var yearDD = _wait.Until(d => d.FindElement(By.Id("years")));
+            var years = new SelectElement(yearDD);
+            years.SelectByValue("2010");
+
+
+            var realFirstName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("firstname")));
+            realFirstName.SendKeys("");
+
+            var realLastName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("lastname")));
+            realLastName.SendKeys("Ivanov");
+
+            var company = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("company")));
+            company.SendKeys("Smart");
 
             var address = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("address1")));
@@ -184,11 +288,23 @@ namespace AutomationPracticeRegistrationNegativeTests
 
             var postalCode = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("postcode")));
-            postalCode.SendKeys("00000");
+            postalCode.SendKeys("");
+
+            var additionalInformation = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("other")));
+            additionalInformation.SendKeys("I like this website!");
+
+            var homePhone = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("phone")));
+            homePhone.SendKeys("09999999999");
 
             var mobilePhone = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("phone_mobile")));
-            mobilePhone.SendKeys("00359889889889");
+            mobilePhone.SendKeys("08877788788");
+
+            var AssignAddress = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("alias")));
+            AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
 
             var submitRegistration = _wait.Until<IWebElement>(d =>
@@ -209,17 +325,44 @@ namespace AutomationPracticeRegistrationNegativeTests
         {
             GoToPageCreateAccount();
 
+
+            var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
+            radioButton.Click();
+
             var firstName = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("customer_firstname")));
             firstName.SendKeys("Ivan");
 
-            var lastName = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("customer_lastname")));
+            var lastName = _wait.Until<IWebElement>(d => d.FindElement(By.Id("customer_lastname")));
             lastName.SendKeys("");
 
-            var password = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("passwd")));
+            var password = _wait.Until<IWebElement>(d => d.FindElement(By.Id("passwd")));
             password.SendKeys("99884411");
+
+            var dateDD = _wait.Until(d => d.FindElement(By.Id("days")));
+            var date = new SelectElement(dateDD);
+            date.SelectByValue("11");
+
+            var monthDD = _wait.Until(d => d.FindElement(By.Id("months")));
+            var months = new SelectElement(monthDD);
+            months.SelectByValue("5");
+
+            var yearDD = _wait.Until(d => d.FindElement(By.Id("years")));
+            var years = new SelectElement(yearDD);
+            years.SelectByValue("2010");
+
+
+            var realFirstName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("firstname")));
+            realFirstName.SendKeys("ivan");
+
+            var realLastName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("lastname")));
+            realLastName.SendKeys("");
+
+            var company = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("company")));
+            company.SendKeys("Smart");
 
             var address = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("address1")));
@@ -237,9 +380,21 @@ namespace AutomationPracticeRegistrationNegativeTests
                 d.FindElement(By.Id("postcode")));
             postalCode.SendKeys("00000");
 
+            var additionalInformation = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("other")));
+            additionalInformation.SendKeys("I like this website!");
+
+            var homePhone = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("phone")));
+            homePhone.SendKeys("09999999999");
+
             var mobilePhone = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("phone_mobile")));
-            mobilePhone.SendKeys("00359889889889");
+            mobilePhone.SendKeys("08877788788");
+
+            var AssignAddress = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("alias")));
+            AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
 
             var submitRegistration = _wait.Until<IWebElement>(d =>
@@ -260,17 +415,44 @@ namespace AutomationPracticeRegistrationNegativeTests
         {
             GoToPageCreateAccount();
 
+
+            var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
+            radioButton.Click();
+
             var firstName = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("customer_firstname")));
             firstName.SendKeys("Ivan");
 
-            var lastName = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("customer_lastname")));
+            var lastName = _wait.Until<IWebElement>(d => d.FindElement(By.Id("customer_lastname")));
             lastName.SendKeys("ivanov");
 
-            var password = _wait.Until<IWebElement>(d =>
-                d.FindElement(By.Id("passwd")));
+            var password = _wait.Until<IWebElement>(d => d.FindElement(By.Id("passwd")));
             password.SendKeys("");
+
+            var dateDD = _wait.Until(d => d.FindElement(By.Id("days")));
+            var date = new SelectElement(dateDD);
+            date.SelectByValue("11");
+
+            var monthDD = _wait.Until(d => d.FindElement(By.Id("months")));
+            var months = new SelectElement(monthDD);
+            months.SelectByValue("5");
+
+            var yearDD = _wait.Until(d => d.FindElement(By.Id("years")));
+            var years = new SelectElement(yearDD);
+            years.SelectByValue("2010");
+
+
+            var realFirstName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("firstname")));
+            realFirstName.SendKeys("ivan");
+
+            var realLastName = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("lastname")));
+            realLastName.SendKeys("Ivanov");
+
+            var company = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("company")));
+            company.SendKeys("Smart");
 
             var address = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("address1")));
@@ -288,9 +470,21 @@ namespace AutomationPracticeRegistrationNegativeTests
                 d.FindElement(By.Id("postcode")));
             postalCode.SendKeys("00000");
 
+            var additionalInformation = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("other")));
+            additionalInformation.SendKeys("I like this website!");
+
+            var homePhone = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("phone")));
+            homePhone.SendKeys("09999999999");
+
             var mobilePhone = _wait.Until<IWebElement>(d =>
                 d.FindElement(By.Id("phone_mobile")));
-            mobilePhone.SendKeys("00359889889889");
+            mobilePhone.SendKeys("08877788788");
+
+            var AssignAddress = _wait.Until<IWebElement>(d =>
+                d.FindElement(By.Id("alias")));
+            AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
 
             var submitRegistration = _wait.Until<IWebElement>(d =>
