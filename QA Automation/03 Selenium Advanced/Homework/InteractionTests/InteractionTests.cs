@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Immutable;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -26,11 +27,9 @@ namespace InteractionTests
 
             _builder = new Actions(_driver);
 
-            //Navigate to Inmteractions
+            //Navigate to Interactions
             var clickInteractions = _driver.FindElement(By.XPath("//h5[normalize-space(text())= 'Interactions']/ancestor::*[@class='card mt-4 top-card']"));
             clickInteractions.Click();
-
-            //*[normalize-space(text())= 'Interactions']//ancestor::div[@class='element-group']//li
 
             // scroll down
             var js = _driver as IJavaScriptExecutor;
@@ -40,24 +39,26 @@ namespace InteractionTests
         [TearDown]
         public void TearDown()
         {
-          // _driver.Quit();
+           _driver.Quit();
         }
 
 
         [Test]
-        public void FirstTestDraggable()
+        public void FirstTestDraggable_To_Diagonal_Down()
         {
-
-
             var clickDraggableBtn = _wait.Until(d =>
                 d.FindElements(By.XPath("//*[normalize-space(text())= 'Interactions']//ancestor::div[@class='element-group']//li")));
 
             clickDraggableBtn[4].Click();
 
-            var draggableBox = _wait.Until(b =>
-                b.FindElement(By.Id("dragBox")));
+
+
+            var draggableBox = _wait.Until(d =>
+                d.FindElement(By.Id("dragBox")));
 
             var positionXBefore = draggableBox.Location.X;
+
+            Thread.Sleep(500);
 
             _builder.DragAndDropToOffset(draggableBox,336, 242).Perform();
 
@@ -66,9 +67,8 @@ namespace InteractionTests
             Assert.AreNotEqual(positionXBefore, sourcePositionXAfter);
         }
 
-
         [Test]
-        public void SecondTestDraggable()
+        public void SecondTestDraggable_ToLeft_Up_Corner()
         {
 
 
@@ -92,7 +92,7 @@ namespace InteractionTests
         }
 
         [Test]
-        public void ThirdTestDraggable()
+        public void ThirdTestDraggable_ToRight_Up_Corner()
         {
 
 
@@ -115,10 +115,8 @@ namespace InteractionTests
             Assert.AreNotEqual(positionXBefore, sourcePositionXAfter);
         }
 
-
-
         [Test]
-        public void FirstTestDroppable()
+        public void FirstTestDroppable_IntoTheBox()
         {
 
             var clickDraggableBtn = _wait.Until(d =>
@@ -144,7 +142,7 @@ namespace InteractionTests
         }
 
         [Test]
-        public void SecondTestDroppable()
+        public void SecondTestDroppable_OutOfBox()
         {
 
             var clickDraggableBtn = _wait.Until(d =>
@@ -170,7 +168,7 @@ namespace InteractionTests
         }
 
         [Test]
-        public void ThirdTestDroppable()
+        public void ThirdTestDroppable_InToTheBox_CheckMessage()
         {
 
             var clickDraggableBtn = _wait.Until(d =>
@@ -195,62 +193,57 @@ namespace InteractionTests
 
         }
 
-
-
         [Test]
-        public void FirstTestResizable()
+        public void FirstTestResizable_To_Min()
         {
 
 
             var clickDraggableBtn = _wait.Until(d =>
-                d.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[1]/div/div/div[5]/div/ul/li[3]")));
+                d.FindElements(By.XPath("//*[normalize-space(text())= 'Interactions']//ancestor::div[@class='element-group']//li")));
 
-            clickDraggableBtn.Click();
+            clickDraggableBtn[2].Click();
 
-            var draggableBox = _wait.Until(b =>
-                b.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div[2]/div/span")));
+            
 
-            var fullBox = _wait.Until(b =>
-                b.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div[2]/div")));
+            var fullBox = _driver.FindElement(By.Id("resizableBoxWithRestriction"));
 
-            var height = fullBox.Size.Height + 150;
-
+            var resizeArrow = _driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div[1]/div/span"));
+            
             Thread.Sleep(500);
 
+            _builder.DragAndDropToOffset(resizeArrow, -50, -50).Perform();
 
-           _builder.ClickAndHold(draggableBox).MoveByOffset(250,150).Perform();
 
-           Assert.AreEqual(height,fullBox.Size.Height);
+            Assert.AreEqual(150,fullBox.Size.Height);
+            Assert.AreEqual(150,fullBox.Size.Width);
 
         }
 
         [Test]
-        public void SecondTestResizable()
+        public void SecondTestResizable_To_Max()
         {
 
 
             var clickDraggableBtn = _wait.Until(d =>
-                d.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[1]/div/div/div[5]/div/ul/li[3]")));
+                d.FindElements(By.XPath("//*[normalize-space(text())= 'Interactions']//ancestor::div[@class='element-group']//li")));
 
-            clickDraggableBtn.Click();
+            clickDraggableBtn[2].Click();
 
-            var draggableBox = _wait.Until(b =>
-                b.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div[2]/div/span")));
 
-            var fullBox = _wait.Until(b =>
-                b.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div[2]/div")));
 
-            var width = fullBox.Size.Width + 250;
+            var fullBox = _driver.FindElement(By.Id("resizableBoxWithRestriction"));
+
+            var resizeArrow = _driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div[1]/div/span"));
 
             Thread.Sleep(500);
 
+            _builder.DragAndDropToOffset(resizeArrow, 300, 100).Perform();
 
-            _builder.ClickAndHold(draggableBox).MoveByOffset(250, 150).Perform();
 
-            Assert.AreEqual(width, fullBox.Size.Width);
+            Assert.AreEqual(300, fullBox.Size.Height);
+            Assert.AreEqual(500, fullBox.Size.Width);
 
         }
-
 
         [Test]
         public void FirstTestSelectable()
@@ -300,7 +293,6 @@ namespace InteractionTests
             Assert.AreNotSame(DroppedBackgroundColorBefore, DroppedBackgroundColorAfter);
         }
 
-
         [Test]
         public void FirstTestSortable()
         {
@@ -335,11 +327,9 @@ namespace InteractionTests
 
             clickDraggableBtn.Click();
 
-            var sourceBox = _wait.Until(d =>
-                d.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]")));
+            var sourceBox = _driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]"));
 
-            var targetBox = _wait.Until(d =>
-                d.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[5]")));
+            var targetBox = _driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[5]"));
 
             Thread.Sleep(500);
 
