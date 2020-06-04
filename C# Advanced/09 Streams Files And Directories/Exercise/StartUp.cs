@@ -8,7 +8,8 @@ namespace P01EvenLines
     {
       public  static void Main(string[] args)
         {
-            var reader = new StreamReader(@"files\input.txt");
+            var reader = new StreamReader(@"..\..\..\files\input.txt"
+            );
 
             using (reader)
             {
@@ -17,7 +18,7 @@ namespace P01EvenLines
 
                 var symbolsToReplace = new string[] { "-", ",", ".", "!", "?" };
 
-                using (var writer = new StreamWriter(@"files\output.txt"))
+                using (var writer = new StreamWriter(@"..\..\..\files\output.txt"))
                 {
                     while (line != null)
                     {
