@@ -13,6 +13,5 @@ namespace AutomationPracticeRegistrationNegativeTests
         public string Gender { get; set; }
         public string PostCode { get; set; }
 
-
     }
 }

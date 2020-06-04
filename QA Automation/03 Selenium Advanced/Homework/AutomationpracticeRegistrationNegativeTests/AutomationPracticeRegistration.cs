@@ -80,7 +80,6 @@ namespace AutomationPracticeRegistrationNegativeTests
             var years = new SelectElement(yearDD);
             years.SelectByValue("2010");
 
-
             var realFirstName = _driver.FindElement(By.Id("firstname"));
             realFirstName.SendKeys("Ivan");
 
@@ -114,11 +113,9 @@ namespace AutomationPracticeRegistrationNegativeTests
             var AssignAddress = _driver.FindElement(By.Id("alias"));
             AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
-
             var submitRegistration = _driver.FindElement(By.Id("submitAccount"));
 
             submitRegistration.Click();
-
 
             var checkErrorMessage = _wait.Until(m =>
                 m.FindElement(By.XPath("//*[@id='center_column']/div/ol/li"))).Text;
@@ -131,7 +128,6 @@ namespace AutomationPracticeRegistrationNegativeTests
         public void CreateAnAccountWithoutPostCode()
         {
             GoToPageCreateAccount();
-
 
             var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
             radioButton.Click();
@@ -156,7 +152,6 @@ namespace AutomationPracticeRegistrationNegativeTests
             var yearDD = _driver.FindElement(By.Id("years"));
             var years = new SelectElement(yearDD);
             years.SelectByValue("2010");
-
 
             var realFirstName = _driver.FindElement(By.Id("firstname"));
             realFirstName.SendKeys("Ivan");
@@ -191,26 +186,20 @@ namespace AutomationPracticeRegistrationNegativeTests
             var AssignAddress = _driver.FindElement(By.Id("alias"));
             AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
-
             var submitRegistration = _driver.FindElement(By.Id("submitAccount"));
 
             submitRegistration.Click();
-
 
             var checkErrorMessage = _wait.Until(m =>
                 m.FindElement(By.XPath("//*[@id='center_column']/div/ol/li"))).Text;
 
             Assert.AreEqual("The Zip/Postal code you've entered is invalid. It must follow this format: 00000", checkErrorMessage);
-
         }
 
         [Test]
         public void CreateAnAccountWithoutFirstName()
         {
             GoToPageCreateAccount();
-
-
-
 
             var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
             radioButton.Click();
@@ -235,7 +224,6 @@ namespace AutomationPracticeRegistrationNegativeTests
             var yearDD = _driver.FindElement(By.Id("years"));
             var years = new SelectElement(yearDD);
             years.SelectByValue("2010");
-
 
             var realFirstName = _driver.FindElement(By.Id("firstname"));
             realFirstName.SendKeys("");
@@ -270,26 +258,20 @@ namespace AutomationPracticeRegistrationNegativeTests
             var AssignAddress = _driver.FindElement(By.Id("alias"));
             AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
-
             var submitRegistration = _driver.FindElement(By.Id("submitAccount"));
 
             submitRegistration.Click();
-
 
             var checkErrorMessage = _wait.Until(m =>
                 m.FindElement(By.XPath("//*[@id='center_column']/div/ol/li"))).Text;
 
             Assert.AreEqual("firstname is required.", checkErrorMessage);
-
         }
 
         [Test]
         public void CreateAnAccountWithoutLastName()
         {
             GoToPageCreateAccount();
-
-
-
 
             var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
             radioButton.Click();
@@ -314,7 +296,6 @@ namespace AutomationPracticeRegistrationNegativeTests
             var yearDD = _driver.FindElement(By.Id("years"));
             var years = new SelectElement(yearDD);
             years.SelectByValue("2010");
-
 
             var realFirstName = _driver.FindElement(By.Id("firstname"));
             realFirstName.SendKeys("Ivan");
@@ -349,26 +330,20 @@ namespace AutomationPracticeRegistrationNegativeTests
             var AssignAddress = _driver.FindElement(By.Id("alias"));
             AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
-
             var submitRegistration = _driver.FindElement(By.Id("submitAccount"));
 
             submitRegistration.Click();
-
 
             var checkErrorMessage = _wait.Until(m =>
                 m.FindElement(By.XPath("//*[@id='center_column']/div/ol/li"))).Text;
 
             Assert.AreEqual("lastname is required.", checkErrorMessage);
-
         }
 
         [Test]
         public void CreateAnAccountWithoutPassword()
         {
             GoToPageCreateAccount();
-
-
-
 
             var radioButton = _wait.Until<IWebElement>(d => d.FindElement(By.XPath("//*[@id='id_gender1']")));
             radioButton.Click();
@@ -393,7 +368,6 @@ namespace AutomationPracticeRegistrationNegativeTests
             var yearDD = _driver.FindElement(By.Id("years"));
             var years = new SelectElement(yearDD);
             years.SelectByValue("2010");
-
 
             var realFirstName = _driver.FindElement(By.Id("firstname"));
             realFirstName.SendKeys("Ivan");
@@ -428,17 +402,14 @@ namespace AutomationPracticeRegistrationNegativeTests
             var AssignAddress = _driver.FindElement(By.Id("alias"));
             AssignAddress.SendKeys("ul Ivan Ivanov 50");
 
-
             var submitRegistration = _driver.FindElement(By.Id("submitAccount"));
 
             submitRegistration.Click();
-
 
             var checkErrorMessage = _wait.Until(m =>
                 m.FindElement(By.XPath("//*[@id='center_column']/div/ol/li"))).Text;
 
             Assert.AreEqual("passwd is required.", checkErrorMessage);
-
         }
     }
 }
