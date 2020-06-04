@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace P01EvenLines
 {
-    class StartUp
+    public class StartUp
     {
-        static void Main(string[] args)
+      public  static void Main(string[] args)
         {
             var reader = new StreamReader(@"files\input.txt");
 
