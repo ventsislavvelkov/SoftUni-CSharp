@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace P01EvenLines
 {
@@ -17,9 +18,8 @@ namespace P01EvenLines
                 var line = reader.ReadLine();
 
                 var symbolsToReplace = new string[] { "-", ",", ".", "!", "?" };
-
-                using (var writer = new StreamWriter(@"..\..\..\files\output.txt"))
-                {
+                var sb =  new StringBuilder();
+          
                     while (line != null)
                     {
                         if (counter % 2 == 0)
@@ -33,13 +33,14 @@ namespace P01EvenLines
                             }
 
                             line = string.Join(" ", line.Split(" ").Reverse());
-                            writer.WriteLine(line);
+                            sb.AppendLine(line);
                         }
 
                         counter++;
                         line = reader.ReadLine();
                     }
-                }
+
+                    Console.WriteLine(sb.ToString());
             }
         }
     }
