@@ -3,13 +3,13 @@ using System.IO.Compression;
 
 namespace P06ZipAndExtract
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            string startPath = @"..\..\..\files\images";
-            string zipPath = @"..\..\..\files\result.zip";
-            string extractPath = @"..\..\..\files\extract";
+            var startPath = @"..\..\..\files\car.png";
+            var zipPath = @"..\..\..\files\result.zip";
+            var extractPath = @"..\..\..\files\extract";
 
             ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Fastest, true);
 

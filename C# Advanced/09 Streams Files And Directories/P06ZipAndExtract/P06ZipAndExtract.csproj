@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <Folder Include="files\car.png" />
   </ItemGroup>
 
 </Project>

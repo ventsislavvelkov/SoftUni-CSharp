@@ -35,7 +35,7 @@ namespace P05DirectoryTraversal
                 }
             }
 
-            var writer = new StreamWriter("C:\\Users\\Venci\\Desktop\\report.txt");
+            var writer = new StreamWriter("C:\\Users\\Public\\Desktop\\report.txt");
             using (writer)
             {
                 var filteredDictionary = dictionary
