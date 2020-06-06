@@ -7,7 +7,7 @@ namespace P06ZipAndExtract
     {
         static void Main(string[] args)
         {
-            var startPath = @"..\..\..\files\car.png";
+            var startPath = @"..\..\..\files\car";
             var zipPath = @"..\..\..\files\result.zip";
             var extractPath = @"..\..\..\files\extract";
 
