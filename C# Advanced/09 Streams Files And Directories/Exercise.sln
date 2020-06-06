@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01EvenLines", "Exercise\P0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P02LineNumbers", "P02LineNumbers\P02LineNumbers.csproj", "{ED5E0128-2D81-4C56-8861-2F41919F1F17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03WordCount", "P03WordCount\P03WordCount.csproj", "{A00751F5-EE92-4B49-9521-29C68030F562}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ED5E0128-2D81-4C56-8861-2F41919F1F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED5E0128-2D81-4C56-8861-2F41919F1F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED5E0128-2D81-4C56-8861-2F41919F1F17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A00751F5-EE92-4B49-9521-29C68030F562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A00751F5-EE92-4B49-9521-29C68030F562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A00751F5-EE92-4B49-9521-29C68030F562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A00751F5-EE92-4B49-9521-29C68030F562}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
