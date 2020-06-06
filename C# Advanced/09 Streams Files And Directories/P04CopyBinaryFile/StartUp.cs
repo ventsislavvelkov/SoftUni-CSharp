@@ -3,7 +3,7 @@ using System.IO;
 
 namespace P04CopyBinaryFile
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
