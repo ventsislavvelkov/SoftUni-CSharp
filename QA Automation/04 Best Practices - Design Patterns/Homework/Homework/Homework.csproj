@@ -15,12 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Google\" />
-    <Folder Include="Pages\SoftUni\" />
-    <Folder Include="Pages\Selenium\" />
-    <Folder Include="Tests\AutomationPractice\" />
-    <Folder Include="Tests\Google\" />
-    <Folder Include="Tests\Interaction\" />
     <Folder Include="Tests\SoftUni\" />
   </ItemGroup>
 
