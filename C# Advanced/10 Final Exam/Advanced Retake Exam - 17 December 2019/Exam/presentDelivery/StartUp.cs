@@ -1,10 +1,9 @@
 ﻿using System;
-using System.ComponentModel.Design;
 using System.Linq;
 
-namespace SantaPresentFactory
+namespace presentDelivery
 {
-    public class StartUp
+    class StartUp
     {
         static void Main(string[] args)
         {
@@ -13,7 +12,6 @@ namespace SantaPresentFactory
 
             var santaRow = 0;
             var santaCol = 0;
-
             var niceKids = 0;
             var curPresent = presents;
 
@@ -36,8 +34,6 @@ namespace SantaPresentFactory
                     {
                         niceKids++;
                     }
-
-
                 }
             }
 
@@ -49,7 +45,6 @@ namespace SantaPresentFactory
 
             while ((direction = Console.ReadLine()) != "Christmas morning")
             {
-
                 var santaNewRow = santaRow;
                 var santaNewCol = santaCol;
 
@@ -84,7 +79,6 @@ namespace SantaPresentFactory
                         SantaNewRolCol(matrix, santaNewRow, santaNewCol, santaRow, ref santaCol);
                         santaRow = santaNewRow;
                         santaCol = santaNewCol;
-
                     }
                     else if (isSymbolC)
                     {
@@ -92,16 +86,14 @@ namespace SantaPresentFactory
                         santaRow = santaNewRow;
                         santaCol = santaNewCol;
 
-
                         var Down = char.IsLetter(matrix[santaNewRow + 1, santaNewCol]);
                         var Up = char.IsLetter(matrix[santaNewRow - 1, santaNewCol]);
                         var Left = char.IsLetter(matrix[santaNewRow, santaNewCol - 1]);
                         var Right = char.IsLetter(matrix[santaNewRow, santaNewCol + 1]);
 
-
                         if (Up)
                         {
-                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow-1, santaNewCol);
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow - 1, santaNewCol);
                             if (isSymbolV)
                             {
                                 niceKids--;
@@ -111,39 +103,37 @@ namespace SantaPresentFactory
                         }
                         if (Right)
                         {
-                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol+1);
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol + 1);
                             if (isSymbolV)
                             {
                                 niceKids--;
                             }
-                   
+
                             curPresent--;
                             matrix[santaNewRow, santaNewCol + 1] = '-';
                         }
                         if (Down)
                         {
-                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow+1, santaNewCol);
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow + 1, santaNewCol);
                             if (isSymbolV)
                             {
                                 niceKids--;
                             }
-                     
+
                             curPresent--;
                             matrix[santaNewRow + 1, santaNewCol] = '-';
                         }
                         if (Left)
                         {
-                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol-1);
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol - 1);
                             if (isSymbolV)
                             {
                                 niceKids--;
                             }
-            
+
                             curPresent--;
                             matrix[santaNewRow, santaNewCol - 1] = '-';
                         }
-
-
                     }
                     else
                     {
@@ -179,13 +169,7 @@ namespace SantaPresentFactory
             {
                 PrintMatrix(matrix);
                 Console.WriteLine($"Good job, Santa! {allNiseKids} happy nice kid/s.");
-
             }
-
-
-
-
-
         }
 
         private static char[,] SantaNewRolCol(char[,] matrix, int santaNewRow, int santaNewCol, int santaRow, ref int santaCol)
