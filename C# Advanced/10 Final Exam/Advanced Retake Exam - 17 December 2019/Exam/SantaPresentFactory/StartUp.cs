@@ -32,13 +32,16 @@ namespace SantaPresentFactory
                         santaCol = col;
                         santaRow = row;
                     }
-                    //else if (input[col] == 'V')
-                    //{
-                    //    niceKids++;
-                    //}
+                    if (input[col] == 'V')
+                    {
+                        niceKids++;
+                    }
+
+
                 }
             }
 
+            var allNiseKids = niceKids;
             var isSymbolV = false;
             var isSymbolC = false;
             var isValidCell = false;
@@ -76,7 +79,7 @@ namespace SantaPresentFactory
 
                     if (isSymbolV)
                     {
-                        niceKids++;
+                        niceKids--;
                         curPresent--;
                         SantaNewRolCol(matrix, santaNewRow, santaNewCol, santaRow, ref santaCol);
                         santaRow = santaNewRow;
@@ -85,40 +88,61 @@ namespace SantaPresentFactory
                     }
                     else if (isSymbolC)
                     {
-
-                        var Down = IsSymbol(matrix, '-', santaNewRow + 1, santaNewCol);
-                        var Up = IsSymbol(matrix, '-', santaNewRow - 1, santaNewCol);
-                        var Left = IsSymbol(matrix, '-', santaNewRow, santaNewCol - 1);
-                        var Right = IsSymbol(matrix, '-', santaNewRow, santaNewCol + 1);
-                      
-
-                        if (!Up)
-                        {
-                            niceKids++;
-                            curPresent--;
-                            matrix[santaNewRow - 1, santaNewCol] = '-';
-                        }
-                        if (!Right)
-                        {
-                            niceKids++;
-                            curPresent--;
-                            matrix[santaNewRow, santaNewCol - 1] = '-';
-                        }
-                        if (!Down)
-                        {
-                            niceKids++;
-                            curPresent--;
-                            matrix[santaNewRow + 1, santaNewCol] = '-';
-                        }
-                        if (!Left)
-                        {
-                            niceKids++;
-                            curPresent--;
-                            matrix[santaNewRow, santaNewCol + 1] = '-';
-                        }
                         SantaNewRolCol(matrix, santaNewRow, santaNewCol, santaRow, ref santaCol);
                         santaRow = santaNewRow;
                         santaCol = santaNewCol;
+
+
+                        var Down = char.IsLetter(matrix[santaNewRow + 1, santaNewCol]);
+                        var Up = char.IsLetter(matrix[santaNewRow - 1, santaNewCol]);
+                        var Left = char.IsLetter(matrix[santaNewRow, santaNewCol - 1]);
+                        var Right = char.IsLetter(matrix[santaNewRow, santaNewCol + 1]);
+
+
+                        if (Up)
+                        {
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow-1, santaNewCol);
+                            if (isSymbolV)
+                            {
+                                niceKids--;
+                            }
+                            curPresent--;
+                            matrix[santaNewRow - 1, santaNewCol] = '-';
+                        }
+                        if (Right)
+                        {
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol+1);
+                            if (isSymbolV)
+                            {
+                                niceKids--;
+                            }
+                   
+                            curPresent--;
+                            matrix[santaNewRow, santaNewCol + 1] = '-';
+                        }
+                        if (Down)
+                        {
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow+1, santaNewCol);
+                            if (isSymbolV)
+                            {
+                                niceKids--;
+                            }
+                     
+                            curPresent--;
+                            matrix[santaNewRow + 1, santaNewCol] = '-';
+                        }
+                        if (Left)
+                        {
+                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol-1);
+                            if (isSymbolV)
+                            {
+                                niceKids--;
+                            }
+            
+                            curPresent--;
+                            matrix[santaNewRow, santaNewCol - 1] = '-';
+                        }
+
 
                     }
                     else
@@ -127,10 +151,6 @@ namespace SantaPresentFactory
                         santaRow = santaNewRow;
                         santaCol = santaNewCol;
                     }
-
-                    //PrintMatrix(matrix);
-                    //Console.WriteLine();
-                    //Console.WriteLine();
                 }
                 else
                 {
@@ -145,26 +165,26 @@ namespace SantaPresentFactory
 
             if (!isValidCell)
             {
-                PrintMatrix(matrix);
+
                 Console.WriteLine("Santa ran out of presents!");
-                
+                PrintMatrix(matrix);
             }
-            if (curPresent <= 0)
+            if (curPresent <= 0 && niceKids > 0)
             {
                 Console.WriteLine("Santa ran out of presents!");
                 PrintMatrix(matrix);
-                Console.WriteLine($"No presents for {Math.Abs(curPresent)} nice kid/s.");
+                Console.WriteLine($"No presents for {niceKids} nice kid/s.");
             }
             else
             {
                 PrintMatrix(matrix);
-                Console.WriteLine($"Good job, Santa! {niceKids} happy nice kid/s.");
-                
+                Console.WriteLine($"Good job, Santa! {allNiseKids} happy nice kid/s.");
+
             }
 
 
 
-            
+
 
         }
 
@@ -221,7 +241,7 @@ namespace SantaPresentFactory
             {
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
-                    Console.Write(matrix[row, col]+" ");
+                    Console.Write(matrix[row, col] + " ");
                 }
 
                 Console.WriteLine();
