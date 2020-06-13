@@ -38,8 +38,6 @@ namespace presentDelivery
             }
 
             var allNiseKids = niceKids;
-            var isSymbolV = false;
-            var isSymbolC = false;
             var isValidCell = false;
             var direction = "";
 
@@ -68,9 +66,9 @@ namespace presentDelivery
 
                 if (isValidCell)
                 {
-                    isSymbolC = IsSymbol(matrix, 'C', santaNewRow, santaNewCol);
+                    var isSymbolC = IsSymbol(matrix, 'C', santaNewRow, santaNewCol);
 
-                    isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol);
+                    var isSymbolV = IsSymbol(matrix, 'V', santaNewRow, santaNewCol);
 
                     if (isSymbolV)
                     {
@@ -93,7 +91,7 @@ namespace presentDelivery
 
                         if (Up)
                         {
-                            isSymbolV = IsSymbol(matrix, 'V', santaNewRow - 1, santaNewCol);
+                            isSymbolV =  IsSymbol(matrix, 'V', santaNewRow - 1, santaNewCol);
                             if (isSymbolV)
                             {
                                 niceKids--;

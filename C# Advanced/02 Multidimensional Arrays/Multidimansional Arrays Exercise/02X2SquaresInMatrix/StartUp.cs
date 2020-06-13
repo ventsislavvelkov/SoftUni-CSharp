@@ -35,10 +35,10 @@ namespace _022X2SquaresInMatrix
             {
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
-                    Console.Write(matrix[row, col]);
+                   // Console.Write(matrix[row, col]);
                 }
 
-                Console.WriteLine();
+                //Console.WriteLine();
             }
         }
 

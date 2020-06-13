@@ -7,82 +7,121 @@ namespace _06JaggedArrayManipulator
     {
         static void Main(string[] args)
         {
-            int rows = int.Parse(Console.ReadLine());
+            var rows = int.Parse(Console.ReadLine());
 
-            int[,] matrix = ReadMatrix(rows, rows);
-
-
-            string lines = string.Empty;
-
-            while ((lines = Console.ReadLine()) != "End")
-            {
-                string[] tokens = lines.Split().ToArray();
-                string command = tokens[0];
-
-                if (command == "Add")
-                {
-                    int row = int.Parse(tokens[1]);
-                    int col = int.Parse(tokens[2]);
-                    int increaseValue = int.Parse(tokens[3]);
-
-                    if (row <= matrix.GetLength(0) - 1 && row >= 0 && col >= 0 && col <= matrix.GetLength(1) - 1)
-                    {
-                        matrix[row, col] += increaseValue;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Invalid coordinates");
-                    }
-                }
-                else if (command == "Subtract")
-                {
-                    int row = int.Parse(tokens[1]);
-                    int col = int.Parse(tokens[2]);
-                    int decreaseValue = int.Parse(tokens[3]);
-
-                    if (row <= matrix.GetLength(0) - 1 && row >= 0 && col >= 0 && col <= matrix.GetLength(1) - 1)
-                    {
-                        matrix[row, col] -= decreaseValue;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Invalid coordinates");
-                    }
-                }
-            }
-
-            PrintMatrix(matrix);
- 
-        }
-
-        static int[,] ReadMatrix(int rows, int cols)
-        {
-            int[,] matrix = new int[rows, cols];
+            var jaggedArray = new double[rows][];
 
             for (int row = 0; row < rows; row++)
             {
-                int[] currentValue = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                var inputCol = Console.ReadLine().Split().Select(double.Parse).ToArray();
 
-                for (int col = 0; col < cols; col++)
+                jaggedArray[row] = new double[inputCol.Length];
+
+                for (int col = 0; col < inputCol.Length; col++)
                 {
-                    matrix[row, col] = currentValue[col];
+                    jaggedArray[row][col] = inputCol[col];
+                }
+            }
+            for (int row = 0; row < jaggedArray.GetLength(0) - 1; row++)
+            {
+                if (jaggedArray[row].Length == jaggedArray[row + 1].Length)
+                {
+                    MultiplyArrayElementBy2(jaggedArray, row);
+
+                }
+                else
+                {
+                    DivideArrayElementBy2(jaggedArray, row);
                 }
             }
 
-            return matrix;
-        }
-
-        static void PrintMatrix(int[,] matrix)
-        {
-            for (int row = 0; row < matrix.GetLength(0); row++)
+            while (true)
             {
-                for (int col = 0; col < matrix.GetLength(1); col++)
+                var command = Console.ReadLine().Split();
+
+                if (command[0] == "End")
                 {
-                    Console.Write(matrix[row, col] + " ");
+                    break;
                 }
 
+                var row = int.Parse(command[1]);
+                var col = int.Parse(command[2]);
+                var value = int.Parse(command[3]);
+                if (command.Length != 4)
+                {
+                    continue;
+                }
+
+                if (row < 0 || row >= jaggedArray.GetLength(0))
+                {
+                    continue;
+                }
+
+                if (col < 0 || col >= jaggedArray[row].Length)
+                {
+                    continue;
+                }
+
+                if (command[0] == "Add")
+                {
+                    jaggedArray[row][col] += value;
+                }
+                else if (command[0] == "Subtract")
+                {
+                    jaggedArray[row][col] -= value;
+                }
+            }
+
+            PrintMatrix(jaggedArray);
+
+        }
+        public static void PrintMatrix(double[][] jaggedArray)
+        {
+            for (int row = 0; row < jaggedArray.GetLength(0); row++)
+            {
+                for (int col = 0; col < jaggedArray[row].Length; col++)
+                {
+                    Console.Write("{0} ", jaggedArray[row][col]);
+                }
                 Console.WriteLine();
             }
+        }
+
+        public static double[][] MultiplyArrayElementBy2(double[][] array, int currentRow)
+        {
+
+            for (int row = currentRow; row < array.GetLength(0); row++)
+            {
+                for (int col = 0; col < array[row].Length; col++)
+                {
+                    array[row][col] *= 2;
+                    array[row + 1][col] *= 2;
+                }
+
+                break;
+            }
+
+            return array;
+        }
+
+        public static double[][] DivideArrayElementBy2(double[][] array, int currentRow)
+        {
+            for (int row = currentRow; row < array.GetLength(0); row++)
+            {
+                for (int col = 0; col < array[row].Length; col++)
+                {
+                    array[row][col] /= 2;
+                }
+
+                for (int col = 0; col < array[row + 1].Length; col++)
+                {
+                    array[row + 1][col] /= 2;
+                }
+
+                break;
+            }
+
+            return array;
         }
     }
 }
