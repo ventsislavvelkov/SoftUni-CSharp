@@ -51,7 +51,6 @@ namespace SantaPresentFactory
                     {
                         break;
                     }
-
                 }
 
                 if (currMaterial == 0)
@@ -104,20 +103,16 @@ namespace SantaPresentFactory
                     }
                     else
                     {
-                     
                         queen.Dequeue();
                         stack.Pop();
                         currMaterial += 15;
                         stack.Push(currMaterial);
                     }
-
-
-
                 }
 
             }
 
-            if (dollCounter >0 || woodenTrainCounter > 0 || teddyBearCounter > 0 || bicyclyCounter > 0)
+            if (dollCounter >0 && woodenTrainCounter > 0 || teddyBearCounter > 0 && bicyclyCounter > 0)
             {
                 Console.WriteLine("The presents are crafted! Merry Christmas!");
             }
@@ -128,11 +123,11 @@ namespace SantaPresentFactory
 
             if (stack.Count > 0)
             {
-                Console.WriteLine($"Materials left: {string.Join(" ", stack)}");
+                Console.WriteLine($"Materials left: {string.Join(", ", stack)}");
             }
             if (queen.Count > 0)
             {
-                Console.WriteLine($"Magic left: {string.Join(" ", queen)}");
+                Console.WriteLine($"Magic left: {string.Join(", ", queen)}");
             }
 
             if (bicyclyCounter > 0)
