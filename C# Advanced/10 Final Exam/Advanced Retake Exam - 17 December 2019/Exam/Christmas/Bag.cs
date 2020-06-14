@@ -10,16 +10,17 @@ namespace Christmas
     {
         private readonly HashSet<Present> data;
 
-        public Bag()
-        {
-            this.data = new HashSet<Present>();
-        }
+        //private Bag()
+        //{
+        //    this.data = new HashSet<Present>();
+        //}
 
         public Bag(string color, int capacity)
-            : this()
+           // : this()
         {
             this.Color = color;
             this.Capacity = capacity;
+            this.data = new HashSet<Present>();
         }
 
         public string Color { get; set; }
@@ -36,10 +37,11 @@ namespace Christmas
         public bool Remove(string name)
         {
             var isRemoved = false;
+            var present = this.data.FirstOrDefault(p => p.Name == name);
 
-            if (this.data.Any(p => p.Name == name))
+            if (present != null)
             {
-                var present = this.data.FirstOrDefault(p => p.Name == name);
+                
                 this.data.Remove(present);
                 isRemoved = true;
             }
@@ -49,7 +51,7 @@ namespace Christmas
 
         public Present GetHeaviestPresent()
         {
-            var present = this.data.OrderByDescending(p => p.Weight).FirstOrDefault();
+            var present = this.data.OrderByDescending(p => p.Weight).First();
             return present;
         }
 
