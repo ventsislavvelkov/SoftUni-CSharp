@@ -8,7 +8,7 @@ namespace Christmas
 {
     public class Bag
     {
-        private readonly HashSet<Present> data;
+        private readonly List<Present> data;
 
         //private Bag()
         //{
@@ -20,7 +20,7 @@ namespace Christmas
         {
             this.Color = color;
             this.Capacity = capacity;
-            this.data = new HashSet<Present>();
+            this.data = new List<Present>();
         }
 
         public string Color { get; set; }
@@ -37,12 +37,11 @@ namespace Christmas
         public bool Remove(string name)
         {
             var isRemoved = false;
-            var present = this.data.FirstOrDefault(p => p.Name == name);
+            var person = this.data.FirstOrDefault(p => p.Name == name);
 
-            if (present != null)
+            if (person != null)
             {
-                
-                this.data.Remove(present);
+                this.data.Remove(person);
                 isRemoved = true;
             }
 
@@ -51,15 +50,12 @@ namespace Christmas
 
         public Present GetHeaviestPresent()
         {
-            var present = this.data.OrderByDescending(p => p.Weight).First();
-            return present;
+            return this.data.OrderByDescending(p => p.Weight).FirstOrDefault();
         }
 
         public Present GetPresent(string name)
         {
-            var present = this.data.FirstOrDefault(p => p.Name == name);
-
-            return present;
+            return this.data.FirstOrDefault(p => p.Name == name);
         }
 
         public int Count => this.data.Count;
@@ -68,12 +64,9 @@ namespace Christmas
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"{Color} bag contains:");
+            sb.AppendLine($"{this.Color} bag contains:");
 
-            foreach (var p in data)
-            {
-                sb.AppendLine($"Present {p.Name} for a {p.Gender}");
-            }
+            sb.AppendLine(string.Join(Environment.NewLine, this.data));
 
             return sb.ToString().TrimEnd();
         }
