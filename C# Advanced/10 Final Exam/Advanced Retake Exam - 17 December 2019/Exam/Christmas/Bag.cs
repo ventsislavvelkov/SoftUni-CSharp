@@ -8,11 +8,11 @@ namespace Christmas
 {
     public class Bag
     {
-        private List<Present> data;
+        private readonly HashSet<Present> data;
 
         public Bag()
         {
-            this.data = new List<Present>();
+            this.data = new HashSet<Present>();
         }
 
         public Bag(string color, int capacity)
