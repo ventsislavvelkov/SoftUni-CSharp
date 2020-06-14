@@ -7,18 +7,18 @@ namespace Guild
 {
     public class Guild
     {
-    
-        private  List<Player> roster;
+        private List<Player> roster;
 
-        private Guild()
-        {
-            this.roster = new List<Player>();
-        }
+        //private Guild()
+        //{
+        //    this.roster = new List<Player>();
+        //}
         public Guild(string name, int capacity)
-        :this()
+        // :this()
         {
             this.Name = name;
             this.Capacity = capacity;
+            this.roster = new List<Player>();
         }
         public string Name { get; set; }
 
@@ -26,18 +26,19 @@ namespace Guild
 
         public void AddPlayer(Player player)
         {
-            if (this.roster.Count < this.Capacity)
+            if (this.roster.Count < this.Capacity && !this.roster.Any(p => p.Name == player.Name))
             {
-                roster.Add(player);
+                this.roster.Add(player);
             }
         }
 
         public bool RemovePlayer(string name)
         {
             var isRemoved = false;
-            if (this.roster.Any(p=>p.Name == name))
+            var player = this.roster.FirstOrDefault(p => p.Name == name);
+
+            if (player != null)
             {
-                var player = this.roster.FirstOrDefault(p => p.Name == name);
                 this.roster.Remove(player);
                 isRemoved = true;
             }
@@ -47,7 +48,8 @@ namespace Guild
         public void PromotePlayer(string name)
         {
             var player = this.roster.FirstOrDefault(p => p.Name == name);
-            if (player.Rank != "Member")
+
+            if (player != null && player.Rank != "Member")
             {
                 player.Rank = "Member";
             }
@@ -56,27 +58,21 @@ namespace Guild
         public void DemotePlayer(string name)
         {
             var player = this.roster.FirstOrDefault(p => p.Name == name);
-            if (player.Rank != "Trial")
+
+            if (player != null && player.Rank != "Trial")
             {
                 player.Rank = "Trial";
             }
         }
 
-        public Player[] KickPlayersByClass(string playerClass)
+        public Player[] KickPlayersByClass(string curClass)
         {
-            var kickedPlayers = new List<Player>();
-
-            foreach (var player in this.roster)
+            Player[] allPlayerByClassFilter = this.roster.Where(p => p.Class == curClass).ToArray();
+            if (allPlayerByClassFilter.Any())
             {
-                if (player.Class == playerClass)
-                {
-                    kickedPlayers.Add(player);
-                }
+                this.roster.RemoveAll(x => x.Class == curClass);
             }
-
-            this.roster = this.roster.Where(x => x.Class != playerClass).ToList();
-
-            return kickedPlayers.ToArray();
+            return allPlayerByClassFilter;
         }
 
         public int Count => this.roster.Count;
@@ -86,20 +82,9 @@ namespace Guild
             var sb = new StringBuilder();
 
             sb.AppendLine($"Players in the guild: {this.Name}");
+            sb.AppendLine(string.Join(Environment.CommandLine, this.roster));
 
-            if (this.roster.Count > 0)
-            {
-                foreach (var player in this.roster)
-                {
-                    sb.AppendLine($"{player.Name}: {player.Class}");
-                    sb.AppendLine(player.Rank);
-                    sb.AppendLine(player.Description);
-
-                }
-            }
-          
             return sb.ToString().TrimEnd();
         }
-
     }
 }
