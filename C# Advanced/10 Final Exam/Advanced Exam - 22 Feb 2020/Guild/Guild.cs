@@ -9,12 +9,8 @@ namespace Guild
     {
         private List<Player> roster;
 
-        //private Guild()
-        //{
-        //    this.roster = new List<Player>();
-        //}
+
         public Guild(string name, int capacity)
-        // :this()
         {
             this.Name = name;
             this.Capacity = capacity;
@@ -23,6 +19,8 @@ namespace Guild
         public string Name { get; set; }
 
         public int Capacity { get; set; }
+
+        public int Count => this.roster.Count;
 
         public void AddPlayer(Player player)
         {
@@ -75,16 +73,18 @@ namespace Guild
             return allPlayerByClassFilter;
         }
 
-        public int Count => this.roster.Count;
+
 
         public string Report()
         {
             var sb = new StringBuilder();
 
             sb.AppendLine($"Players in the guild: {this.Name}");
-            sb.AppendLine(string.Join(Environment.CommandLine, this.roster));
+            sb.AppendLine($"string.Join(Environment.CommandLine, this.roster)");
 
             return sb.ToString().TrimEnd();
         }
+
+
     }
 }
