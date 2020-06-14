@@ -10,17 +10,16 @@ namespace Christmas
     {
         private readonly List<Present> data;
 
-        //private Bag()
-        //{
-        //    this.data = new HashSet<Present>();
-        //}
+        private Bag()
+        {
+            this.data = new List<Present>();
+        }
 
         public Bag(string color, int capacity)
-           // : this()
+            : this()
         {
             this.Color = color;
             this.Capacity = capacity;
-            this.data = new List<Present>();
         }
 
         public string Color { get; set; }
