@@ -11,16 +11,21 @@ namespace exam
             var capacity = int.Parse(Console.ReadLine());
             var consoleInput = Console.ReadLine().Split();
             var input = new Stack<string>(consoleInput);
-            var hall = new Queue<char>();
+            var hall = new Queue<string>();
             var reservation = new List<int>();
 
             while (input.Any())
             {
-                var currChar = char.Parse(input.Pop());
+                var curChar = input.Peek();
 
-                if (char.IsLetter(currChar))
+                var curReservation = 0;
+
+                var isNumber = int.TryParse(curChar, out curReservation);
+
+                if (!isNumber)
                 {
-                    hall.Enqueue(currChar);
+                    hall.Enqueue(curChar);
+                    input.Pop();
                 }
                 else
                 {
@@ -35,9 +40,10 @@ namespace exam
                                 sumOfReservation += r;
                             }
 
-                            if (sumOfReservation < capacity)
+                            if (sumOfReservation + curReservation <= capacity)
                             {
-                                reservation.Add(currChar);
+                                reservation.Add(curReservation);
+                                input.Pop();
                             }
                             else
                             {
@@ -45,14 +51,18 @@ namespace exam
                                 reservation.Clear();
                             }
                         }
-
-
+                        else
+                        {
+                            reservation.Add(curReservation);
+                            input.Pop();
+                        }
+                    }
+                    else
+                    {
+                        input.Pop();
                     }
                 }
             }
-
-
-
         }
     }
 }
