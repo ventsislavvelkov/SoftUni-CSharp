@@ -9,8 +9,8 @@ namespace DatingApp
     {
         static void Main(string[] args)
         {
-            var inputMale = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-            var inputFemale = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            var inputMale = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            var inputFemale = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
             
             var male = new Stack<int>(inputMale);
             var female = new Queue<int>(inputFemale);
@@ -24,60 +24,47 @@ namespace DatingApp
 
                 if (curFemale <= 0)
                 {
-                    if (female.Count > 1)
+                    female.Dequeue();
+                    if (!female.Any())
                     {
-                        female.Dequeue();
-                        curFemale = female.Peek();
-                    }
-                    else
-                    {
-                        female.Dequeue();
                         break;
                     }
+
+                    continue;
                 }
 
                 if (curMale <= 0)
                 {
-                    if (male.Count > 1)
+                    male.Pop();
+                    if (!male.Any())
                     {
-                         male.Pop();
-                        curMale = male.Peek();
-                    }
-                    else
-                    {
-                        male.Pop();
                         break;
                     }
+                    continue;
                 }
 
                 if (curMale % 25 == 0)
                 {
-                    if (male.Count >= 2)
+                    male.Pop();
+
+                    if (!male.Any())
                     {
-                        male.Pop();
-                        male.Pop();
-                        continue;
+                        break;
                     }
-                    else
-                    {
-                        male.Pop();
-                        continue;
-                    }
+                    male.Pop();
+                    continue;
                 }
 
                 if (curFemale % 25 == 0)
                 {
-                    if (female.Count > 2)
+                    female.Dequeue();
+
+                    if (!female.Any())
                     {
-                        female.Dequeue();
-                        female.Dequeue();
-                        continue;
+                        break;
                     }
-                    else
-                    {
-                        female.Dequeue();
-                        continue;
-                    }
+                    female.Dequeue();
+                    continue;
                 }
 
                 if (curFemale == curMale)
