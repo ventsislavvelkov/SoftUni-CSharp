@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+
+namespace DatingApp
+{
+   public class StartUp
+    {
+        static void Main(string[] args)
+        {
+            var inputMale = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            var inputFemale = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            
+            var male = new Stack<int>(inputMale);
+            var female = new Queue<int>(inputFemale);
+
+            var matches = 0;
+
+            while (male.Any() && female.Any())
+            {
+                var curMale = male.Peek();
+                var curFemale = female.Peek();
+
+                if (curFemale <= 0)
+                {
+                    if (female.Count > 1)
+                    {
+                        female.Dequeue();
+                        curFemale = female.Peek();
+                    }
+                    else
+                    {
+                        female.Dequeue();
+                        break;
+                    }
+                }
+
+                if (curMale <= 0)
+                {
+                    if (male.Count > 1)
+                    {
+                         male.Pop();
+                        curMale = male.Peek();
+                    }
+                    else
+                    {
+                        male.Pop();
+                        break;
+                    }
+                }
+
+                if (curMale % 25 == 0)
+                {
+                    if (male.Count >= 2)
+                    {
+                        male.Pop();
+                        male.Pop();
+                        continue;
+                    }
+                    else
+                    {
+                        male.Pop();
+                        continue;
+                    }
+                }
+
+                if (curFemale % 25 == 0)
+                {
+                    if (female.Count > 2)
+                    {
+                        female.Dequeue();
+                        female.Dequeue();
+                        continue;
+                    }
+                    else
+                    {
+                        female.Dequeue();
+                        continue;
+                    }
+                }
+
+                if (curFemale == curMale)
+                {
+                    matches++;
+                    male.Pop();
+                    female.Dequeue();
+                }
+                else
+                {
+                    female.Dequeue();
+                    male.Pop();
+                    if (curMale - 2 > 0)
+                    {
+                        male.Push(curMale - 2);
+                    }
+                    
+                }
+            }
+
+            Console.WriteLine($"Matches: {matches}");
+            Console.WriteLine(male.Any() ? $"Males left: {string.Join(", ", male)}" : "Males left: none");
+            Console.WriteLine(female.Any() ? $"Females left: {string.Join(", ", female)}" : "Females left: none");
+        }
+    }
+}
