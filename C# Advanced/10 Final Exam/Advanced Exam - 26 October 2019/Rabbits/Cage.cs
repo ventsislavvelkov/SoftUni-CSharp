@@ -66,9 +66,10 @@ namespace Rabbits
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine(string.Format($"Rabbits available at {this.Name}:"));
+            sb.AppendLine($"Rabbits available at {this.Name}:");
 
-            foreach (var rabbit in this.data.Where(r => r.Available == true))
+
+            foreach (var rabbit in (this.data.Where(r=>r.Available == true)))
             {
                 sb.AppendLine($"{rabbit}");
             }
