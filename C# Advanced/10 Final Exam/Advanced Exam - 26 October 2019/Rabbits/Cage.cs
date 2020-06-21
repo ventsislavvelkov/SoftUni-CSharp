@@ -23,7 +23,7 @@ namespace Rabbits
 
         public void Add(Rabbit rabbit)
         {
-            if (this.Capacity > 0)
+            if (this.Capacity > this.data.Count)
             {
                 data.Add(rabbit);
             }
@@ -33,7 +33,7 @@ namespace Rabbits
         {
            var rabbitName = data.FirstOrDefault(r => r.Name == name);
 
-           return data.Remove(rabbitName);
+         return data.Remove(rabbitName);
         }
 
         public void RemoveSpecies(string species)
@@ -61,6 +61,20 @@ namespace Rabbits
         }
 
         public int Count => data.Count;
+
+        public string Report()
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine(string.Format($"Rabbits available at {this.Name}:"));
+
+            foreach (var rabbit in this.data.Where(r => r.Available == true))
+            {
+                sb.AppendLine($"{rabbit}");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
 
 
     }
