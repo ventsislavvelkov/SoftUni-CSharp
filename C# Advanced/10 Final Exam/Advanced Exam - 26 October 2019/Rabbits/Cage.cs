@@ -9,7 +9,7 @@ namespace Rabbits
 {
     public class Cage
     {
-        private List<Rabbit> data;
+        private readonly List<Rabbit> data;
 
         public Cage(string name, int capacity)
         {
@@ -50,8 +50,8 @@ namespace Rabbits
 
         public Rabbit[] SellRabbitsBySpecies(string species)
         {
-            var rabbitBySpecies = data.Where(r=>r.Species == species);
-            
+            var rabbitBySpecies = data.Where(r => r.Species == species);
+
             foreach (var r in rabbitBySpecies)
             {
                 r.Available = false;
@@ -59,6 +59,7 @@ namespace Rabbits
 
             return rabbitBySpecies.ToArray();
         }
+
 
         public int Count => data.Count;
 
