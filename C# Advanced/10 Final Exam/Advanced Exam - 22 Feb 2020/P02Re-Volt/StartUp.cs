@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
@@ -24,6 +25,7 @@ namespace P02Re_Volt
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
                     matrix[row, col] = input[col];
+                   
                     if (input[col] == 'f')
                     {
                         playerRow = row;
@@ -32,114 +34,131 @@ namespace P02Re_Volt
                 }
             }
 
-            var bonus = 0;
-            var isDie = false;
-            var isWin = false;
-            var currentRow = 0;
-            var currentCol = 0;
-            var moveRow = 0;
-            var moveCol = 0;
-            var counter = countOfCommand;
-
-            for (int i = 0; i < countOfCommand; i++)
+            var isWon = false;
+           
+            while (countOfCommand > 0 && !isWon)
             {
+                countOfCommand--;
+
                 var command = Console.ReadLine();
+
                 switch (command)
                 {
-                    case "down":
-                        currentRow = playerRow + 1;
-                        currentCol = playerCol;
-                        moveRow = 1;
-                        break;
                     case "up":
-                        currentRow = playerRow - 1;
-                        currentCol = playerCol;
-                        moveRow = -1;
+                        playerRow--;
+                        playerRow = CurrentRow(playerRow,matrix,rowColMatrix);
+
+                        if (Char.IsLetter(matrix[playerRow,playerCol]))
+                        {
+                            if (matrix[playerRow, playerCol] == 'B')
+                            {
+                                matrix[playerRow+1, playerCol] = '-';
+                                playerRow--;
+                                playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
+                                matrix[playerRow, playerCol] = 'f';
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'T')
+                            {
+                                playerRow++;
+                                playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'F')
+                            {
+                                isWon=true;
+                            }
+                        }
+                       
 
                         break;
-                    case "left":
-                        currentRow = playerRow;
-                        currentCol = playerCol - 1;
-                        moveCol = -1;
+                    case "down":
+                        playerRow++;
+
+
+                        if (Char.IsLetter(matrix[playerRow, playerCol]))
+                        {
+                            if (matrix[playerRow, playerCol] == 'B')
+                            {
+                                matrix[playerRow -1, playerCol] = '-';
+                                playerRow++;
+                                playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
+                                matrix[playerRow, playerCol] = 'f';
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'T')
+                            {
+                                playerRow--;
+                                playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'F')
+                            {
+                                isWon = true;
+                            }
+                        }
                         break;
                     case "right":
-                        currentRow = playerRow;
-                        currentCol = playerCol + 1;
-                        moveCol = 1;
+                        playerCol++;
+
+                        if (Char.IsLetter(matrix[playerRow, playerCol]))
+                        {
+                            if (matrix[playerRow, playerCol] == 'B')
+                            {
+                                matrix[playerRow, playerCol-1] = '-';
+                                playerCol ++;
+                                playerCol= CurrentRow(playerCol, matrix, rowColMatrix);
+                                matrix[playerRow, playerCol] = 'f';
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'T')
+                            {
+                                playerCol --;
+                                playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'F')
+                            {
+                                isWon = true;
+                            }
+                        }
+                        break;
+                    case "left":
+                        playerCol--;
+
+                        if (Char.IsLetter(matrix[playerRow, playerCol]))
+                        {
+                            if (matrix[playerRow, playerCol] == 'B')
+                            {
+                                matrix[playerRow, playerCol + 1] = '-';
+                                playerCol--;
+                                playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
+                                matrix[playerRow, playerCol] = 'f';
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'T')
+                            {
+                                playerCol++;
+                                playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
+
+                            }
+                            if (matrix[playerRow, playerCol] == 'F')
+                            {
+                                isWon = true;
+                            }
+                        }
                         break;
                 }
-
-                currentRow = CurrentRow(currentRow, matrix, rowColMatrix);
-                currentCol = CurrentCol(currentCol, matrix, rowColMatrix);
-
-                if (matrix[currentRow, currentCol] == '-')
-                {
-                    matrix[currentRow, currentCol] = 'f';
-                    matrix[playerRow, playerCol] = '-';
-                }
-                else if (matrix[currentRow, currentCol] == 'B')
-                {
-                    if (currentRow + moveRow >= rowColMatrix)
-                    {
-                        currentRow = CurrentRow(currentRow + moveRow, matrix, rowColMatrix);
-                        currentCol += moveCol;
-                    }
-                    else if(currentCol + moveCol >= rowColMatrix)
-                    {
-                        currentCol = CurrentCol(currentCol + moveCol, matrix, rowColMatrix);
-                        currentRow += moveRow;
-                    }
-                    else
-                    {
-                        currentCol += moveCol;
-                        currentRow += moveRow;
-                    }
-                    matrix[currentRow, currentCol] = 'f';
-                    matrix[playerRow, playerCol] = '-';
-                    bonus++;
-                }
-                else if (matrix[currentRow, currentCol] == 'T')
-                {
-                    if (bonus > 0)
-                    {
-                        bonus--;
-                        currentRow -= moveRow;
-                        currentCol -= moveCol;
-                    }
-                    else
-                    {
-                        isDie = true;
-                    }
-                }
-                else if (matrix[currentRow, currentCol] == 'F')
-                {
-                    matrix[playerRow, playerCol] = '-';
-                    matrix[currentRow, currentCol] = 'f';
-                    isWin = true;
-                }
-
-
-                playerCol = currentCol;
-                playerRow = currentRow;
-                moveRow = 0;
-                moveCol = 0;
-                counter--;
-
-                if (isDie || isWin)
-                {
-                    break;
-                }
-            }
-            if (isDie || counter == 0)
-            {
-                Console.WriteLine("Player lost!");
             }
 
-            if (isWin)
+            if (isWon)
             {
                 Console.WriteLine("Player won!");
             }
-
+            else
+            {
+                Console.WriteLine("Player lost!");
+            }
             PrintMatrix(matrix);
 
         }
