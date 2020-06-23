@@ -44,7 +44,9 @@ namespace P02Re_Volt
 
                 switch (command)
                 {
+
                     case "up":
+                        matrix[playerRow, playerCol] = '-';
                         playerRow--;
                         playerRow = CurrentRow(playerRow,matrix,rowColMatrix);
 
@@ -52,7 +54,6 @@ namespace P02Re_Volt
                         {
                             if (matrix[playerRow, playerCol] == 'B')
                             {
-                                matrix[playerRow+1, playerCol] = '-';
                                 playerRow--;
                                 playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
                                 matrix[playerRow, playerCol] = 'f';
@@ -66,13 +67,20 @@ namespace P02Re_Volt
                             }
                             if (matrix[playerRow, playerCol] == 'F')
                             {
-                                isWon=true;
+                                matrix[playerRow, playerCol] = 'f';
+                                isWon =true;
                             }
+                        }
+                        else
+                        {
+                            playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
+                            matrix[playerRow, playerCol] = 'f';
                         }
                        
 
                         break;
                     case "down":
+                        matrix[playerRow, playerCol] = '-';
                         playerRow++;
 
 
@@ -80,7 +88,6 @@ namespace P02Re_Volt
                         {
                             if (matrix[playerRow, playerCol] == 'B')
                             {
-                                matrix[playerRow -1, playerCol] = '-';
                                 playerRow++;
                                 playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
                                 matrix[playerRow, playerCol] = 'f';
@@ -90,22 +97,30 @@ namespace P02Re_Volt
                             {
                                 playerRow--;
                                 playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
+                                matrix[playerRow, playerCol] = 'f';
 
                             }
                             if (matrix[playerRow, playerCol] == 'F')
                             {
+                                matrix[playerRow, playerCol] = 'f';
                                 isWon = true;
                             }
                         }
+                        else
+                        {
+                            matrix[playerRow - 1, playerCol] = '-';
+                            playerRow = CurrentRow(playerRow, matrix, rowColMatrix);
+                            matrix[playerRow, playerCol] = 'f';
+                        }
                         break;
                     case "right":
+                        matrix[playerRow, playerCol] = '-';
                         playerCol++;
 
                         if (Char.IsLetter(matrix[playerRow, playerCol]))
                         {
                             if (matrix[playerRow, playerCol] == 'B')
                             {
-                                matrix[playerRow, playerCol-1] = '-';
                                 playerCol ++;
                                 playerCol= CurrentRow(playerCol, matrix, rowColMatrix);
                                 matrix[playerRow, playerCol] = 'f';
@@ -115,22 +130,29 @@ namespace P02Re_Volt
                             {
                                 playerCol --;
                                 playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
+                                matrix[playerRow, playerCol] = 'f';
 
                             }
                             if (matrix[playerRow, playerCol] == 'F')
                             {
+                                matrix[playerRow, playerCol] = 'f';
                                 isWon = true;
                             }
                         }
+                        else
+                        {
+                            playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
+                            matrix[playerRow, playerCol] = 'f';
+                        }
                         break;
                     case "left":
+                        matrix[playerRow, playerCol] = '-';
                         playerCol--;
 
                         if (Char.IsLetter(matrix[playerRow, playerCol]))
                         {
                             if (matrix[playerRow, playerCol] == 'B')
                             {
-                                matrix[playerRow, playerCol + 1] = '-';
                                 playerCol--;
                                 playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
                                 matrix[playerRow, playerCol] = 'f';
@@ -140,12 +162,19 @@ namespace P02Re_Volt
                             {
                                 playerCol++;
                                 playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
+                                matrix[playerRow, playerCol] = 'f';
 
                             }
                             if (matrix[playerRow, playerCol] == 'F')
                             {
+                                matrix[playerRow, playerCol] = 'f';
                                 isWon = true;
                             }
+                        }
+                        else
+                        {
+                            playerCol = CurrentRow(playerCol, matrix, rowColMatrix);
+                            matrix[playerRow, playerCol] = 'f';
                         }
                         break;
                 }
