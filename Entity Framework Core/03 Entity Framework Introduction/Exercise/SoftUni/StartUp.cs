@@ -313,5 +313,12 @@ namespace SoftUni
 
              return sb.ToString().TrimEnd();
         }
+
+        // 12.	Increase Salaries
+
+        public static string IncreaseSalaries(SoftUniContext context)
+        {
+
+        }
     }
 }
