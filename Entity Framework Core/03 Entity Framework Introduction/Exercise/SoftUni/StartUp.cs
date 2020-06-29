@@ -4,8 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using Remotion.Linq.Clauses;
-using Remotion.Linq.Parsing.Structure.IntermediateModel;
 using SoftUni.Models;
 
 namespace SoftUni
@@ -318,7 +316,7 @@ namespace SoftUni
 
         public static string IncreaseSalaries(SoftUniContext context)
         {
-
+            return "a";
         }
     }
 }
