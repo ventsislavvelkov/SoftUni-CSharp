@@ -14,7 +14,7 @@ namespace SoftUni
         {
             var context = new SoftUniContext();
 
-            var result = GetLatestProjects(context);
+            var result = GetEmployeesFromResearchAndDevelopment(context);
             Console.WriteLine(result);
 
 
@@ -90,7 +90,7 @@ namespace SoftUni
 
             foreach (var r in result)
             {
-                sb.AppendLine($"{r.FirstName} {r.LastName} {r.DepartmentName} - {r.Salary:f2}");
+                sb.AppendLine($"{r.FirstName} {r.LastName} from {r.DepartmentName} - ${r.Salary:f2}");
             }
 
             return sb.ToString().TrimEnd();
