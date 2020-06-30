@@ -14,12 +14,12 @@ namespace SoftUni
         {
             var context = new SoftUniContext();
 
-            var result = GetEmployeesFromResearchAndDevelopment(context);
+            var result = GetDepartmentsWithMoreThan5Employees(context);
             Console.WriteLine(result);
 
 
         }
-       //3. Employees Full Information
+       //3. Employees Full Information 
         public static string GetEmployeesFullInformation(SoftUniContext context)
        {
            var sb = new StringBuilder();
@@ -239,40 +239,37 @@ namespace SoftUni
 
         public static string GetDepartmentsWithMoreThan5Employees(SoftUniContext context)
         {
-            var sb = new StringBuilder();
-
             var departments = context.Departments
                 .Where(d => d.Employees.Count > 5)
-                .OrderBy(d=>d.Employees.Count)
-                .ThenBy(d=>d.Name)
+                .OrderBy(d => d.Employees.Count)
+                .ThenBy(d => d.Name)
                 .Select(d => new
                 {
-                    DepartmentName = d.Name,
-                    ManagerFirstName = d.Manager.FirstName,
-                    ManagerLastName = d.Manager.LastName,
+                    Name = d.Name,
+                    ManagerFullName = d.Manager.FirstName + " " + d.Manager.LastName,
                     EmployeesCount = d.Employees.Count,
-                    Employee = d.Employees
+                    Employees = d.Employees
                         .Select(e => new
                         {
-                            EmployeeFirstName = e.FirstName,
-                            EmployeeLastName = e.LastName,
-                            EmployeeJobTitle = e.JobTitle
+                            FirstName = e.FirstName,
+                            LastName = e.LastName,
+                            JobTitle = e.JobTitle
                         })
-                        .OrderBy(e=>e.EmployeeFirstName)
-                        .ThenBy(e=>e.EmployeeLastName)
-                        
+                        .OrderBy(e => e.FirstName)
+                        .ThenBy(e => e.LastName)
                         .ToList()
+                })
+                .ToList();
 
-                });
+            StringBuilder sb = new StringBuilder();
 
-            foreach (var d in departments)
+            foreach (var department in departments)
             {
-                sb.AppendLine($"{d.DepartmentName} - {d.ManagerFirstName} {d.ManagerLastName}");
+                sb.AppendLine($"{department.Name} - {department.ManagerFullName}");
 
-                foreach (var employee in d.Employee)
+                foreach (var employee in department.Employees)
                 {
-                    sb.AppendLine(
-                        $"{employee.EmployeeFirstName} {employee.EmployeeLastName} - {employee.EmployeeJobTitle}");
+                    sb.AppendLine($"{employee.FirstName} {employee.LastName} - {employee.JobTitle}");
                 }
             }
 
