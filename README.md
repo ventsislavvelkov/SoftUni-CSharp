@@ -23,6 +23,10 @@
 <td><a href="https://softuni.bg/trainings/2600/csharp-fundamentals-january-2020" rel="nofollow"> C# Fundamentals </a></td>
 <td><a href="https://softuni.bg/certificates/details/80819/ebd5e254" rel="nofollow"> Link</a></td>
 </tr>
+   <tr>
+<td><a href="https://softuni.bg/trainings/2834/csharp-advanced-may-2020" rel="nofollow"> C# Advanced </a></td>
+<td><a href="https://softuni.bg/certificates/details/83255/9d29f56a" rel="nofollow"> Link</a></td>
+</tr>
 </tbody>
 </table>
 </article>
