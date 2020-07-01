@@ -219,7 +219,7 @@ namespace SoftUni
                         .ToList()
                 })
                 .Where(e => e.Id == 147)
-                .First();
+                .FirstOrDefault();
 
             var sb = new StringBuilder();
 
@@ -240,14 +240,14 @@ namespace SoftUni
         public static string GetDepartmentsWithMoreThan5Employees(SoftUniContext context)
         {
             var departments = context.Departments
-                .Where(d => d.Employees.Count > 5)
-                .OrderBy(d => d.Employees.Count)
+                .Where(d => d.Employees.Count() > 5)
+                .OrderBy(d => d.Employees.Count())
                 .ThenBy(d => d.Name)
                 .Select(d => new
                 {
                     Name = d.Name,
                     ManagerFullName = d.Manager.FirstName + " " + d.Manager.LastName,
-                    EmployeesCount = d.Employees.Count,
+                  
                     Employees = d.Employees
                         .Select(e => new
                         {
