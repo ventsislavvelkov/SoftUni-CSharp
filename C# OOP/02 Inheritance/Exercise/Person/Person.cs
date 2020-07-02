@@ -18,7 +18,7 @@ namespace Person
 
         public string Name { get; }
 
-        public  int Age
+        public virtual int Age
         {
             get => this.age;
             set
