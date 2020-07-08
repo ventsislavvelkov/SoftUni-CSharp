@@ -9,17 +9,17 @@ namespace P01_StudentSystem.Configurations
 {
     public class CourseConfiguration : IEntityTypeConfiguration<Course>
     {
-        public void Configure(EntityTypeBuilder<Course> course)
+        public void Configure(EntityTypeBuilder<Course> builder)
         {
-            course.HasKey(c => c.CourseId);
+            builder.HasKey(c => c.CourseId);
 
-            course
+            builder
                 .Property(c => c.Name)
                 .HasMaxLength(80)
                 .IsRequired(true)
                 .IsUnicode(true);
 
-            course
+            builder
                 .Property(c => c.Description)
                 .IsRequired(false)
                 .IsUnicode(true);

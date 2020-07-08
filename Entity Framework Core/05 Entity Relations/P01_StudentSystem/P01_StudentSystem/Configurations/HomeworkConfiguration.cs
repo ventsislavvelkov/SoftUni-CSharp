@@ -7,14 +7,27 @@ using P01_StudentSystem.Data.Models;
 
 namespace P01_StudentSystem.Configurations
 {
-    class HomeworkConfiguration : IEntityTypeConfiguration<Homework>
+    public class HomeworkConfiguration : IEntityTypeConfiguration<Homework>
     {
-        public void Configure(EntityTypeBuilder<Homework> homework)
+        public void Configure(EntityTypeBuilder<Homework> builder)
         {
-            homework.HasKey(h => h.HomeworkId);
+            builder.HasKey(h => h.HomeworkId);
 
-            homework.Property(h => h.Content)
+            builder.Property(h => h.Content)
+                .IsRequired(true)
                 .IsUnicode(false);
+
+            builder
+                .HasOne(h => h.Student)
+                .WithMany(s => s.HomeworkSubmissions)
+                .HasForeignKey(h => h.StudentId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .HasOne(h => h.Course)
+                .WithMany(c => c.HomeworkSubmissions)
+                .HasForeignKey(h => h.CourseId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

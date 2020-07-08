@@ -6,18 +6,24 @@ namespace P01_StudentSystem.Configurations
 {
     public class ResourceConfiguration : IEntityTypeConfiguration<Resource>
     {
-        public void Configure(EntityTypeBuilder<Resource> resource)
+        public void Configure(EntityTypeBuilder<Resource> builder)
         {
-            resource.HasKey(r => r.ResourceId);
+            builder.HasKey(r => r.ResourceId);
 
-            resource.Property(r => r.Name)
-                .HasMaxLength(80)
+            builder.Property(r => r.Name)
+                .HasMaxLength(50)
                 .IsUnicode(true)
                 .IsRequired(false);
 
-            resource.Property(r => r.ResourceId)
-                .IsUnicode(true)
-                .IsRequired(false);
+            builder.Property(r => r.ResourceId);
+
+            builder.Property(r => r.Url)
+                .IsUnicode(false);
+
+            builder.HasOne(r => r.Course)
+                .WithMany(c => c.Resources)
+                .HasForeignKey(r => r.ResourceId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
 

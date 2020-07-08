@@ -8,27 +8,26 @@ namespace P01_StudentSystem.Configurations
 {
     public class StudentConfiguration : IEntityTypeConfiguration<Student>
     {
-        public void Configure(EntityTypeBuilder<Student> student)
+        public void Configure(EntityTypeBuilder<Student> builder)
         {
-            student.HasKey(s => s.StudentId);
+            builder.HasKey(s => s.StudentId);
 
-            student
+            builder
                 .Property(s => s.Name)
                 .HasMaxLength(100)
                 .IsRequired(true)
                 .IsUnicode(true);
 
-            student
+            builder
                 .Property(s => s.PhoneNumber)
                 .HasColumnType("char(10)")
                 .IsUnicode(false)
                 .IsRequired(false);
 
-            student
+            builder
                 .Property(s => s.Birthday)
                 .HasColumnType("DATETIME2")
                 .IsRequired(false);
-
         }
     }
 }
