@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using P01_StudentSystem.Data;
 
 namespace P01_StudentSystem.Migrations
 {
     [DbContext(typeof(StudentSystemContext))]
-    partial class StudentSystemContextModelSnapshot : ModelSnapshot
+    [Migration("20200708212514_databaseSeeder")]
+    partial class databaseSeeder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +52,7 @@ namespace P01_StudentSystem.Migrations
                             EndDate = new DateTime(2010, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Algorithms",
                             Price = 250.40m,
-                            StartDate = new DateTime(2020, 7, 8, 21, 31, 14, 39, DateTimeKind.Utc).AddTicks(6509)
+                            StartDate = new DateTime(2020, 7, 8, 21, 25, 14, 299, DateTimeKind.Utc).AddTicks(3024)
                         },
                         new
                         {
@@ -59,15 +61,6 @@ namespace P01_StudentSystem.Migrations
                             Name = "Algorithms",
                             Price = 200m,
                             StartDate = new DateTime(2009, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 3,
-                            Description = "Java Web Module",
-                            EndDate = new DateTime(2020, 7, 8, 21, 31, 14, 39, DateTimeKind.Utc).AddTicks(8419),
-                            Name = "Java Web",
-                            Price = 500m,
-                            StartDate = new DateTime(2020, 5, 19, 21, 31, 14, 39, DateTimeKind.Utc).AddTicks(8424)
                         });
                 });
 
@@ -105,7 +98,7 @@ namespace P01_StudentSystem.Migrations
                             ContentType = 1,
                             CourseId = 1,
                             StudentId = 1,
-                            SubmissionTime = new DateTime(2020, 7, 8, 21, 31, 14, 39, DateTimeKind.Utc).AddTicks(800)
+                            SubmissionTime = new DateTime(2020, 7, 8, 21, 25, 14, 298, DateTimeKind.Utc).AddTicks(7712)
                         },
                         new
                         {
@@ -114,16 +107,7 @@ namespace P01_StudentSystem.Migrations
                             ContentType = 2,
                             CourseId = 2,
                             StudentId = 1,
-                            SubmissionTime = new DateTime(2020, 7, 8, 21, 31, 14, 39, DateTimeKind.Utc).AddTicks(1284)
-                        },
-                        new
-                        {
-                            HomeworkId = 3,
-                            Content = "Some content here 3",
-                            ContentType = 3,
-                            CourseId = 2,
-                            StudentId = 2,
-                            SubmissionTime = new DateTime(2020, 7, 8, 21, 31, 14, 39, DateTimeKind.Utc).AddTicks(1294)
+                            SubmissionTime = new DateTime(2020, 7, 8, 21, 25, 14, 298, DateTimeKind.Utc).AddTicks(8243)
                         });
                 });
 
@@ -160,14 +144,6 @@ namespace P01_StudentSystem.Migrations
                             CourseId = 2,
                             Name = "Wikipedia",
                             ResourceType = 3
-                        },
-                        new
-                        {
-                            ResourceId = 3,
-                            CourseId = 2,
-                            Name = "Tech world and future technologies",
-                            ResourceType = 4,
-                            Url = "techworldfuturetechnologies.com"
                         });
                 });
 
@@ -202,7 +178,7 @@ namespace P01_StudentSystem.Migrations
                             Birthday = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1968),
                             Name = "Pesho",
                             PhoneNumber = "0888565656",
-                            RegisteredOn = new DateTime(2020, 7, 8, 21, 31, 14, 38, DateTimeKind.Utc).AddTicks(451)
+                            RegisteredOn = new DateTime(2020, 7, 8, 21, 25, 14, 297, DateTimeKind.Utc).AddTicks(7886)
                         },
                         new
                         {
@@ -210,15 +186,7 @@ namespace P01_StudentSystem.Migrations
                             Birthday = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1956),
                             Name = "Dimitar",
                             PhoneNumber = "0888565656",
-                            RegisteredOn = new DateTime(2020, 7, 8, 21, 31, 14, 38, DateTimeKind.Utc).AddTicks(1861)
-                        },
-                        new
-                        {
-                            StudentId = 3,
-                            Birthday = new DateTime(2019, 12, 21, 21, 31, 14, 38, DateTimeKind.Utc).AddTicks(1883),
-                            Name = "Kiril",
-                            PhoneNumber = "0884034667",
-                            RegisteredOn = new DateTime(2020, 3, 30, 21, 31, 14, 38, DateTimeKind.Utc).AddTicks(1935)
+                            RegisteredOn = new DateTime(2020, 7, 8, 21, 25, 14, 297, DateTimeKind.Utc).AddTicks(9361)
                         });
                 });
 

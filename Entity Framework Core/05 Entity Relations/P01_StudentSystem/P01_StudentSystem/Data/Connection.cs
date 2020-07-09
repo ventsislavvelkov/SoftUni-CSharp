@@ -1,7 +1,7 @@
 ﻿namespace P01_StudentSystem.Data
 {
-   static class Connection
+    public static class Connection
     {
-        internal static  string DefaultConnection = @"Server=.;Database=StudentSystem;Integrated Security=True";
+        public const string DefaultConnection = @"Server=.;Database=StudentSystem;Integrated Security=True";
     }
 }

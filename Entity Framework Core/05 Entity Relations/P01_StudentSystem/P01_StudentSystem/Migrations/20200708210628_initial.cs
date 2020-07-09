@@ -63,7 +63,7 @@ namespace P01_StudentSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Homework",
+                name: "HomeworkSubmissions",
                 columns: table => new
                 {
                     HomeworkId = table.Column<int>(nullable: false)
@@ -76,15 +76,15 @@ namespace P01_StudentSystem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Homework", x => x.HomeworkId);
+                    table.PrimaryKey("PK_HomeworkSubmissions", x => x.HomeworkId);
                     table.ForeignKey(
-                        name: "FK_Homework_Courses_CourseId",
+                        name: "FK_HomeworkSubmissions_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "CourseId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Homework_Students_StudentId",
+                        name: "FK_HomeworkSubmissions_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "StudentId",
@@ -116,13 +116,13 @@ namespace P01_StudentSystem.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Homework_CourseId",
-                table: "Homework",
+                name: "IX_HomeworkSubmissions_CourseId",
+                table: "HomeworkSubmissions",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Homework_StudentId",
-                table: "Homework",
+                name: "IX_HomeworkSubmissions_StudentId",
+                table: "HomeworkSubmissions",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
@@ -134,7 +134,7 @@ namespace P01_StudentSystem.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Homework");
+                name: "HomeworkSubmissions");
 
             migrationBuilder.DropTable(
                 name: "Resources");

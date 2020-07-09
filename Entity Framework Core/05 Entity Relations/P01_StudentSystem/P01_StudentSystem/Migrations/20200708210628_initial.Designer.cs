@@ -10,7 +10,7 @@ using P01_StudentSystem.Data;
 namespace P01_StudentSystem.Migrations
 {
     [DbContext(typeof(StudentSystemContext))]
-    [Migration("20200708200826_initial")]
+    [Migration("20200708210628_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace P01_StudentSystem.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Homework");
+                    b.ToTable("HomeworkSubmissions");
                 });
 
             modelBuilder.Entity("P01_StudentSystem.Data.Models.Resource", b =>

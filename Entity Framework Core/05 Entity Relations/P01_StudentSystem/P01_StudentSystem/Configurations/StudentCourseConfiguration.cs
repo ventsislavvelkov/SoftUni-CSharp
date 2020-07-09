@@ -15,7 +15,7 @@ namespace P01_StudentSystem.Configurations
             builder.HasKey(sc => new {sc.StudentId, sc.CourseId});
 
             builder.HasOne(sc => sc.Student)
-                .WithMany(c => c.CourseEnrollments)
+                .WithMany(s => s.CourseEnrollments)
                 .HasForeignKey(sc => sc.StudentId)
                 .OnDelete(DeleteBehavior.Restrict);
 

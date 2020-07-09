@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using P01_StudentSystem.Data.Models;
 
@@ -45,11 +42,11 @@ namespace P01_StudentSystem.Data
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            DatabaseSeeder.StudentsSeed(modelBuilder);
-            DatabaseSeeder.HomeworkSubmissionsSeed(modelBuilder);
-            DatabaseSeeder.CoursesSeed(modelBuilder);
-            DatabaseSeeder.ResourcesSeed(modelBuilder);
-            DatabaseSeeder.StudentCourseSeed(modelBuilder);
+            DatabaseSeeder.StudentCoursesSeed(modelBuilder);
+            DatabaseSeeder.StudentSeed(modelBuilder);
+            DatabaseSeeder.ResourceSeed(modelBuilder);
+            DatabaseSeeder.HomeworkSeed(modelBuilder);
+            DatabaseSeeder.CourseSeed(modelBuilder);
         }
 
     }
