@@ -336,6 +336,8 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
+        //Find Employees by First Name Starting with "Sa"
+
         public static string GetEmployeesByFirstNameStartingWithSa(SoftUniContext context)
         {
             var employees = context.Employees
@@ -360,6 +362,8 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
+
+        //1.	Delete Project by Id
 
         public static string DeleteProjectById(SoftUniContext context)
         {
@@ -392,6 +396,8 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
+
+        //14.	Remove Town
 
         public static string RemoveTown(SoftUniContext context)
         {
