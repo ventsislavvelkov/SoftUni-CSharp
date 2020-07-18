@@ -1,4 +1,6 @@
-﻿namespace BookShop.Data
+﻿using System.Reflection;
+
+namespace BookShop.Data
 {
     using Microsoft.EntityFrameworkCore;
 
@@ -30,10 +32,14 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new AuthorConfiguration());
-            modelBuilder.ApplyConfiguration(new BookCategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new BookConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            //modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+            //modelBuilder.ApplyConfiguration(new BookCategoryConfiguration());
+            //modelBuilder.ApplyConfiguration(new BookConfiguration());
+            //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+
         }
     }
 }
