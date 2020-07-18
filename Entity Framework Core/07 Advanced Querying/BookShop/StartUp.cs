@@ -12,12 +12,12 @@ namespace BookShop
     {
         public static void Main()
         {
-            using BookShopContext db = new BookShopContext(); 
-           // DbInitializer.ResetDatabase(db);
+            using BookShopContext db = new BookShopContext();
+            // DbInitializer.ResetDatabase(db);
 
-            //var input = Console.ReadLine();
+            var input = Console.ReadLine();
 
-            var result = GetBooksByPrice(db);
+            var result = GetBooksByCategory(db, input);
 
             Console.WriteLine(result);
 
@@ -65,10 +65,31 @@ namespace BookShop
 
             foreach (var r in result)
             {
-                sb.AppendLine($"{r.Title} - ${r.Price}");
+                sb.AppendLine($"{r.Title} - ${r.Price:f2}");
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+        //5. Not Released In
+        public static string GetBooksNotReleasedIn(BookShopContext context, int year)
+        {
+            var result = context.Books
+                .Where(b => b.ReleaseDate.Value.Year != year)
+                .OrderBy(b => b.BookId)
+                .Select(b => b.Title)
+                .ToList();
+
+            return String.Join(Environment.NewLine, result);
+
+
+
+        }
+
+        //6. Book Titles by Category
+        public static string GetBooksByCategory(BookShopContext context, string input)
+        {
+
         }
     }
 }
