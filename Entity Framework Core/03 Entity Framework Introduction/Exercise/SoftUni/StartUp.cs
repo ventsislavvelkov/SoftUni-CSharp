@@ -14,7 +14,7 @@ namespace SoftUni
         {
             var context = new SoftUniContext();
 
-            var result = GetEmployeesByFirstNameStartingWithSa(context);
+            var result = DeleteProjectById(context);
             Console.WriteLine(result);
 
 
@@ -340,6 +340,13 @@ namespace SoftUni
         {
             var employees = context.Employees
                 .Where(e => e.FirstName.StartsWith("Sa"))
+                .Select(e => new
+                {
+                    FirstName = e.FirstName,
+                    LastName = e.LastName,
+                    JobTitle = e.JobTitle,
+                    Salary = e.Salary
+                })
                 .OrderBy(e => e.FirstName)
                 .ThenBy(e => e.LastName)
                 .ToList();
@@ -349,6 +356,38 @@ namespace SoftUni
             foreach (var e in employees)
             {
                 sb.AppendLine($"{e.FirstName} {e.LastName} - {e.JobTitle} - (${e.Salary:f2})");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string DeleteProjectById(SoftUniContext context)
+        {
+            var project = context.Projects.Find(2);
+
+            var employeesProject = context.EmployeesProjects
+                .Where(ep => ep.ProjectId == project.ProjectId)
+                .ToList();
+            
+            context.EmployeesProjects.RemoveRange(employeesProject);
+            context.Projects.Remove(project);
+
+            context.SaveChanges();
+
+            var sb = new StringBuilder();
+
+            var showProject = context.Projects
+                .Select(p => new
+                {
+                    p.Name
+                })
+                .Take(10)
+                .ToList();
+
+            foreach (var p in showProject)
+            {
+                sb.AppendLine(p.Name);
+
             }
 
             return sb.ToString().TrimEnd();
