@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using BookShop.Models.Enums;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace BookShop
 {
@@ -89,7 +90,19 @@ namespace BookShop
         //6. Book Titles by Category
         public static string GetBooksByCategory(BookShopContext context, string input)
         {
+            var category = input.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(c => c.ToLower())
+                .ToList();
 
+            var result = context.Books
+                .Where(b => b.BookCategories
+                    .Select(bc => new {bc.Category.Name})
+                    .Any(bc => category.Contains(bc.Name.ToLower())))
+                .Select(b => b.Title)
+                .OrderBy(b => b)
+                .ToList();
+
+            return String.Join(Environment.NewLine, result);
         }
     }
 }
