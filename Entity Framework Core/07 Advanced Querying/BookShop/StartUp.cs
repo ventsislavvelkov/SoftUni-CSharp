@@ -18,9 +18,9 @@ namespace BookShop
             using BookShopContext db = new BookShopContext();
             // DbInitializer.ResetDatabase(db);
 
-            var input = Console.ReadLine();
+            //var input = int.Parse(Console.ReadLine());
 
-            var result = GetBooksByAuthor(db, input);
+            var result = CountCopiesByAuthor(db);
 
             Console.WriteLine(result);
 
@@ -193,6 +193,44 @@ namespace BookShop
         }
 
         //11. Count Books
+        public static int CountBooks(BookShopContext context, int lengthCheck)
+        {
+            var numberOfBook = context.Books
+                .Where(b => b.Title.Length > lengthCheck)
+                .Count();
+
+            return numberOfBook;
+        }
+
+        //12. Total Book Copies
+        public static string CountCopiesByAuthor(BookShopContext context)
+        {
+            var totalBooksCopies = context.Authors
+                .Select(a => new
+                {
+                    AutorFullName = a.FirstName + " " + a.LastName,
+                    BookCopies = a.Books.Sum(b => b.Copies)
+                })
+                .OrderByDescending(a => a.BookCopies)
+                .ToList();
+
+            var sb = new StringBuilder();
+
+            foreach (var t in totalBooksCopies)
+            {
+                sb.AppendLine($"{t.AutorFullName} - {t.BookCopies}");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //13. Profit by Category
+
+        public static string GetTotalProfitByCategory(BookShopContext context)
+        {
+
+        }
+
     }
 }
  
