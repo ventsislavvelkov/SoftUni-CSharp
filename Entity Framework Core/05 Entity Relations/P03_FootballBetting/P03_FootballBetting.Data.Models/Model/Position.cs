@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace P03_FootballBetting.Data.Models.Model
 {
    public class Position
@@ -8,5 +10,7 @@ namespace P03_FootballBetting.Data.Models.Model
 
         public string Name { get; set; }
 
+        public ICollection<Player> Players { get; set; }
+            = new HashSet<Player>();
     }
 }

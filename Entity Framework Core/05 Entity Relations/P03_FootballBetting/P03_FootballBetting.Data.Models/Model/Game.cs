@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace P03_FootballBetting.Data.Models.Model
 {
@@ -20,5 +21,10 @@ namespace P03_FootballBetting.Data.Models.Model
         public double DrawBetRate { get; set; }
         public int Result { get; set; }
 
+        public ICollection<PlayerStatistic> PlayerStatistics { get; set; }
+        = new HashSet<PlayerStatistic>();
+
+        public ICollection<Bet> Bets { get; set; }
+        = new HashSet<Bet>();
     }
 }

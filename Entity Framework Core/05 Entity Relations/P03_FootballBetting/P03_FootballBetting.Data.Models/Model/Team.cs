@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace P03_FootballBetting.Data.Models.Model
 {
     public class Team
@@ -18,5 +20,14 @@ namespace P03_FootballBetting.Data.Models.Model
       
         public int TownId { get; set; }
         public Town Town { get; set; }
+
+        public ICollection<Game> HomeGames { get; set; }
+            = new HashSet<Game>();
+
+        public ICollection<Game> AwayGames { get; set; }
+            = new HashSet<Game>();
+
+        public ICollection<Player> Players { get; set; }
+            = new HashSet<Player>();
     }
 }

@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace P03_FootballBetting.Data.Models.Model
 {
    public class Town
@@ -9,5 +11,8 @@ namespace P03_FootballBetting.Data.Models.Model
         public string Name { get; set; }
         public int CountryId { get; set; }
         public Country Country { get; set; }
+
+        public ICollection<Team> Teams { get; set; }
+            = new HashSet<Team>();
     }
 }

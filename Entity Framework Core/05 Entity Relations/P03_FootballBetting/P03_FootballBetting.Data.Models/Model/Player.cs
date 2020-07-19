@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace P03_FootballBetting.Data.Models.Model
 {
    public  class Player
@@ -13,6 +15,7 @@ namespace P03_FootballBetting.Data.Models.Model
 
         public bool IsInjured { get; set; }
 
-
+        public ICollection<PlayerStatistic> PlayerStatistics { get; set; }
+        =new HashSet<PlayerStatistic>();
     }
 }
