@@ -18,9 +18,9 @@ namespace BookShop
             using BookShopContext db = new BookShopContext();
             // DbInitializer.ResetDatabase(db);
 
-            var input = Console.ReadLine();
+            //var input = Console.ReadLine();
 
-            var result = GetBooksByAuthor(db, input);
+            var result = GetMostRecentBooks(db);
 
             Console.WriteLine(result);
 
@@ -262,8 +262,8 @@ namespace BookShop
                             cb.Book.Title,
                             cb.Book.ReleaseDate
                         })
-                        .Take(3)
                         .OrderByDescending(cb => cb.ReleaseDate)
+                        .Take(3)
                         .ToList()
                 })
                 .OrderBy(c => c.Name)
@@ -285,5 +285,36 @@ namespace BookShop
         }
 
         //15. Increase Prices
+        public static void IncreasePrices(BookShopContext context)
+        {
+            var increasePriceOfBook = context.Books
+                .Where(b => b.ReleaseDate.Value.Year < 2010);
+
+            foreach (var b in increasePriceOfBook)
+            {
+                b.Price += 5;
+            }
+
+            context.SaveChanges();
+        }
+
+        // 16. Remove Books
+        public static int RemoveBooks(BookShopContext context)
+        {
+            var removeBooks = context.Books
+                .Where(b => b.Copies < 4200)
+                .ToList();
+
+            foreach (var rb in removeBooks)
+            {
+                context.Books.Remove(rb);
+            }
+
+            context.SaveChanges();
+
+            return removeBooks.Count;
+
+        }
+
     }
 }
