@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace BookShop
 
             var input = Console.ReadLine();
 
-            var result = GetAuthorNamesEndingIn(db, input);
+            var result = GetBookTitlesContaining(db, input);
 
             Console.WriteLine(result);
 
@@ -152,6 +153,20 @@ namespace BookShop
            }
 
            return sb.ToString().TrimEnd();
+        }
+
+        //9. Book Search
+        public static string GetBookTitlesContaining(BookShopContext context, string input)
+        {
+
+            var result = context.Books
+                .AsEnumerable()
+                .Where(b => b.Title.Contains(input, StringComparison.InvariantCultureIgnoreCase))
+                .Select(b => b.Title)
+                .OrderBy(bt => bt)
+                .ToList();
+
+            return String.Join(Environment.NewLine, result);
         }
     }
 }
