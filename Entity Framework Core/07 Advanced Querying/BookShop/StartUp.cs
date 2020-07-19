@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using BookShop.Models.Enums;
@@ -18,7 +19,7 @@ namespace BookShop
 
             var input = Console.ReadLine();
 
-            var result = GetBooksByCategory(db, input);
+            var result = GetAuthorNamesEndingIn(db, input);
 
             Console.WriteLine(result);
 
@@ -104,5 +105,54 @@ namespace BookShop
 
             return String.Join(Environment.NewLine, result);
         }
+
+        //7. Released Before Date
+        public static string GetBooksReleasedBefore(BookShopContext context, string date)
+        {
+            var targetDate = DateTime.ParseExact(date, "dd-MM-yyyy",
+                CultureInfo.InvariantCulture);
+
+            var result = context.Books
+                .Where(b => b.ReleaseDate < targetDate)
+                .OrderByDescending(b=>b.ReleaseDate)
+                .Select(b => new
+                {
+                    Title = b.Title,
+                    EditionType = b.EditionType,
+                    Price = b.Price
+                }).ToList();
+            
+            var sb = new StringBuilder();
+
+            foreach (var r in result)
+            {
+                sb.AppendLine($"{r.Title} - {r.EditionType} - ${r.Price:f2}");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //8. Author Search
+        public static string GetAuthorNamesEndingIn(BookShopContext context, string input)
+        {
+            var result = context.Authors
+                .Where(a => a.FirstName.EndsWith(input))
+                .Select(a => new
+                {
+                    FullName = a.FirstName + " " + a.LastName
+                })
+                .OrderBy(a => a.FullName)
+                .ToList();
+            
+           var sb = new StringBuilder();
+
+           foreach (var r in result)
+           {
+               sb.AppendLine(r.FullName);
+           }
+
+           return sb.ToString().TrimEnd();
+        }
     }
 }
+ 
