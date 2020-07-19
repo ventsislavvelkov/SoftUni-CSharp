@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace P03_FootballBetting.Data.Models.Model
+namespace P03_FootballBetting.Data.Models
 {
     public class Game
     {

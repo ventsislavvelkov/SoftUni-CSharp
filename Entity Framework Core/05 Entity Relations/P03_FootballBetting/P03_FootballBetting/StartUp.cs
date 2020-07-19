@@ -1,12 +1,13 @@
 ﻿using System;
+using P03_FootballBetting.Data;
 
 namespace P03_FootballBetting
 {
-    class StartUp
+   public class StartUp
     {
-        static void Main(string[] args)
+       public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            using var db = new FootballBettingContext();
         }
     }
 }

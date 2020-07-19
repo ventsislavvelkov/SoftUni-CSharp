@@ -6,6 +6,6 @@ namespace P03_FootballBetting.Data
 {
    public static class Connection
    {
-       public const string DefaultConnection = @"Server=.;Database=FootballBetting;Integrated Securety=True";
+       public const string DefaultConnection = @"Server=.;Database=FootballBetting;Integrated Security=True";
    }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using P03_FootballBetting.Data.Models.Enumerations;
 
-namespace P03_FootballBetting.Data.Models.Model
+namespace P03_FootballBetting.Data.Models
 {
    public class Bet
     {

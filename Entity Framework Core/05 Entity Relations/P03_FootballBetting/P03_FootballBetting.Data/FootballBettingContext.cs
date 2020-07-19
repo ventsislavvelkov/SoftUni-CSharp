@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using P03_FootballBetting.Data.Models.Model;
+using P03_FootballBetting.Data.Models;
 
 namespace P03_FootballBetting.Data
 {
@@ -34,14 +32,16 @@ namespace P03_FootballBetting.Data
        {
            if (!optionsBuilder.IsConfigured)
            {
-               optionsBuilder.UseSqlServer()
+               optionsBuilder.UseSqlServer(Connection.DefaultConnection);
            }
+
+           base.OnConfiguring(optionsBuilder);
        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-       {
-           base.OnModelCreating(modelBuilder);
-       }
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
 
      
    }
