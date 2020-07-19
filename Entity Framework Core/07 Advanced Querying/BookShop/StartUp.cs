@@ -20,7 +20,7 @@ namespace BookShop
 
             var input = Console.ReadLine();
 
-            var result = GetBookTitlesContaining(db, input);
+            var result = GetBooksByAuthor(db, input);
 
             Console.WriteLine(result);
 
@@ -168,6 +168,31 @@ namespace BookShop
 
             return String.Join(Environment.NewLine, result);
         }
+
+        //10. Book Search by Author
+        public static string GetBooksByAuthor(BookShopContext context, string input)
+        {
+            var result = context.Books
+                .Where(b => b.Author.LastName.StartsWith(input, StringComparison.InvariantCultureIgnoreCase))
+                .OrderBy(b => b.BookId)
+                .Select(b => new
+                {
+                    b.Title,
+                    AutorFullName = b.Author.FirstName + " " + b.Author.LastName
+                })
+                .ToList();
+
+            var sb = new StringBuilder();
+            foreach (var r in result)
+            {
+                sb.AppendLine($"{r.Title} ({r.AutorFullName})");
+            }
+
+            return sb.ToString().TrimEnd();
+
+        }
+
+        //11. Count Books
     }
 }
  
