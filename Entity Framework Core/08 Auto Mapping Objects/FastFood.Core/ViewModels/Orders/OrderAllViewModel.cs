@@ -9,5 +9,7 @@
         public string Employee { get; set; }
 
         public string DateTime { get; set; }
+
+        public string OrderType { get; set; }
     }
 }

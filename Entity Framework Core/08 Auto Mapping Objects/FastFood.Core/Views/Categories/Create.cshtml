@@ -6,10 +6,11 @@
 <form class="mx-auto half-width" asp-controller="Categories" asp-action="Create" method="post">
     <div class="form-group">
         <label for="categoryName">Category Name</label>
-        <input type="text" class="form-control" id="categoryName" placeholder="Category Name..." name="categoryName">
+        <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="categoryName">
     </div>
     <hr class="bg-secondary half-width" />
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn ">Create</button>
+        <button type="submit" class="btn btn-primary" asp-controller="Categories" asp-action="All">View all categories</button>
     </div>
 </form>

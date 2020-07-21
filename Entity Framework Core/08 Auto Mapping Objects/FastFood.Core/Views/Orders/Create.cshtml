@@ -8,11 +8,11 @@
 <form class="mx-auto half-width" asp-controller="Orders" asp-action="Create" method="post">
     <div class="form-group">
         <label for="name">Customer</label>
-        <input type="text" class="form-control" id="customer" placeholder="Customer..." name="customer">
+        <input type="text" class="form-control" id="customer" placeholder="Enter customer name" name="customer">
     </div>
     <div class="form-group">
-        <label for="employee">Employee Id</label>
-        <select id="employee" class="form-control" name="EmployeeId">
+        <label for="employee">Employee Name</label>
+        <select id="employee" class="form-control" name="EmployeeName">
             @foreach (var employee in Model.Employees)
             {
                 <option value="@employee">@employee</option>
@@ -20,8 +20,8 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="item">Item Id</label>
-        <select id="item" class="form-control" name="ItemId">
+        <label for="item">Item Name</label>
+        <select id="item" class="form-control" name="ItemName">
             @foreach (var item in Model.Items)
             {
                 <option value="@item">@item</option>
@@ -30,10 +30,15 @@
     </div>
     <div class="form-group">
         <label for="quantity">Quantity</label>
-        <input type="number" step="1" min="11" class="form-control" id="quantity" placeholder="Quantity..." name="quantity">
+        <input type="number" step="1" min="1" class="form-control" id="quantity" placeholder="Enter quantity" name="quantity">
+    </div>
+    <div class="form-group">
+        <input type="radio" name="OrderType" value="ForHere"> For here<br>
+        <input type="radio" name="OrderType" value="ToGo"> To go<br>
     </div>
     <hr class="bg-secondary half-width" />
     <div class="button-holder d-flex justify-content-center">
         <button type="submit" class="btn ">Create</button>
+        <button type="submit" class="btn btn-primary" asp-controller="Orders" asp-action="All">View all orders</button>
     </div>
 </form>

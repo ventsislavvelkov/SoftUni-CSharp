@@ -1,4 +1,6 @@
-﻿namespace FastFood.Core.Controllers
+﻿using FastFood.Models;
+
+namespace FastFood.Core.Controllers
 {
     using System;
     using System.Linq;
@@ -21,22 +23,41 @@
 
         public IActionResult Create()
         {
-            var categories = this.context.Categories
+            var categorires = this.context.Categories
                 .ProjectTo<CreateItemViewModel>(mapper.ConfigurationProvider)
                 .ToList();
 
-            return this.View(categories);
+            return this.View(categorires);
         }
 
         [HttpPost]
         public IActionResult Create(CreateItemInputModel model)
         {
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var item = this.mapper.Map<Item>(model);
+
+            var category = this.context.Categories.FirstOrDefault(c => c.Name == model.CategoryName);
+
+            item.CategoryId = category.Id;
+
+            this.context.Items.Add(item);
+
+            this.context.SaveChanges();
+
+            return this.RedirectToAction("All", "Items");
         }
 
         public IActionResult All()
         {
-            throw new NotImplementedException();
+            var items = this.context.Items
+                .ProjectTo<ItemsAllViewModels>(mapper.ConfigurationProvider)
+                .ToList();
+
+            return this.View(items);
         }
     }
 }

@@ -5,18 +5,21 @@
 }
 <h1 class="text-center">All Categories</h1>
 <hr class="hr-2" />
+<div class="button-holder d-flex justify-content-center">
+    <a class="btn btn-primary" asp-controller="Categories" asp-action="Create">Back</a>
+</div>
 <table class="table mx-auto">
     <thead>
-        <tr class="row">
-            <th class="col-md-1">#</th>
-            <th class="col-md-2">Category</th>
-        </tr>
+    <tr class="row">
+        <th class="col-md-1">#</th>
+        <th class="col-md-2">Category</th>
+    </tr>
     </thead>
     <tbody>
-        @for(var i = 0; i < Model.Count(); i++)
+    @for(var i = 0; i < Model.Count(); i++)
     {
         <tr class="row">
-            <th class="col-md-1">@i</th>
+            <th class="col-md-1">@(i+1)</th>
             <td class="col-md-2">@Model[i].Name</td>
         </tr>
     }
