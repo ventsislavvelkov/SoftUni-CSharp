@@ -26,14 +26,14 @@ namespace ProductShop
           //Console.WriteLine(result);
           InitialMapper();
 
-          var json = GetCategoriesByProductsCount(db);
+          var json = GetUsersWithProducts(db);
 
           if (!Directory.Exists(ResultDirectoryPath))
           {
               Directory.CreateDirectory(ResultDirectoryPath);
           }
 
-          File.WriteAllText(ResultDirectoryPath + "/categories-by-products.json", json);
+          File.WriteAllText(ResultDirectoryPath + "/users-and-products.json", json);
 
         }
 
@@ -147,6 +147,51 @@ namespace ProductShop
             var json = JsonConvert.SerializeObject(categories, Formatting.Indented);
 
             return json;
+        }
+
+        //Problem 9 
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var users = context.Users
+                .Where(u => u.ProductsSold.Any(p => p.Buyer != null))
+                .Select(u => new
+                {
+                    lastName = u.LastName,
+                    age = u.Age,
+                    soldProducts = new
+                    {
+                        count = u.ProductsSold
+                            .Count(p => p.Buyer != null),
+                        products = u.ProductsSold
+                            .Where(p => p.Buyer != null)
+                            .Select(p => new
+                            {
+                                name = p.Name,
+                                price = p.Price
+                            })
+                            .ToArray()
+                    }
+                })
+                .OrderByDescending(u => u.soldProducts.count)
+                .ToArray();
+
+            var resultObj = new
+            {
+                userCount = users.Length,
+                users = users
+            };
+
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Formatting = Formatting.Indented
+            };
+
+            var json = JsonConvert.SerializeObject(resultObj, settings);
+
+            return json;
+
+
         }
 
         private static void InitialMapper()
