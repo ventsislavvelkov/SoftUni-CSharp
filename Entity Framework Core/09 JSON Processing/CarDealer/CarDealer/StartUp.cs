@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
@@ -7,6 +8,7 @@ using AutoMapper.QueryableExtensions;
 using CarDealer.Data;
 using CarDealer.DTO.Cars;
 using CarDealer.DTO.Customers;
+using CarDealer.DTO.Import;
 using CarDealer.Models;
 using Microsoft.EntityFrameworkCore.Update;
 using Newtonsoft.Json;
@@ -24,21 +26,24 @@ namespace CarDealer
 
             //ResetDatabase(db);
 
-            //var inputJson = File.ReadAllText("../../../Datasets/sales.json");
+            //var inputJson = File.ReadAllText("../../../Datasets/suppliers.json");
 
-            //var result = ImportSales(db, inputJson);
+            //var result = ImportSuppliers(db, inputJson);
 
             //Console.WriteLine(result);
-            InitialMapper();
+            
+           InitialMapper();
 
             var json = GetCarsFromMakeToyota(db);
 
-            if (!Directory.Exists(ResultDirectoryPath))
-            {
-                Directory.CreateDirectory(ResultDirectoryPath);
-            }
+            //if (!Directory.Exists(ResultDirectoryPath))
+            //{
+            //    Directory.CreateDirectory(ResultDirectoryPath);
+            //}
 
-            File.WriteAllText(ResultDirectoryPath + "/toyota-cars.json", json);
+            Console.WriteLine(json);
+
+            //File.WriteAllText(ResultDirectoryPath + "/toyota-cars.json", json);
 
         }
 
@@ -61,7 +66,7 @@ namespace CarDealer
             context.AddRange(suppliers);
             context.SaveChanges();
 
-            return $"Successfully imported {suppliers.Length}";
+            return $"Successfully imported {suppliers.Length}.";
 
         }
 
@@ -83,12 +88,36 @@ namespace CarDealer
         //Problem 10
         public static string ImportCars(CarDealerContext context, string inputJson)
         {
-            var cars = JsonConvert.DeserializeObject<Car[]>(inputJson);
+            var carsDto = JsonConvert.DeserializeObject<ImportCarsDTO[]>(inputJson);
 
-            context.AddRange(cars);
+            foreach (var ImportCarsDTO in carsDto)
+            {
+                Car car = new Car
+                {
+                    Make = ImportCarsDTO.Make,
+                    Model = ImportCarsDTO.Model,
+                    TravelledDistance = ImportCarsDTO.TravelledDistance
+                };
+
+                context.Cars.Add(car);
+
+                foreach (var partId in ImportCarsDTO.PartsId)
+                {
+                    PartCar partCar = new PartCar
+                    {
+                        CarId = car.Id,
+                        PartId = partId
+                    };
+
+                    if (car.PartCars.FirstOrDefault(p => p.PartId == partId) == null)
+                    {
+                        context.PartCars.Add(partCar);
+                    }
+                }
+            }
             context.SaveChanges();
 
-            return $"Successfully imported {cars.Length}.";
+            return $"Successfully imported {carsDto.Length}.";
         }
 
         //Problem 11 
@@ -118,7 +147,7 @@ namespace CarDealer
         {
             var customers = context.Customers
                 .OrderBy(c => c.BirthDate)
-                .ThenBy(c => c.IsYoungDriver == false)
+                .ThenBy(c => c.IsYoungDriver)
                 .ProjectTo<GetOrderedCustomersDTO>()
                 .ToArray();
 
@@ -131,8 +160,9 @@ namespace CarDealer
         public static string GetCarsFromMakeToyota(CarDealerContext context)
         {
             var cars = context.Cars
-                .Where(c=>c.Make == "Toyota")
+                .Where(c => c.Make == "Toyota")
                 .OrderBy(c => c.Model)
+                .ThenByDescending(c=>c.TravelledDistance)
                 .ProjectTo<GetCarsFromMakeToyotaDTO>()
                 .ToArray();
 
