@@ -12,8 +12,9 @@ namespace CarDealer.Data
         {
         }
 
-        protected CarDealerContext()
+        public CarDealerContext()
         {
+
         }
 
         public DbSet<Car> Cars { get; set; }
