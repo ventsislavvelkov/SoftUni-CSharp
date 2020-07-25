@@ -1,0 +1,68 @@
+[
+  {
+    "category": "Garden",
+    "productCount": 23,
+    "avaragePrice": "709.95",
+    "totalRevenue": "16328.79"
+  },
+  {
+    "category": "Weapons",
+    "productCount": 22,
+    "avaragePrice": "936.41",
+    "totalRevenue": "20601.11"
+  },
+  {
+    "category": "Drugs",
+    "productCount": 22,
+    "avaragePrice": "819.44",
+    "totalRevenue": "18027.78"
+  },
+  {
+    "category": "Adult",
+    "productCount": 22,
+    "avaragePrice": "704.41",
+    "totalRevenue": "15497.02"
+  },
+  {
+    "category": "Other",
+    "productCount": 19,
+    "avaragePrice": "788.75",
+    "totalRevenue": "14986.33"
+  },
+  {
+    "category": "Autoparts",
+    "productCount": 17,
+    "avaragePrice": "657.29",
+    "totalRevenue": "11174.01"
+  },
+  {
+    "category": "Business",
+    "productCount": 17,
+    "avaragePrice": "861.70",
+    "totalRevenue": "14648.88"
+  },
+  {
+    "category": "Fashion",
+    "productCount": 16,
+    "avaragePrice": "899.85",
+    "totalRevenue": "14397.67"
+  },
+  {
+    "category": "Electronics",
+    "productCount": 14,
+    "avaragePrice": "648.10",
+    "totalRevenue": "9073.44"
+  },
+  {
+    "category": "For Children",
+    "productCount": 14,
+    "avaragePrice": "677.36",
+    "totalRevenue": "9483.06"
+  },
+  {
+    "category": "Sports",
+    "productCount": 14,
+    "avaragePrice": "702.51",
+    "totalRevenue": "9835.08"
+  }
+]

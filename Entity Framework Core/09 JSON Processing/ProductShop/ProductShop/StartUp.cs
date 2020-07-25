@@ -26,14 +26,14 @@ namespace ProductShop
           //Console.WriteLine(result);
           InitialMapper();
 
-          var json = GetSoldProducts(db);
+          var json = GetCategoriesByProductsCount(db);
 
           if (!Directory.Exists(ResultDirectoryPath))
           {
               Directory.CreateDirectory(ResultDirectoryPath);
           }
 
-          File.WriteAllText(ResultDirectoryPath + "/users-sold-products.json", json);
+          File.WriteAllText(ResultDirectoryPath + "/categories-by-products.json", json);
 
         }
 
@@ -112,6 +112,7 @@ namespace ProductShop
             return json;
         }
 
+        //Problem 7 with DTO
         public static string GetSoldProducts(ProductShopContext context)
         {
             var users = context.Users
@@ -125,6 +126,27 @@ namespace ProductShop
 
             return json;
 
+        }
+
+        //Problem 8
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            var categories = context.Categories
+                .OrderByDescending(c => c.CategoryProducts.Count)
+                .Select(c => new
+                {
+                    category = c.Name,
+                    productCount = c.CategoryProducts.Count(),
+                    avaragePrice = c.CategoryProducts.Average(cp => cp.Product.Price)
+                        .ToString("f2"),
+                    totalRevenue = c.CategoryProducts.Sum(cp => cp.Product.Price)
+                        .ToString("f2")
+
+                }).ToArray();
+
+            var json = JsonConvert.SerializeObject(categories, Formatting.Indented);
+
+            return json;
         }
 
         private static void InitialMapper()
