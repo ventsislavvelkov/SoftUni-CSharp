@@ -7,6 +7,6 @@ namespace CarDealer.DTO.Cars
    public class GetListOfParts
     {
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public string Price { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace CarDealer
 
             InitialMapper();
 
-            var json = GetCarsWithTheirListOfParts(db);
+            var json = GetTotalSalesByCustomer(db);
 
             Console.WriteLine(json);
 
@@ -185,13 +185,46 @@ namespace CarDealer
         public static string GetCarsWithTheirListOfParts(CarDealerContext context)
         {
             var cars = context.Cars
-                .ProjectTo<GetListOfCarsWithParts>()
+                .Select(c => new 
+                {
+                    Car = new GetListOfCarsWithParts
+                    {
+                        Make = c.Make,
+                        Model = c.Model,
+                        TravelledDistance = c.TravelledDistance
+                    },
+                    Parts = c.PartCars.Select(cp => new GetListOfParts()
+                        {
+                            Name = cp.Part.Name,
+                            Price = $"{cp.Part.Price:F2}"
+                        })
+                        .ToArray()
+                })
                 .ToArray();
 
             var json = JsonConvert.SerializeObject(cars, Formatting.Indented);
 
             return json;
 
+        }
+
+        //Problem 17
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            var customer = context.Customers
+                .Where(c => c.Sales.Count >= 1)
+                .Select(c => new
+                {
+                    fullName = c.Name,
+                    boughtCars = c.Sales.Count(),
+                    spentMoney = c.Sales.Sum(s => s.Car.PartCars.Sum(pc => pc.Part.Price))
+                })
+                .OrderByDescending(c=>c.spentMoney)
+                .ToArray();
+
+            var json = JsonConvert.SerializeObject(customer, Formatting.Indented);
+
+            return json;
         }
 
 
