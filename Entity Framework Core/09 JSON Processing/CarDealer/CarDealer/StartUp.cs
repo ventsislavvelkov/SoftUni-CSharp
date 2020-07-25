@@ -2,8 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using CarDealer.Data;
+using CarDealer.DTO.Customers;
 using CarDealer.Models;
+using Microsoft.EntityFrameworkCore.Update;
 using Newtonsoft.Json;
 
 
@@ -11,6 +15,7 @@ namespace CarDealer
 {
     public class StartUp
     {
+        private static string ResultDirectoryPath = "../../../Datasets/Results";
 
         public static void Main(string[] args)
         {
@@ -18,13 +23,21 @@ namespace CarDealer
 
             //ResetDatabase(db);
 
-            
+            //var inputJson = File.ReadAllText("../../../Datasets/sales.json");
 
-            var inputJson = File.ReadAllText("../../../Datasets/sales.json");
+            //var result = ImportSales(db, inputJson);
 
-            var result = ImportSales(db, inputJson);
+            //Console.WriteLine(result);
+            InitialMapper();
 
-            Console.WriteLine(result);
+            var json = GetOrderedCustomers(db);
+
+            if (!Directory.Exists(ResultDirectoryPath))
+            {
+                Directory.CreateDirectory(ResultDirectoryPath);
+            }
+
+            File.WriteAllText(ResultDirectoryPath + "/ordered-customers.json", json);
 
         }
 
@@ -55,7 +68,7 @@ namespace CarDealer
         public static string ImportParts(CarDealerContext context, string inputJson)
         {
             var parts = JsonConvert.DeserializeObject<Part[]>(inputJson)
-                .Where(p => context.Suppliers.Any(s=>s.Id == p.SupplierId))
+                .Where(p => context.Suppliers.Any(s => s.Id == p.SupplierId))
                 .ToArray();
 
             context.AddRange(parts);
@@ -97,6 +110,25 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {sales.Length}.";
+        }
+
+        //Problem 13
+        public static string GetOrderedCustomers(CarDealerContext context)
+        {
+            var customers = context.Customers
+                .OrderBy(c => c.BirthDate)
+                .ThenBy(c => c.IsYoungDriver == false)
+                .ProjectTo<GetOrderedCustomersDTO>()
+                .ToArray();
+
+            var json = JsonConvert.SerializeObject(customers, Formatting.Indented);
+
+            return json;
+        }
+
+        private static void InitialMapper()
+        {
+            Mapper.Initialize(cfg => { cfg.AddProfile<CarDealerProfile>(); });
         }
     }
 }
