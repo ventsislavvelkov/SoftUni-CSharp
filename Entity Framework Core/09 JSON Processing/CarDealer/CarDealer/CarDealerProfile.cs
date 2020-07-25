@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using AutoMapper;
+using CarDealer.DTO.Cars;
 using CarDealer.DTO.Customers;
 using CarDealer.Models;
 
@@ -18,7 +20,18 @@ namespace CarDealer
                     y=>y.MapFrom(x=>x.BirthDate.ToString("dd/MM/yyyy")))
                 .ForMember(x=>x.IsYoungDriver,
                     y=>y.MapFrom(x=>x.IsYoungDriver));
-        
+
+            this.CreateMap<Car, GetCarsFromMakeToyotaDTO>()
+                .ForMember(x => x.Id,
+                    y => y.MapFrom(x => x.Id))
+                .ForMember(x => x.Make,
+                    y => y.MapFrom(x => x.Make))
+                .ForMember(x => x.Model,
+                    y => y.MapFrom(x => x.Model))
+                .ForMember(x => x.TravelledDistance,
+                    y => y.MapFrom(x => x.TravelledDistance));
+
+
         }
     }
 }

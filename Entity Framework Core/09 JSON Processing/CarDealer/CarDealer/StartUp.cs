@@ -5,6 +5,7 @@ using System.Net.Mime;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CarDealer.Data;
+using CarDealer.DTO.Cars;
 using CarDealer.DTO.Customers;
 using CarDealer.Models;
 using Microsoft.EntityFrameworkCore.Update;
@@ -15,7 +16,7 @@ namespace CarDealer
 {
     public class StartUp
     {
-        private static string ResultDirectoryPath = "../../../Datasets/Results";
+        private static readonly string ResultDirectoryPath = "../../../Datasets/Results";
 
         public static void Main(string[] args)
         {
@@ -30,14 +31,14 @@ namespace CarDealer
             //Console.WriteLine(result);
             InitialMapper();
 
-            var json = GetOrderedCustomers(db);
+            var json = GetCarsFromMakeToyota(db);
 
             if (!Directory.Exists(ResultDirectoryPath))
             {
                 Directory.CreateDirectory(ResultDirectoryPath);
             }
 
-            File.WriteAllText(ResultDirectoryPath + "/ordered-customers.json", json);
+            File.WriteAllText(ResultDirectoryPath + "/toyota-cars.json", json);
 
         }
 
@@ -122,6 +123,20 @@ namespace CarDealer
                 .ToArray();
 
             var json = JsonConvert.SerializeObject(customers, Formatting.Indented);
+
+            return json;
+        }
+
+        //Problem 14
+        public static string GetCarsFromMakeToyota(CarDealerContext context)
+        {
+            var cars = context.Cars
+                .Where(c=>c.Make == "Toyota")
+                .OrderBy(c => c.Model)
+                .ProjectTo<GetCarsFromMakeToyotaDTO>()
+                .ToArray();
+
+            var json = JsonConvert.SerializeObject(cars, Formatting.Indented);
 
             return json;
         }
