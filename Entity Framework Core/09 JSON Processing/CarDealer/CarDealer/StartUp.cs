@@ -30,20 +30,11 @@ namespace CarDealer
 
             //var result = ImportSuppliers(db, inputJson);
 
-            //Console.WriteLine(result);
-            
-           InitialMapper();
+            InitialMapper();
 
-            var json = GetCarsFromMakeToyota(db);
-
-            //if (!Directory.Exists(ResultDirectoryPath))
-            //{
-            //    Directory.CreateDirectory(ResultDirectoryPath);
-            //}
+            var json = GetCarsWithTheirListOfParts(db);
 
             Console.WriteLine(json);
-
-            //File.WriteAllText(ResultDirectoryPath + "/toyota-cars.json", json);
 
         }
 
@@ -172,6 +163,36 @@ namespace CarDealer
         }
 
         //Problem 15
+        public static string GetLocalSuppliers(CarDealerContext context)
+        {
+            var suppliers = context.Suppliers
+                .Where(s => s.IsImporter == false)
+                .Select(s => new
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    PartsCount = s.Parts.Count()
+                })
+                .ToArray();
+
+            var json = JsonConvert.SerializeObject(suppliers, Formatting.Indented);
+
+            return json;
+
+        }
+
+        //Problem 16 
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            var cars = context.Cars
+                .ProjectTo<GetListOfCarsWithParts>()
+                .ToArray();
+
+            var json = JsonConvert.SerializeObject(cars, Formatting.Indented);
+
+            return json;
+
+        }
 
 
         private static void InitialMapper()

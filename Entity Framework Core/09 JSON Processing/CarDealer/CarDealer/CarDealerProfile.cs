@@ -41,6 +41,16 @@ namespace CarDealer
                     y => y.MapFrom(x => x.TravelledDistance))
                 .ForMember(x => x.PartCars,
                     y => y.MapFrom(x => x.PartsId));
+
+            this.CreateMap<Car, GetListOfCarsWithParts>()
+                .ForMember(x=>x.Make,
+                    y=>y.MapFrom(x=>x.Make))
+                .ForMember(x=>x.Model,
+                    y=>y.MapFrom(x=>x.Model))
+                .ForMember(x=>x.TravelledDistance,
+                    y=>y.MapFrom(x=>x.TravelledDistance))
+                .ForMember(x=>x.Parts,
+                    y=>y.MapFrom(x=>x.PartCars));
         }
     }
 }
