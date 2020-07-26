@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace ProductShop.XmlHelper
 {
-    public static class XmlConverter
+    public static class XMLConverter
     {
         public static string Serialize<T>(
             T dataTransferObjects,
