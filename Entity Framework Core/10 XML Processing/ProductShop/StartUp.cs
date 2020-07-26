@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductShop.Data;
+using ProductShop.Dtos.Export;
 using ProductShop.Dtos.Import;
 using ProductShop.Models;
 using ProductShop.XmlHelper;
@@ -16,19 +17,23 @@ namespace ProductShop
         {
             ProductShopContext context = new ProductShopContext();
 
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            //context.Database.EnsureDeleted();
+            //context.Database.EnsureCreated();
 
-            var userXml = File.ReadAllText("../../../Datasets/users.xml");
-            var productsXml = File.ReadAllText("../../../Datasets/products.xml");
-            var categoriesXml = File.ReadAllText("../../../Datasets/categories.xml");
-            var categoryProductsXml = File.ReadAllText("../../../Datasets/categories-products.xml");
+            //var userXml = File.ReadAllText("../../../Datasets/users.xml");
+            //var productsXml = File.ReadAllText("../../../Datasets/products.xml");
+            //var categoriesXml = File.ReadAllText("../../../Datasets/categories.xml");
+            //var categoryProductsXml = File.ReadAllText("../../../Datasets/categories-products.xml");
 
-            ImportUsers(context, userXml);
-            ImportProducts(context, productsXml);
-            ImportCategories(context, categoriesXml);
+            //ImportUsers(context, userXml);
+            //ImportProducts(context, productsXml);
+            //ImportCategories(context, categoriesXml);
 
-            var result = ImportCategoryProducts(context, categoryProductsXml);
+            //var result = ImportCategoryProducts(context, categoryProductsXml);
+
+            //Console.WriteLine(result);
+
+            var result = GetProductsInRange(context);
 
             Console.WriteLine(result);
 
@@ -123,6 +128,29 @@ namespace ProductShop
             context.CategoryProducts.AddRange(categoryProducts);
             context.SaveChanges();
             return $"Successfully imported {categoryProducts.Length}";
+        }
+
+        //Problem 5
+        public static string GetProductsInRange(ProductShopContext context)
+        {
+            const string rootElements = "Products";
+
+            var products = context.Products
+                .Where(p => p.Price >= 500 && p.Price <= 1000)
+                .Select(p => new ExportProductInfoDto
+                {
+                    Name = p.Name,
+                    Price = p.Price,
+                    Buyer = p.Buyer.FirstName + " " + p.Buyer.LastName,
+                })
+                .OrderBy(p=>p.Price)
+                .Take(10)
+                .ToList();
+
+            var result = XMLConverter.Serialize(products, rootElements);
+
+            return result;
+
         }
 
     }
