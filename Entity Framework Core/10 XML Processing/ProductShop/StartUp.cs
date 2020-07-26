@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductShop.Data;
 using ProductShop.Dtos.Export;
@@ -33,7 +34,7 @@ namespace ProductShop
 
             //Console.WriteLine(result);
 
-            var result = GetProductsInRange(context);
+            var result = GetSoldProducts(context);
 
             Console.WriteLine(result);
 
@@ -143,7 +144,7 @@ namespace ProductShop
                     Price = p.Price,
                     Buyer = p.Buyer.FirstName + " " + p.Buyer.LastName,
                 })
-                .OrderBy(p=>p.Price)
+                .OrderBy(p => p.Price)
                 .Take(10)
                 .ToList();
 
@@ -153,5 +154,33 @@ namespace ProductShop
 
         }
 
+        //Problem 6 
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            const string rootElement = "Users";
+
+            var usersReport = context.Users
+                .Where(u => u.ProductsSold.Any())
+                .OrderBy(u => u.FirstName)
+                .ThenBy(u => u.LastName)
+                .Select(s => new ExportUserSoldProductDto
+                {
+                    FirstName = s.FirstName,
+                    LastName = s.LastName,
+                    SoldProducts = s.ProductsSold.Select(p => new UserProductDto
+                        {
+                            Name = p.Name,
+                            Price = p.Price
+                        })
+                        .ToArray()
+                })
+                .Take(5)
+                .ToArray();
+
+            var result = XMLConverter.Serialize(usersReport, rootElement);
+
+            return result;
+
+        }
     }
 }
