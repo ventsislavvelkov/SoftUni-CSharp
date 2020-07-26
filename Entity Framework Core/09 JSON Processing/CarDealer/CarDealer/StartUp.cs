@@ -216,11 +216,12 @@ namespace CarDealer
                 .Select(c => new
                 {
                     fullName = c.Name,
-                    boughtCars = c.Sales.Count(),
+                    boughtCars = c.Sales.Count,
                     spentMoney = c.Sales.Sum(s => s.Car.PartCars.Sum(pc => pc.Part.Price))
                 })
                 .OrderByDescending(c=>c.spentMoney)
-                .ToArray();
+                .ThenByDescending(c => c.boughtCars)
+                .ToList();
 
             var json = JsonConvert.SerializeObject(customer, Formatting.Indented);
 

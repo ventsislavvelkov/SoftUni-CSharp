@@ -5,6 +5,7 @@ using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using ProductShop.Data;
 using ProductShop.DTO.Users;
 using ProductShop.Models;
@@ -19,22 +20,23 @@ namespace ProductShop
         {
             ProductShopContext db = new ProductShopContext();
 
-          //var inputJson = File.ReadAllText("../../../Datasets/categories-products.json");
+            //var inputJson = File.ReadAllText("../../../Datasets/users.json");
 
-          //var result =  ImportCategoryProducts(db, inputJson);
+            //var result = ImportUsers(db, inputJson);
 
-          //Console.WriteLine(result);
-          InitialMapper();
+            
+           
+            InitialMapper();
 
-          var json = GetUsersWithProducts(db);
+            var json = GetUsersWithProducts(db);
 
-          if (!Directory.Exists(ResultDirectoryPath))
-          {
-              Directory.CreateDirectory(ResultDirectoryPath);
-          }
+            //if (!Directory.Exists(ResultDirectoryPath))
+            //{
+            //    Directory.CreateDirectory(ResultDirectoryPath);
+            //}
 
-          File.WriteAllText(ResultDirectoryPath + "/users-and-products.json", json);
-
+          //  File.WriteAllText(ResultDirectoryPath + "/users-and-products.json", json);
+            Console.WriteLine(json);
         }
 
         //Problem 1
@@ -132,30 +134,35 @@ namespace ProductShop
         public static string GetCategoriesByProductsCount(ProductShopContext context)
         {
             var categories = context.Categories
-                .OrderByDescending(c => c.CategoryProducts.Count)
                 .Select(c => new
                 {
-                    category = c.Name,
-                    productCount = c.CategoryProducts.Count(),
-                    avaragePrice = c.CategoryProducts.Average(cp => cp.Product.Price)
-                        .ToString("f2"),
-                    totalRevenue = c.CategoryProducts.Sum(cp => cp.Product.Price)
-                        .ToString("f2")
+                    Category = c.Name,
+                    ProductsCount = c.CategoryProducts.Count,
+                    AveragePrice = $"{c.CategoryProducts.Average(cp => cp.Product.Price):F2}",
+                    TotalRevenue = $"{c.CategoryProducts.Sum(cp => cp.Product.Price):F2}"
+                })
+                .OrderByDescending(c => c.ProductsCount)
+                .ToList();
 
-                }).ToArray();
+            var jsonExport = JsonConvert.SerializeObject(categories, new JsonSerializerSettings()
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Formatting = Formatting.Indented
+            });
 
-            var json = JsonConvert.SerializeObject(categories, Formatting.Indented);
-
-            return json;
+            return jsonExport;
         }
 
         //Problem 9 
         public static string GetUsersWithProducts(ProductShopContext context)
         {
             var users = context.Users
+                .ToArray()
                 .Where(u => u.ProductsSold.Any(p => p.Buyer != null))
+                .OrderByDescending(u => u.ProductsSold.Count(p => p.Buyer != null))
                 .Select(u => new
                 {
+                    firstname = u.FirstName,
                     lastName = u.LastName,
                     age = u.Age,
                     soldProducts = new
@@ -172,25 +179,22 @@ namespace ProductShop
                             .ToArray()
                     }
                 })
-                .OrderByDescending(u => u.soldProducts.count)
                 .ToArray();
 
             var resultObj = new
             {
-                userCount = users.Length,
+                usersCount = users.Length,
                 users = users
             };
 
-            var settings = new JsonSerializerSettings
+            string jsonExport = JsonConvert.SerializeObject(resultObj, new JsonSerializerSettings()
             {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Formatting.Indented
-            };
+            });
 
-            var json = JsonConvert.SerializeObject(resultObj, settings);
-
-            return json;
-
+            return jsonExport;
 
         }
 
