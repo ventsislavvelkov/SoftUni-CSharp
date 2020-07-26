@@ -213,14 +213,14 @@ namespace CarDealer
         {
             var customer = context.Customers
                 .Where(c => c.Sales.Count >= 1)
-                .Select(c => new
+                .Select(c => new CustomerCarDto()
                 {
-                    fullName = c.Name,
-                    boughtCars = c.Sales.Count,
-                    spentMoney = c.Sales.Sum(s => s.Car.PartCars.Sum(pc => pc.Part.Price))
+                    FullName = c.Name,
+                    BoughtCars = c.Sales.Count,
+                    SpentMoney = c.Sales.Sum(s => s.Car.PartCars.Sum(pc => pc.Part.Price))
                 })
-                .OrderByDescending(c=>c.spentMoney)
-                .ThenByDescending(c => c.boughtCars)
+                .OrderByDescending(c=>c.SpentMoney)
+                .ThenByDescending(c => c.BoughtCars)
                 .ToList();
 
             var json = JsonConvert.SerializeObject(customer, Formatting.Indented);
