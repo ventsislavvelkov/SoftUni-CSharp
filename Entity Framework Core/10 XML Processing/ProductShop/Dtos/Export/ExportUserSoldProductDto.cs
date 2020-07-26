@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace ProductShop.Dtos.Export
 {
@@ -12,7 +9,7 @@ namespace ProductShop.Dtos.Export
         public string FirstName { get; set; }
         [XmlElement("lastName")]
         public string LastName { get; set; }
-        [XmlElement("soldProducts")]
+        [XmlArray("soldProducts")]
         public UserProductDto[] SoldProducts { get; set; }
     }
 

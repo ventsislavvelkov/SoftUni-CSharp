@@ -160,21 +160,21 @@ namespace ProductShop
             const string rootElement = "Users";
 
             var usersReport = context.Users
-                .Where(u => u.ProductsSold.Any())
-                .OrderBy(u => u.FirstName)
-                .ThenBy(u => u.LastName)
+                .Where(u => u.ProductsSold.Any(p => p.Buyer != null))
+                .OrderBy(u => u.LastName)
+                .ThenBy(u => u.FirstName)
+                .Take(5)
                 .Select(s => new ExportUserSoldProductDto
                 {
                     FirstName = s.FirstName,
                     LastName = s.LastName,
-                    SoldProducts = s.ProductsSold.Select(p => new UserProductDto
+                    SoldProducts = s.ProductsSold.Select(p => new UserProductDto 
                         {
                             Name = p.Name,
-                            Price = p.Price
+                            Price = p.Price,
                         })
                         .ToArray()
                 })
-                .Take(5)
                 .ToArray();
 
             var result = XMLConverter.Serialize(usersReport, rootElement);
