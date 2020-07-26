@@ -51,6 +51,14 @@ namespace CarDealer
                     y=>y.MapFrom(x=>x.TravelledDistance))
                 .ForMember(x=>x.Parts,
                     y=>y.MapFrom(x=>x.PartCars));
+
+            this.CreateMap<Customer, CustomerCarDto>()
+                .ForMember(x => x.FullName,
+                    y => y.MapFrom(x => x.Name))
+                .ForMember(x => x.BoughtCars,
+                    y => y.MapFrom(x => x.Sales.Count))
+                .ForMember(x => x.SpentMoney,
+                    y => y.MapFrom(x => x.Sales.Sum(s => s.Car.PartCars.Sum(pc => pc.Part.Price))));
         }
     }
 }

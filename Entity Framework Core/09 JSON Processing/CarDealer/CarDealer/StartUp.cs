@@ -12,6 +12,7 @@ using CarDealer.DTO.Import;
 using CarDealer.Models;
 using Microsoft.EntityFrameworkCore.Update;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 
 namespace CarDealer
@@ -213,19 +214,24 @@ namespace CarDealer
         {
             var customer = context.Customers
                 .Where(c => c.Sales.Count >= 1)
-                .Select(c => new CustomerCarDto()
-                {
-                    FullName = c.Name,
-                    BoughtCars = c.Sales.Count,
-                    SpentMoney = c.Sales.Sum(s => s.Car.PartCars.Sum(pc => pc.Part.Price))
-                })
+                //.Select(c => new CustomerCarDto()
+                //{
+                //    FullName = c.Name,
+                //    BoughtCars = c.Sales.Count,
+                //    SpentMoney = c.Sales.Sum(s => s.Car.PartCars.Sum(pc => pc.Part.Price))
+                //})
+                .ProjectTo<CustomerCarDto>()
                 .OrderByDescending(c=>c.SpentMoney)
                 .ThenByDescending(c => c.BoughtCars)
                 .ToList();
 
-            var json = JsonConvert.SerializeObject(customer, Formatting.Indented);
+            string jsonExport = JsonConvert.SerializeObject(customer, new JsonSerializerSettings()
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                Formatting = Formatting.Indented
+            });
 
-            return json;
+            return jsonExport;
         }
 
 
