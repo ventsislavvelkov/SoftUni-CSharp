@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 namespace CarDealer.Dto.Import
 {
     [XmlType("Car")]
-  public class ImpoortCarsDto
+  public class ImportCarsDto
     {
         [XmlElement("make")]
         public string Make { get; set; }
@@ -21,7 +21,7 @@ namespace CarDealer.Dto.Import
   [XmlType("partId")]
   public class PartsDto
   {
-      [XmlElement("id")]
+      [XmlAttribute("id")]
       public int Id { get; set; }
   }
 }
