@@ -84,7 +84,7 @@ namespace CarDealer
         {
             const string rootElement = "Cars";
 
-            var carsDto = XMLConverter.Deserializer<ImpoortCarsDto>(inputXml, rootElement);
+            var carsDto = XMLConverter.Deserializer<ImportCarsDto>(inputXml, rootElement);
 
             var cars = new List<Car>();
 
