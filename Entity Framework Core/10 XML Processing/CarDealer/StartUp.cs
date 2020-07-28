@@ -39,7 +39,7 @@ namespace CarDealer
             //Console.WriteLine(customersResult);
             //Console.WriteLine(salesResult);
 
-            var result = GetCarsWithDistance(context);
+            var result = GetLocalSuppliers(context);
             Console.WriteLine(result);
 
         }
@@ -194,6 +194,56 @@ namespace CarDealer
             var result = XMLConverter.Serialize(carsWithDistans, rootElement);
 
             return result;
+        }
+
+        //Problem 15
+        public static string GetCarsFromMakeBmw(CarDealerContext context)
+        {
+            const string rootElement = "cars";
+
+            var cars = context.Cars
+                .Where(c => c.Make == "BMW")
+                .Select(c => new ExportCarsFromBmwDto
+                {
+                    Id = c.Id,
+                    Model = c.Model,
+                    TravelledDistance = c.TravelledDistance
+                })
+                .OrderBy(c => c.Model)
+                .ThenByDescending(c => c.TravelledDistance)
+                .ToArray();
+
+            var result = XMLConverter.Serialize(cars, rootElement);
+            return result;
+
+        }
+
+        //Problem 16 
+        public static string GetLocalSuppliers(CarDealerContext context)
+        {
+            const string rootElement = "suppliers";
+
+            var suppliers = context.Suppliers
+                .Where(s => s.IsImporter == false)
+                .Select(s => new ExportLocalSuppliersDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    PartsCount = s.Parts.Count
+
+
+                })
+                .ToArray();
+
+            var result = XMLConverter.Serialize(suppliers, rootElement);
+            return result;
+        }
+
+        //Problem 17
+        public static string GetCarsWithTheirListOfParts(CarDealerContext context)
+        {
+            const string rootElement = "cars";
+
         }
     }
 }
