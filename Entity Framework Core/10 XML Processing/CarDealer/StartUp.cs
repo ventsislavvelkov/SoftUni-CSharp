@@ -18,11 +18,14 @@ namespace CarDealer
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            var inputXml = File.ReadAllText("../../../Datasets/suppliers.xml");
+            var suppliersXml = File.ReadAllText("../../../Datasets/suppliers.xml");
+            var partsXml = File.ReadAllText("../../../Datasets/parts.xml");
 
-            var result = ImportSuppliers(context, inputXml);
+            var suppliersResult = ImportSuppliers(context, suppliersXml);
+            var partsResult = ImportParts(context, partsXml);
 
-            Console.WriteLine(result);
+            Console.WriteLine(suppliersResult);
+            Console.WriteLine(partsResult);
 
         }
 
@@ -56,7 +59,7 @@ namespace CarDealer
             var partsDto = XMLConverter.Deserializer<ImportPartsDto>(inputXml, rootElement);
 
             var parts = partsDto
-                .Where(p=>p.SupplierId)
+                .Where(p=>context.Suppliers.Any(s=>s.Id == p.SupplierId))
                 .Select(p => new Part
                 {
                     Name = p.Name,
@@ -65,6 +68,11 @@ namespace CarDealer
                     SupplierId = p.SupplierId
                 })
                 .ToArray();
+            
+            context.Parts.AddRange(parts);
+            context.SaveChanges();
+
+            return $"Successfully imported {parts.Length}";
         }
 
     }
