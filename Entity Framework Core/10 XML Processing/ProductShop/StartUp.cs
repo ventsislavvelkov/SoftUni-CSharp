@@ -34,7 +34,7 @@ namespace ProductShop
 
             //Console.WriteLine(result);
 
-            var result = GetSoldProducts(context);
+            var result = GetCategoriesByProductsCount(context);
 
             Console.WriteLine(result);
 
@@ -182,5 +182,34 @@ namespace ProductShop
             return result;
 
         }
+
+        //Problem 7
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            const string rootElement = "Categories";
+
+            var categoryReport = context.Categories
+                .Select(c => new ExportCategoriesByProductsDto
+                {
+                    Name = c.Name,
+                    Count = c.CategoryProducts.Count,
+                    AveragePrice = c.CategoryProducts.Select(p => p.Product).Average(p => p.Price),
+                    TotalRevenue = c.CategoryProducts.Select(p => p.Product).Sum(p => p.Price)
+                })
+                .OrderByDescending(c=>c.Count)
+                .ThenBy(t=>t.TotalRevenue)
+                .ToArray();
+
+            var result = XMLConverter.Serialize(categoryReport, rootElement);
+
+            return result;
+        }
+
+        //Problem 8
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+
+        }
+
     }
 }
