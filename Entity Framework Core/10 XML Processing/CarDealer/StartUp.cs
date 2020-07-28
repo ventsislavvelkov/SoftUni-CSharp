@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -20,12 +21,15 @@ namespace CarDealer
 
             var suppliersXml = File.ReadAllText("../../../Datasets/suppliers.xml");
             var partsXml = File.ReadAllText("../../../Datasets/parts.xml");
+            var carsXml = File.ReadAllText("../../../Datasets/cars.xml");
 
             var suppliersResult = ImportSuppliers(context, suppliersXml);
             var partsResult = ImportParts(context, partsXml);
+            var carsResult = ImportCars(context, carsXml);
 
             Console.WriteLine(suppliersResult);
             Console.WriteLine(partsResult);
+            Console.WriteLine(carsResult);
 
         }
 
@@ -73,6 +77,42 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {parts.Length}";
+        }
+
+        //Problem 11 
+        public static string ImportCars(CarDealerContext context, string inputXml)
+        {
+            const string rootElement = "Cars";
+
+            var carsDto = XMLConverter.Deserializer<ImpoortCarsDto>(inputXml, rootElement);
+
+            var cars = new List<Car>();
+
+            foreach (var carDto in carsDto)
+            {
+                var uniquePart = carDto.Parts.Select(s => s.Id).Distinct().ToArray();
+                var realParts = uniquePart.Where(id => context.Parts.Any(i => i.Id == id));
+
+                var car = new Car
+                {
+                    Make = carDto.Make,
+                    Model = carDto.Model,
+                    TravelledDistance = carDto.TraveledDistance,
+                    PartCars = realParts.Select(id => new PartCar
+                        {
+                            PartId = id
+                        })
+                        .ToArray()
+                };
+
+                cars.Add(car);
+            }
+
+            context.Cars.AddRange(cars);
+            context.SaveChanges();
+
+            return $"Successfully imported {cars.Count}";
+
         }
 
     }
