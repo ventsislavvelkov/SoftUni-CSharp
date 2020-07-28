@@ -24,16 +24,19 @@ namespace CarDealer
             var partsXml = File.ReadAllText("../../../Datasets/parts.xml");
             var carsXml = File.ReadAllText("../../../Datasets/cars.xml");
             var customersXml = File.ReadAllText("../../../Datasets/customers.xml");
+            var salesXml = File.ReadAllText("../../../Datasets/sales.xml");
 
             var suppliersResult = ImportSuppliers(context, suppliersXml);
             var partsResult = ImportParts(context, partsXml);
             var carsResult = ImportCars(context, carsXml);
             var customersResult = ImportCustomers(context, customersXml);
+            var salesResult = ImportSales(context, salesXml);
 
             Console.WriteLine(suppliersResult);
             Console.WriteLine(partsResult);
             Console.WriteLine(carsResult);
             Console.WriteLine(customersResult);
+            Console.WriteLine(salesResult);
 
         }
 
@@ -141,5 +144,29 @@ namespace CarDealer
             return $"Successfully imported {customers.Length}";
         }
 
+        //Problem 13 
+        public static string ImportSales(CarDealerContext context, string inputXml)
+        {
+
+            const string rootElement = "Sales";
+
+            var salesDto = XMLConverter.Deserializer<ImportSalesDto>(inputXml, rootElement);
+
+            var sales = salesDto
+                .Where(s => context.Cars.Any(c => c.Id == s.CarId))
+                .Select(s => new Sale
+                {
+                    CarId = s.CarId,
+                    CustomerId = s.CustomerId,
+                    Discount = s.Discount
+                })
+                .ToArray();
+
+            context.Sales.AddRange(sales);
+            context.SaveChanges();
+
+            return $"Successfully imported {sales.Length}";
+
+        }
     }
 }
