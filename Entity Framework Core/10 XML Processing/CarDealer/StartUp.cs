@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Text.RegularExpressions;
 using CarDealer.Data;
 using CarDealer.Dto.Import;
 using CarDealer.Models;
@@ -22,14 +23,17 @@ namespace CarDealer
             var suppliersXml = File.ReadAllText("../../../Datasets/suppliers.xml");
             var partsXml = File.ReadAllText("../../../Datasets/parts.xml");
             var carsXml = File.ReadAllText("../../../Datasets/cars.xml");
+            var customersXml = File.ReadAllText("../../../Datasets/customers.xml");
 
             var suppliersResult = ImportSuppliers(context, suppliersXml);
             var partsResult = ImportParts(context, partsXml);
             var carsResult = ImportCars(context, carsXml);
+            var customersResult = ImportCustomers(context, customersXml);
 
             Console.WriteLine(suppliersResult);
             Console.WriteLine(partsResult);
             Console.WriteLine(carsResult);
+            Console.WriteLine(customersResult);
 
         }
 
@@ -113,6 +117,28 @@ namespace CarDealer
 
             return $"Successfully imported {cars.Count}";
 
+        }
+
+        //Problem 12 
+        public static string ImportCustomers(CarDealerContext context, string inputXml)
+        {
+            const string rootElement = "Customers";
+
+            var customersDto = XMLConverter.Deserializer<ImportCustomersDto>(inputXml, rootElement);
+
+            var customers = customersDto
+                .Select(c => new Customer
+                {
+                    Name = c.Name,
+                    BirthDate = c.BirthDate,
+                    IsYoungDriver = c.IsYoungDriver
+
+                })
+                .ToArray();
+            context.Customers.AddRange(customers);
+            context.SaveChanges();
+
+            return $"Successfully imported {customers.Length}";
         }
 
     }
