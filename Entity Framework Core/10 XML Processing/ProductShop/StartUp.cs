@@ -34,7 +34,7 @@ namespace ProductShop
 
             //Console.WriteLine(result);
 
-            var result = GetCategoriesByProductsCount(context);
+            var result = GetUsersWithProducts(context);
 
             Console.WriteLine(result);
 
@@ -168,11 +168,11 @@ namespace ProductShop
                 {
                     FirstName = s.FirstName,
                     LastName = s.LastName,
-                    SoldProducts = s.ProductsSold.Select(p => new UserProductDto 
-                        {
-                            Name = p.Name,
-                            Price = p.Price,
-                        })
+                    SoldProducts = s.ProductsSold.Select(p => new UserProductDto
+                    {
+                        Name = p.Name,
+                        Price = p.Price,
+                    })
                         .ToArray()
                 })
                 .ToArray();
@@ -196,8 +196,8 @@ namespace ProductShop
                     AveragePrice = c.CategoryProducts.Select(p => p.Product).Average(p => p.Price),
                     TotalRevenue = c.CategoryProducts.Select(p => p.Product).Sum(p => p.Price)
                 })
-                .OrderByDescending(c=>c.Count)
-                .ThenBy(t=>t.TotalRevenue)
+                .OrderByDescending(c => c.Count)
+                .ThenBy(t => t.TotalRevenue)
                 .ToArray();
 
             var result = XMLConverter.Serialize(categoryReport, rootElement);
@@ -208,7 +208,41 @@ namespace ProductShop
         //Problem 8
         public static string GetUsersWithProducts(ProductShopContext context)
         {
+            const string rootElement = "Users";
 
+            var userWithProducts = context.Users
+                .AsEnumerable()
+                .Where(p => p.ProductsSold.Any())
+                .Select(u => new ExportUserDto
+                {
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Age = u.Age,
+                    SoldProduct = new ExportProductCountDto
+                    {
+                        Count = u.ProductsSold.Count,
+                        Products = u.ProductsSold.Select(p => new ExportProductDto
+                        {
+                            Name = p.Name,
+                            Price = p.Price
+                        })
+                            .OrderByDescending(p => p.Price)
+                            .ToArray()
+                    }
+                })
+                .OrderByDescending(x => x.SoldProduct.Count)
+                .Take(10)
+                .ToArray();
+
+            var resultDto = new ExportUserCountDto
+            {
+                Count = context.Users.Count(p=>p.ProductsSold.Any()),
+                Users = userWithProducts
+            };
+
+            var result = XMLConverter.Serialize(resultDto, rootElement);
+
+            return result;
         }
 
     }
