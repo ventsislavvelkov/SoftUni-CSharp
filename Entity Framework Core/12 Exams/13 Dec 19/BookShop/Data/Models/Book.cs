@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 using System.Text;
 using BookShop.Data.Models.Enums;
 
@@ -18,7 +19,7 @@ namespace BookShop.Data.Models
         [Range(typeof(decimal),"0.01", "100000000000000")]
         public decimal Price { get; set; }
         [Range(50,5000)]
-        public int Page { get; set; }
+        public int Pages { get; set; }
         [Required]
         public DateTime PublishedOn { get; set; }
 

@@ -1,8 +1,7 @@
-﻿using BookShop.Data.Models;
-
-namespace BookShop.Data
+﻿namespace BookShop.Data
 {
     using Microsoft.EntityFrameworkCore;
+    using Models;
 
     public class BookShopContext : DbContext
     {
@@ -13,7 +12,7 @@ namespace BookShop.Data
 
         public DbSet<Author> Authors { get; set; }
 
-        public DbSet<AuthorBook> AuthorBooks { get; set; }
+        public DbSet<AuthorBook> AuthorsBooks { get; set; }
 
         public DbSet<Book> Books { get; set; }
 
