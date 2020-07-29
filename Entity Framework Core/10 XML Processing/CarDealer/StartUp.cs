@@ -39,7 +39,7 @@ namespace CarDealer
             //Console.WriteLine(customersResult);
             //Console.WriteLine(salesResult);
 
-            var result = GetLocalSuppliers(context);
+            var result = GetSalesWithAppliedDiscount(context);
             Console.WriteLine(result);
 
         }
@@ -244,6 +244,92 @@ namespace CarDealer
         {
             const string rootElement = "cars";
 
+            var cars = context.Cars
+                .Select(c => new ExportCarWithTheirPartsDto
+                {
+                    Make = c.Make,
+                    Model = c.Model,
+                    TravelledDistance = c.TravelledDistance,
+                    Parts = c.PartCars.Select(p => new ExportPartsDto
+                    {
+                        Name = p.Part.Name,
+                        Price = p.Part.Price
+                    })
+                        .OrderByDescending(r=>r.Price)
+                        .ToArray()  
+                })
+                .OrderByDescending(c=>c.TravelledDistance)
+                .ThenBy(c=>c.Model)
+                .Take(5)
+                .ToArray();
+
+            var result = XMLConverter.Serialize(cars, rootElement);
+            return result;
+
+        }
+
+        //Problem 18 
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            const string rootElement = "customers";
+
+            var sales = context.Customers
+                .Where(c => c.Sales.Count >= 1)
+                .Select(c => new ExportSalesByCustomerDto
+                {
+                    FullName = c.Name,
+                    BoughtCars = c.Sales.Count,
+                    SpentMoney = c.Sales.Sum(s => s.Car.PartCars
+                        .Sum(pc => pc.Part.Price))
+                })
+                .OrderByDescending(s => s.SpentMoney)
+                .ToArray();
+
+            var result = XMLConverter.Serialize(sales, rootElement);
+
+            return result;
+
+        }
+
+        //Problem 19
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        {
+            const string rootElement = "sales";
+
+            var sales = context.Sales
+                .Select(s => new ExportSalesDiscountDto
+                {
+                    Car = new CarsDto
+                    {
+                        Make = s.Car.Make,
+                        Model = s.Car.Model,
+                        TravelledDistance = s.Car.TravelledDistance
+                    },
+                    Discount = s.Discount,
+                    CustomerName = s.Customer.Name,
+                    Price = s.Car.PartCars.Sum(p => p.Part.Price),
+                    PriceWithDiscount = s.Car.PartCars.Sum(p => p.Part.Price) -
+                                        s.Car.PartCars.Sum(p => p.Part.Price) * s.Discount / 100,
+
+
+                })
+                .ToArray();
+                
+
+            var result = XMLConverter.Serialize(sales, rootElement);
+
+            return result;
+
         }
     }
 }
+
+
+//sales>
+//<sale>
+//      <car make = "BMW" model="M5 F10" travelled-distance="435603343" />
+//      <discount>30.00</discount>
+//      <customer-name>Hipolito Lamoreaux</customer-name>
+//      <price>707.97</price>
+//      <price-with-discount>495.58</price-with-discount>
+//</sale>
