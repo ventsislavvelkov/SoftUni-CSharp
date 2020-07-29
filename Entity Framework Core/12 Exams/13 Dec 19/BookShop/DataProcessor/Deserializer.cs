@@ -1,4 +1,9 @@
-﻿namespace BookShop.DataProcessor
+﻿using BookShop.Data.Models;
+using BookShop.Data.Models.Enums;
+using BookShop.DataProcessor.ImportDto;
+using ProductShop.XmlHelper;
+
+namespace BookShop.DataProcessor
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +29,41 @@
 
         public static string ImportBooks(BookShopContext context, string xmlString)
         {
-           throw new NotImplementedException();
+            const string rootElement = "Books";
+            var booksDto = XMLConverter.Deserializer<ImportBookDto>(xmlString, rootElement);
+            
+            var books = new List<Book>();
+            var sb = new StringBuilder();
+
+            foreach (var dto in booksDto)
+            {
+                if (IsValid(dto))
+                {
+                    var date = DateTime.ParseExact(dto.PublishedOn, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    var book = new Book
+                    {
+                        Name = dto.Name,
+                        Genre = (Genre)dto.Genre,
+                        Price = dto.Price,
+                        Pages = dto.Pages,
+                        PublishedOn = date
+
+                    };
+
+                    books.Add(book);
+                    sb.AppendLine(string.Format(SuccessfullyImportedBook, book.Name, book.Price));
+                }
+                else
+                {
+                    sb.AppendLine(ErrorMessage);
+                }
+            }
+
+            context.Books.AddRange(books);
+            context.SaveChanges();
+            var result = sb.ToString().TrimEnd();
+
+            return result;
         }
 
         public static string ImportAuthors(BookShopContext context, string jsonString)
