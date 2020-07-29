@@ -10,10 +10,10 @@ namespace BookShop.Data.Models
         [Key]
         public int  Id { get; set; }
         [Required]
-        [Range(3,30)]
+        [StringLength(30, MinimumLength = 3)]
         public string FirstName { get; set; }
         [Required]
-        [Range(3,30)]
+        [StringLength(30, MinimumLength = 3)]
         public string LastName { get; set; }
         [Required]
         [EmailAddress]
@@ -23,5 +23,6 @@ namespace BookShop.Data.Models
         public string Phone { get; set; }
 
         public ICollection<AuthorBook> AuthorsBooks  { get; set; }
+        = new HashSet<AuthorBook>();
     }
 }

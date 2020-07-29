@@ -1,4 +1,6 @@
-﻿namespace BookShop.Data
+﻿using BookShop.Data.Models;
+
+namespace BookShop.Data
 {
     using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,12 @@
 
         public BookShopContext(DbContextOptions options)
             : base(options) { }
+
+        public DbSet<Author> Authors { get; set; }
+
+        public DbSet<AuthorBook> AuthorBooks { get; set; }
+
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,6 +28,8 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AuthorBook>()
+                .HasKey(k => new { k.AuthorId, k.BookId });
         }
     }
 }

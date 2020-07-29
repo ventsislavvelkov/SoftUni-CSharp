@@ -11,11 +11,11 @@ namespace BookShop.Data.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [Range(3,30)]
+        [StringLength(30, MinimumLength = 3)]
         public string Name { get; set; }
         [Required]
         public Genre Genre { get; set; }
-        [Range(0.01, 20000000)]
+        [Range(typeof(decimal),"0.01", "100000000000000")]
         public decimal Price { get; set; }
         [Range(50,5000)]
         public int Page { get; set; }
@@ -23,5 +23,6 @@ namespace BookShop.Data.Models
         public DateTime PublishedOn { get; set; }
 
         public ICollection<AuthorBook> AuthorsBooks  { get; set; }
+        = new HashSet<AuthorBook>();
     }
 }
