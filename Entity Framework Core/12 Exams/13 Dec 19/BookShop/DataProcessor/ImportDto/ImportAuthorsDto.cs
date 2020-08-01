@@ -19,7 +19,7 @@ namespace BookShop.DataProcessor.ImportDto
         [XmlElement("LastName")]
         public string LastName { get; set; }
         [Required]
-        [RegularExpression(@"^[0-9]{3}-[0-9]{3}-[0-9]{4}$")]
+        [RegularExpression(@"\d{3}[-]\d{3}[-]\d{4}")]
         [XmlElement("Phone")]
         public string Phone { get; set; }
         [Required]
@@ -34,6 +34,6 @@ namespace BookShop.DataProcessor.ImportDto
    public class ImportBookAuthorsDto
    {
        [XmlElement("Id")]
-       public int Id { get; set; }
+       public int? Id { get; set; }
    }
 }

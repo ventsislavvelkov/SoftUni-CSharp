@@ -1,4 +1,6 @@
-﻿namespace BookShop.DataProcessor
+﻿
+
+namespace BookShop.DataProcessor
 {
     using System;
     using System.Globalization;
@@ -15,7 +17,26 @@
     {
         public static string ExportMostCraziestAuthors(BookShopContext context)
         {
-            throw new NotImplementedException();
+            var authors = context.Authors
+                .Select(a => new
+                {
+                    AuthorName = a.FirstName + " " + a.LastName,
+                    Books = a.AuthorsBooks.Select(ab => ab.Book)
+                        .OrderByDescending(ab => ab.Price)
+                        .Select(b => new
+                        {
+                            BookName = b.Name,
+                            BookPrice = b.Price.ToString("f2")
+                        })
+                        .ToArray()
+                })
+                .ToArray()
+                .OrderByDescending(a => a.Books.Length)
+                .ThenBy(a => a.AuthorName);
+
+            var json = JsonConvert.SerializeObject(authors, Formatting.Indented);
+
+            return json;
         }
 
         public static string ExportOldestBooks(BookShopContext context, DateTime date)

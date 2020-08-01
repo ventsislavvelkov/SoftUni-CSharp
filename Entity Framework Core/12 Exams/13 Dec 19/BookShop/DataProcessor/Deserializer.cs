@@ -72,7 +72,7 @@ namespace BookShop.DataProcessor
 
             var sb = new StringBuilder();
 
-            List<Author> authors = new List<Author>();
+            var authors = new List<Author>();
 
             foreach (var authorDto in authorDtos)
             {
@@ -82,7 +82,7 @@ namespace BookShop.DataProcessor
                     continue;
                 }
 
-                bool doesEmailExists = authors
+                var doesEmailExists = authors
                     .FirstOrDefault(x => x.Email == authorDto.Email) != null;
 
                 if (doesEmailExists)
@@ -130,7 +130,7 @@ namespace BookShop.DataProcessor
             context.Authors.AddRange(authors);
             context.SaveChanges();
 
-            string result = sb.ToString().TrimEnd();
+            var result = sb.ToString().TrimEnd();
 
             return result;
         }
