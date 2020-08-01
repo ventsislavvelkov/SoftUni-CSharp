@@ -68,7 +68,71 @@ namespace BookShop.DataProcessor
 
         public static string ImportAuthors(BookShopContext context, string jsonString)
         {
-            throw new NotImplementedException();
+            var authorDtos = JsonConvert.DeserializeObject<ImportAuthorsDto[]>(jsonString);
+
+            var sb = new StringBuilder();
+
+            List<Author> authors = new List<Author>();
+
+            foreach (var authorDto in authorDtos)
+            {
+                if (!IsValid(authorDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                bool doesEmailExists = authors
+                    .FirstOrDefault(x => x.Email == authorDto.Email) != null;
+
+                if (doesEmailExists)
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                var author = new Author
+                {
+                    FirstName = authorDto.FirstName,
+                    LastName = authorDto.LastName,
+                    Email = authorDto.Email,
+                    Phone = authorDto.Phone
+                };
+
+                
+
+                foreach (var authorDtoAuthorBookDto in authorDto.Books)
+                {
+                    var book = context.Books.Find(authorDtoAuthorBookDto.Id);
+
+                    if (book == null)
+                    {
+                        continue;
+                    }
+
+                    author.AuthorsBooks.Add(new AuthorBook
+                    {
+                        Author = author,
+                        Book = book
+                    });
+                }
+
+                if (author.AuthorsBooks.Count == 0)
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                authors.Add(author);
+                sb.AppendLine(string.Format(SuccessfullyImportedAuthor, (author.FirstName + " " + author.LastName), author.AuthorsBooks.Count));
+            }
+
+            context.Authors.AddRange(authors);
+            context.SaveChanges();
+
+            string result = sb.ToString().TrimEnd();
+
+            return result;
         }
 
         private static bool IsValid(object dto)
