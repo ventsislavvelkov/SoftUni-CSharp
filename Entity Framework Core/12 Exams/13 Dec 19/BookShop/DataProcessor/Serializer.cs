@@ -1,5 +1,9 @@
 ﻿
 
+using BookShop.Data.Models.Enums;
+using BookShop.DataProcessor.ExportDto;
+using ProductShop.XmlHelper;
+
 namespace BookShop.DataProcessor
 {
     using System;
@@ -41,7 +45,26 @@ namespace BookShop.DataProcessor
 
         public static string ExportOldestBooks(BookShopContext context, DateTime date)
         {
-            throw new NotImplementedException();
+            const string rootElement = "Books";
+
+            var books = context.Books
+                .Where(b => b.PublishedOn < date && b.Genre == Genre.Science)
+                .ToArray()
+                .OrderByDescending(b => b.Pages)
+                .ThenByDescending(b => b.PublishedOn)
+                .Take(10)
+                .Select(b => new ExportOldestBooksDto
+                {
+                    Pages = b.Pages,
+                    Name = b.Name,
+                    PublishedOn = b.PublishedOn.ToString("d", CultureInfo.InvariantCulture)
+                })
+                .ToArray();
+
+
+            var result = XMLConverter.Serialize(books, rootElement);
+
+            return result;
         }
     }
 }
