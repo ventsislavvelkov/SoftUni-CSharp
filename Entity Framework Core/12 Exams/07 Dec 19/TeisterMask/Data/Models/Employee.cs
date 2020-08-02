@@ -5,12 +5,12 @@ using Newtonsoft.Json;
 
 namespace TeisterMask.Data.Models
 {
-   public class Employee
+    public class Employee
     {
         [Key]
-        public int  Id { get; set; }
+        public int Id { get; set; }
         [Required]
-        [Range(3,40)]
+        [StringLength(40, MinimumLength = 3)]
         [RegularExpression(@"[^a-z]|[^A-Z][0-9]")]
         public string Username { get; set; }
         [Required]

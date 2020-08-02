@@ -2,9 +2,10 @@
 {
     public enum LabelType
     {
-        ProductBacklog = 1,
-        SprintBacklog = 2,
-        InProgress = 3,
-        Finished = 4
+        Priority = 1,
+        CSharpAdvanced = 2,
+        JavaAdvanced = 3,
+        EntityFramework = 4,
+        Hibernate = 5
     }
 }
