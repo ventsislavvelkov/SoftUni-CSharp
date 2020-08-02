@@ -30,8 +30,12 @@ namespace TeisterMask.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<EmployeeTask>()
-                .HasKey(e => new {e.EmployeeId, e.TaskId});
+            modelBuilder.Entity<EmployeeTask>(entity =>
+            {
+                entity.HasKey(e => new { e.EmployeeId, e.TaskId });
+            });
+
+
 
         }
     }

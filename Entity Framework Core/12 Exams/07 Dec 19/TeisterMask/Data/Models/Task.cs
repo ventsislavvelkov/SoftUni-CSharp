@@ -11,7 +11,7 @@ namespace TeisterMask.Data.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(40, MinimumLength = 2)]
+        [MaxLength(40)]
         public string Name { get; set; }
         [Required]
         public DateTime OpenDate { get; set; }
@@ -24,9 +24,10 @@ namespace TeisterMask.Data.Models
         [Required]
         public int ProjectId { get; set; }
 
-        public Project Project { get; set; }
+        public virtual Project Project { get; set; }
 
-        public ICollection<EmployeeTask> EmployeesTasks { get; set; }
+        public virtual ICollection<EmployeeTask> EmployeesTasks { get; set; }
+        =new HashSet<EmployeeTask>();
 
     }
 }
