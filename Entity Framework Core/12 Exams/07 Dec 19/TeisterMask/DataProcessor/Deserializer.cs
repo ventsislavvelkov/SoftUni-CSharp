@@ -1,8 +1,6 @@
-﻿using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using ProductShop.XmlHelper;
-using TeisterMask.Data.Models;
 using TeisterMask.DataProcessor.ImportDto;
 
 namespace TeisterMask.DataProcessor
@@ -29,56 +27,35 @@ namespace TeisterMask.DataProcessor
         {
             const string rootElement = "Projects";
 
-            var projectsDto = XMLConverter.Deserializer<ImportProjectsDto>(xmlString, rootElement);
-
-            var importProject = new List<Project>();
             var sb = new StringBuilder();
+            var projectDtos = XMLConverter.Deserializer<ImportProjectDto[]>(xmlString, rootElement);
 
-            foreach (var dto in projectsDto)
+            foreach (var importProjectDto in projectDtos)
             {
-                if (IsValid(dto))
-                {
-                    var openDate = DateTime.ParseExact(dto.OpenDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    var dueDate = DateTime.ParseExact(dto.DueDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                    // var openDateTask = DateTime.ParseExact(, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    //var dueDateTask = DateTime.ParseExact(t.DueDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                    var project = new Project
-                    {
-                        Name = dto.Name,
-                        OpenDate = openDate,
-                        DueDate = dueDate,
-
-                        Tasks = dto.Task.Select(t => new ImportTaskDto
-                        {
-
-
-                            Name = t.Name,
-                            OpenDate = t.OpenDate,
-                            DueDate = t.DueDate,
-                            ExecutionType = t.ExecutionType,
-                            LabelType = t.LabelType
-
-                        })
-                    };
-
-
-
-                    importProject.AddRange(project);
-                    sb.AppendLine(string.Format(SuccessfullyImportedProject, project.Name, project.Tasks.Count()));
-
-                }
-                else
+                if (!IsValid(importProjectDto))
                 {
                     sb.AppendLine(ErrorMessage);
+                    continue;
                 }
             }
 
-            context.Projects.AddRange(importProject);
-            context.SaveChanges();
+            foreach (var taskDto in )
+            {
+                
+            }
+        }
 
-            return sb.ToString().TrimEnd();
+        private static bool IsValidUsername(string userName)
+        {
+            foreach (var ch in userName)
+            {
+                if (!Char.IsLetterOrDigit(ch))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public static string ImportEmployees(TeisterMaskContext context, string jsonString)

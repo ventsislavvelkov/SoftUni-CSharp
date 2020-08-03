@@ -11,13 +11,10 @@ namespace TeisterMask.Data
         public TeisterMaskContext(DbContextOptions options)
             : base(options) { }
 
-        public DbSet<Employee> Employees { get; set; }
-
         public DbSet<EmployeeTask> EmployeesTasks { get; set; }
-
-        public DbSet<Project> Projects { get; set; }
-
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,11 +29,11 @@ namespace TeisterMask.Data
         {
             modelBuilder.Entity<EmployeeTask>(entity =>
             {
-                entity.HasKey(e => new { e.EmployeeId, e.TaskId });
+                entity.HasKey(k => new
+                {
+                    k.EmployeeId, k.TaskId
+                });
             });
-
-
-
         }
     }
 }
