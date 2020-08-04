@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace TeisterMask.DataProcessor.ImportDto
 {
-    [XmlType("Taks")]
+    [XmlType("Task")]
     public class ImportTaskProjectDto
     {
         [Required]

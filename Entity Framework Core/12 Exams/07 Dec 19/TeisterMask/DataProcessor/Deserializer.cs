@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using ProductShop.XmlHelper;
 using TeisterMask.Data.Models;
+using TeisterMask.Data.Models.Enums;
 using TeisterMask.DataProcessor.ImportDto;
 
 namespace TeisterMask.DataProcessor
@@ -32,9 +33,9 @@ namespace TeisterMask.DataProcessor
             var sb = new StringBuilder();
             var projects = new List<Project>();
 
-            var projectDtos = XMLConverter.Deserializer<ImportProjectDto[]>(xmlString, rootElement);
+            var projectDtos = XMLConverter.Deserializer<ImportProjectDto>(xmlString, rootElement);
 
-            foreach (var projectDto in projectDtos)
+            foreach (ImportProjectDto projectDto in projectDtos)
             {
                 if (!IsValid(projectDto))
                 {
@@ -42,26 +43,122 @@ namespace TeisterMask.DataProcessor
                     continue;
                 }
 
-                DateTime projectOpenData;
-                bool isProjectOpenDataValid = DateTime.TryParseExact(projectDto.OpenDate, "dd/MM/yyyy",
-                    CultureInfo.InvariantCulture, DateTimeStyles.None, out projectOpenData);
+                DateTime projectOpenDate;
+                bool isProjectOpenDataValid = DateTime.TryParseExact(projectDto.OpenDate , "dd/MM/yyyy",
+                    CultureInfo.InvariantCulture, DateTimeStyles.None, out projectOpenDate);
 
-            }
-
-        }
-
-        private static bool IsValidUsername(string userName)
-        {
-            foreach (var ch in userName)
-            {
-                if (!Char.IsLetterOrDigit(ch))
+                if (!isProjectOpenDataValid)
                 {
-                    return false;
+                    sb.AppendLine(ErrorMessage);
+                    continue;
                 }
+
+                DateTime? projectDueDate;
+
+                if (!String.IsNullOrEmpty(projectDto.DueDate))
+                {
+                    DateTime projectDueDateValue;
+                    bool isProjectDueDataValid = DateTime.TryParseExact(projectDto.DueDate, "dd/MM/yyyy",
+                        CultureInfo.InvariantCulture, DateTimeStyles.None, out projectDueDateValue);
+
+                    if (!isProjectDueDataValid)
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+
+                    }
+
+                    projectDueDate = projectDueDateValue;
+                }
+                else
+                {
+                    projectDueDate = null;
+                }
+
+                var pr = new Project()
+                {
+                    Name = projectDto.Name,
+                    OpenDate = projectOpenDate,
+                    DueDate = projectDueDate
+                };
+
+                foreach (ImportTaskProjectDto taskDto in projectDto.Tasks)
+                {
+                    if (!IsValid(taskDto))
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    DateTime taskOpenData;
+                    bool isTaskOpenDataValid = DateTime.TryParseExact(taskDto.OpenDate, "dd/MM/yyyy",
+                        CultureInfo.InvariantCulture, DateTimeStyles.None, out taskOpenData);
+
+                    if (!isTaskOpenDataValid)
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    DateTime taskDueDate;
+                    bool isTaskDueDataValid = DateTime.TryParseExact(taskDto.DueDate, "dd/MM/yyyy",
+                        CultureInfo.InvariantCulture, DateTimeStyles.None, out taskDueDate);
+
+
+                    if (!isTaskDueDataValid)
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    if (taskOpenData < projectOpenDate)
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    if (projectDueDate.HasValue)
+                    {
+                        if (taskDueDate > projectDueDate.Value)
+                        {
+                            sb.AppendLine(ErrorMessage);
+                            continue;
+                        }
+                    }
+
+                    pr.Tasks.Add(new Task()
+                    {
+                        Name = taskDto.Name,
+                        OpenDate = taskOpenData,
+                        DueDate = taskDueDate,
+                        ExecutionType = (ExecutionType)taskDto.ExecutionType,
+                        LabelType = (LabelType)taskDto.LabelType
+                    });
+
+                }
+
+                projects.Add(pr);
+                sb.AppendLine(String.Format(SuccessfullyImportedProject, pr.Name, pr.Tasks.Count));
             }
 
-            return true;
+            context.Projects.AddRange(projects);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
+
+        //private static bool IsValidUsername(string userName)
+        //{
+        //    foreach (var ch in userName)
+        //    {
+        //        if (!Char.IsLetterOrDigit(ch))
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
 
         public static string ImportEmployees(TeisterMaskContext context, string jsonString)
         {
