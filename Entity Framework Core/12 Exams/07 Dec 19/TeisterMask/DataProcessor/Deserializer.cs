@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 using System.Text;
 using ProductShop.XmlHelper;
+using TeisterMask.Data.Models;
 using TeisterMask.DataProcessor.ImportDto;
 
 namespace TeisterMask.DataProcessor
@@ -28,21 +30,24 @@ namespace TeisterMask.DataProcessor
             const string rootElement = "Projects";
 
             var sb = new StringBuilder();
+            var projects = new List<Project>();
+
             var projectDtos = XMLConverter.Deserializer<ImportProjectDto[]>(xmlString, rootElement);
 
-            foreach (var importProjectDto in projectDtos)
+            foreach (var projectDto in projectDtos)
             {
-                if (!IsValid(importProjectDto))
+                if (!IsValid(projectDto))
                 {
                     sb.AppendLine(ErrorMessage);
                     continue;
                 }
+
+                DateTime projectOpenData;
+                bool isProjectOpenDataValid = DateTime.TryParseExact(projectDto.OpenDate, "dd/MM/yyyy",
+                    CultureInfo.InvariantCulture, DateTimeStyles.None, out projectOpenData);
+
             }
 
-            foreach (var taskDto in )
-            {
-                
-            }
         }
 
         private static bool IsValidUsername(string userName)
