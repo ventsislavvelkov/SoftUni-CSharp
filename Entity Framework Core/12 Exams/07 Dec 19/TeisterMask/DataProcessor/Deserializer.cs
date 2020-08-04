@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 using ProductShop.XmlHelper;
 using TeisterMask.Data.Models;
 using TeisterMask.Data.Models.Enums;
@@ -162,7 +163,53 @@ namespace TeisterMask.DataProcessor
 
         public static string ImportEmployees(TeisterMaskContext context, string jsonString)
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+
+            var employeeDtos = JsonConvert.DeserializeObject<ImportEmployeeDto[]>(jsonString);
+
+            var employees = new List<Employee>();
+
+            foreach (ImportEmployeeDto employeeDto in employeeDtos)
+            {
+                if (!IsValid(employeeDto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+                Employee em = new Employee()
+                {
+                    Username = employeeDto.Username,
+                    Email = employeeDto.Email,
+                    Phone = employeeDto.Phone
+                };
+
+                foreach (int taskId in employeeDto.Tasks.Distinct())
+                {
+                    Task task = context.Tasks
+                        .FirstOrDefault(t => t.Id == taskId);
+                  
+                    if (task == null)
+                    {
+                        sb.AppendLine(ErrorMessage);
+                        continue;
+                    }
+
+                    em.EmployeesTasks.Add(new EmployeeTask()
+                    {
+                        Employee = em,
+                        Task = task
+                    });
+                }
+
+                employees.Add(em);
+                sb.AppendLine(String.Format(SuccessfullyImportedEmployee, em.Username, em.EmployeesTasks.Count));
+            }
+
+            context.Employees.AddRange(employees);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         private static bool IsValid(object dto)
