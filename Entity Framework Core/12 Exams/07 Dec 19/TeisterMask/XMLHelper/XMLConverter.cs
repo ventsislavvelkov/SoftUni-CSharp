@@ -2,7 +2,7 @@
 using System.Text;
 using System.Xml.Serialization;
 
-namespace ProductShop.XmlHelper
+namespace TeisterMask.XmlHelper
 {
     public static class XMLConverter
     {

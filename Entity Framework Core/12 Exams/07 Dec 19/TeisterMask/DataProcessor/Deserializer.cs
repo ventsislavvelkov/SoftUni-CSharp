@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
-using ProductShop.XmlHelper;
+using TeisterMask.XmlHelper;
 using TeisterMask.Data.Models;
 using TeisterMask.Data.Models.Enums;
 using TeisterMask.DataProcessor.ImportDto;
