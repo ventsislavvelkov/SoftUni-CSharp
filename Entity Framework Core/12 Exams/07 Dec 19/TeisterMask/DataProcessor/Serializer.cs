@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json;
+using ProductShop.XmlHelper;
+using TeisterMask.DataProcessor.ExportDto;
 
 namespace TeisterMask.DataProcessor
 {
@@ -12,7 +14,36 @@ namespace TeisterMask.DataProcessor
     {
         public static string ExportProjectWithTheirTasks(TeisterMaskContext context)
         {
-            throw new NotImplementedException();
+            const string rootElement = "Projects";
+
+            var projects = context.Projects
+                .ToArray()
+                .Where(p => p.Tasks.Count > 0)
+                .Select(p => new ExportProjectDto
+                {
+                    Name = p.Name,
+                    TasksCount = p.Tasks.Count,
+                    HasEndDate = p.DueDate.HasValue ? "Yes" : "No",
+                    Tasks = p.Tasks
+                        .Select(t => new ExportTaskProjectDto
+                        {
+                            Name = t.Name,
+                            LabelType = t.LabelType.ToString()
+
+                        })
+                        .OrderBy(t => t.Name)
+                        .ToArray()
+                })
+                .OrderByDescending(p => p.TasksCount)
+                .ThenBy(p => p.Name)
+                .ToArray();
+
+            var result = XMLConverter.Serialize(projects, rootElement);
+
+            return result;
+
+
+
         }
 
         public static string ExportMostBusiestEmployees(TeisterMaskContext context, DateTime date)
