@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 namespace MusicHub.DataProcessor
 {
     using System;
-
     using Data;
 
     public class Deserializer
@@ -161,7 +160,7 @@ namespace MusicHub.DataProcessor
 
         public static string ImportSongPerformers(MusicHubDbContext context, string xmlString)
         {
-            throw new NotImplementedException();
+            
         }
 
         private static bool IsValid(object dto)
