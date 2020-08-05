@@ -160,7 +160,34 @@ namespace MusicHub.DataProcessor
 
         public static string ImportSongPerformers(MusicHubDbContext context, string xmlString)
         {
-            
+            const string root = "Performers";
+            var sb = new StringBuilder();
+
+            var songPerformersDto = XMLConverter.Deserializer<ImportSongPerformersDto>(xmlString, root);
+
+            foreach (ImportSongPerformersDto dto in songPerformersDto)
+            {
+                if (!IsValid(dto))
+                {
+                    sb.AppendLine(ErrorMessage);
+                    continue;
+                }
+
+
+                var performer = new Performer()
+                {
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    Age = dto.Age,
+                    NetWorth = dto.NetWorth,
+                };
+
+             
+
+                
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         private static bool IsValid(object dto)
@@ -169,6 +196,8 @@ namespace MusicHub.DataProcessor
             var validationResult = new List<ValidationResult>();
 
             return Validator.TryValidateObject(dto, validationContext, validationResult, true);
+
+
         }
     }
 }
