@@ -110,59 +110,53 @@ namespace MusicHub.DataProcessor
 
         public static string ImportSongs(MusicHubDbContext context, string xmlString)
         {
-            //XmlConverter is helper class
-            var root = "Songs";
-            var data = XMLConverter.Deserializer<ImportSongsDto>(xmlString, root);
+            const string rootElement = "Songs";
+            var sb = new StringBuilder();
 
-            StringBuilder sb = new StringBuilder();
+            var songsDto = XMLConverter.Deserializer<ImportSongsDto>(xmlString, rootElement);
 
-            foreach (var item in data)
+            foreach (ImportSongsDto dto in songsDto)
             {
-                if (!IsValid(item))
+
+                if (!IsValid(dto))
                 {
                     sb.AppendLine(ErrorMessage);
                     continue;
                 }
 
-                if (item.AlbumId == null || !context.Albums.Any(a => a.Id == item.AlbumId))
-                {
-                    sb.AppendLine(ErrorMessage);
-                    continue;
-                }
-
-                if (!context.Writers.Any(w => w.Id == item.WriterId))
-                {
-                    sb.AppendLine(ErrorMessage);
-                    continue;
-                }
-
-                //invalid genre
                 Genre genre;
-                var validGenre = Enum.TryParse<Genre>(item.Genre.ToString(), out genre);
 
-                if (!validGenre)
+                var validGenre = Enum.TryParse<Genre>(dto.Genre.ToString(), out genre);
+
+                var album = context.Albums.FirstOrDefault(a => a.Id == dto.AlbumId);
+
+                var writer = context.Writers.FirstOrDefault(w => w.Id == dto.WriterId);
+
+                if (album == null || writer == null || validGenre == false)
                 {
                     sb.AppendLine(ErrorMessage);
                     continue;
                 }
 
-                var song = new Song
+                var song = new Song()
                 {
-                    Name = item.Name,
-                    CreatedOn = DateTime.ParseExact(item.CreatedOn, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                    Duration = TimeSpan.Parse(item.Duration),
-                    Price = item.Price,
+                    Name = dto.Name,
+                    Duration = TimeSpan.ParseExact(dto.Duration, "c", CultureInfo.InvariantCulture),
+                    CreatedOn = DateTime.ParseExact(dto.CreatedOn, "dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Genre = genre,
-                    AlbumId = item.AlbumId,
-                    WriterId = item.WriterId
+                    AlbumId = dto.AlbumId,
+                    WriterId = dto.WriterId,
+                    Price = dto.Price
                 };
 
                 context.Songs.Add(song);
+
                 sb.AppendLine(string.Format(SuccessfullyImportedSong, song.Name, song.Genre, song.Duration));
             }
 
             context.SaveChanges();
-            return sb.ToString();
+
+            return sb.ToString().TrimEnd();
         }
 
         public static string ImportSongPerformers(MusicHubDbContext context, string xmlString)
