@@ -22,7 +22,7 @@ namespace MusicHub.DataProcessor.ImportDtos
         public string CreatedOn { get; set; }
         [Required]
         [XmlElement("Genre")]
-        public string Gender { get; set; }
+        public string Genre { get; set; }
         [XmlElement("AlbumId")]
         public int AlbumId { get; set; }
         [XmlElement("WriterId")]
