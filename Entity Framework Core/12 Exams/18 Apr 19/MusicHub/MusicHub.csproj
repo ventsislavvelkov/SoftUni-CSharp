@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataProcessor\ImportDtos\" />
     <Folder Include="ImportResults\" />
   </ItemGroup>
 

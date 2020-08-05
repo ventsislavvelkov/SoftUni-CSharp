@@ -1,4 +1,11 @@
-﻿namespace MusicHub.DataProcessor
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using MusicHub.Data.Models;
+using MusicHub.DataProcessor.ImportDtos;
+using Newtonsoft.Json;
+
+namespace MusicHub.DataProcessor
 {
     using System;
 
@@ -21,7 +28,33 @@
 
         public static string ImportWriters(MusicHubDbContext context, string jsonString)
         {
-            throw new NotImplementedException();
+          var sb = new StringBuilder();
+          var writers = new List<Writer>();
+
+          var writersDto = JsonConvert.DeserializeObject<ImportWritersDto[]>(jsonString);
+
+          foreach (ImportWritersDto dto in writersDto)
+          {
+              if (!IsValid(dto))
+              {
+                  sb.AppendLine(ErrorMessage);
+                  continue;
+              }
+
+              var writer = new Writer()
+              {
+                  Name = dto.Name,
+                  Pseudonym = dto.Pseudonym
+              };
+
+              writers.Add(writer);
+              sb.AppendLine(string.Format(SuccessfullyImportedWriter, writer.Name));
+          }
+
+          context.Writers.AddRange(writers);
+          context.SaveChanges();
+
+          return sb.ToString().TrimEnd();
         }
 
         public static string ImportProducersAlbums(MusicHubDbContext context, string jsonString)
@@ -37,6 +70,14 @@
         public static string ImportSongPerformers(MusicHubDbContext context, string xmlString)
         {
             throw new NotImplementedException();
+        }
+
+        private static bool IsValid(object dto)
+        {
+            var validationContext = new ValidationContext(dto);
+            var validationResult = new List<ValidationResult>();
+
+            return Validator.TryValidateObject(dto, validationContext, validationResult, true);
         }
     }
 }
