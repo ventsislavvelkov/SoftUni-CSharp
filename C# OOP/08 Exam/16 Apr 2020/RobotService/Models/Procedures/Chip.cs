@@ -20,7 +20,6 @@ namespace RobotService.Models.Procedures
 
             robot.Happiness -= 5;
             robot.IsChipped = true;
-            robot.ProcedureTime -= procedureTime;
             this.Robots.Add(robot);
         }
     }
