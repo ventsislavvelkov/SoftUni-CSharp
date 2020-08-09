@@ -10,7 +10,7 @@ namespace RobotService.Models.Procedures
         public override void DoService(IRobot robot, int procedureTime)
         {
             base.DoService(robot, procedureTime);
-
+            robot.ProcedureTime -= procedureTime;
             var msg = string.Format(ExceptionMessages.AlreadyChipped, robot.Name);
 
             if (robot.IsChipped)
