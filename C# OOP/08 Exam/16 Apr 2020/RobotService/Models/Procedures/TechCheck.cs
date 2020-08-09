@@ -2,7 +2,7 @@
 
 namespace RobotService.Models.Procedures
 {
-    public class TechCheck_ : Procedure
+    public class TechCheck : Procedure
     {
         public override void DoService(IRobot robot, int procedureTime)
         {

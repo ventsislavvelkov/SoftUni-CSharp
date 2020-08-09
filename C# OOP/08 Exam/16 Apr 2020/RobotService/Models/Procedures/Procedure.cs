@@ -11,7 +11,7 @@ namespace RobotService.Models.Procedures
    {
        private List<IRobot> robots;
 
-       public Procedure()
+       protected Procedure()
        {
            this.robots = new List<IRobot>();
        }
