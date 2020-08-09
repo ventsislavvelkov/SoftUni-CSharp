@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using RobotService.Models.Procedures.Contracts;
 using RobotService.Models.Robots.Contracts;
+using RobotService.Utilities.Messages;
 
 namespace RobotService.Models.Procedures
 {
@@ -25,15 +26,19 @@ namespace RobotService.Models.Procedures
 
             foreach (IRobot robot in this.Robots)
             {
-                sb.AppendLine($"{robot}");
+                sb.AppendLine($"{robot.ToString()}");
             }
 
             return sb.ToString().TrimEnd();
         }
 
-        public void DoService(IRobot robot, int procedureTime)
+        public virtual void DoService(IRobot robot, int procedureTime)
         {
-            
+            if (robot.ProcedureTime < procedureTime )
+            {
+                throw new ArgumentException(ExceptionMessages.InsufficientProcedureTime);
+            }
+
         }
     }
 }

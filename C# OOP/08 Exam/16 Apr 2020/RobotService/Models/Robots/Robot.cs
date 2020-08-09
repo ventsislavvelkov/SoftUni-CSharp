@@ -12,7 +12,7 @@ namespace RobotService.Models.Robots
         private int energy;
         private string owner = "Service";
 
-        public Robot(string name, int energy, int happiness, int procedureTime)
+        protected Robot(string name, int energy, int happiness, int procedureTime)
         {
             this.Name = name;
             this.Energy = energy;
