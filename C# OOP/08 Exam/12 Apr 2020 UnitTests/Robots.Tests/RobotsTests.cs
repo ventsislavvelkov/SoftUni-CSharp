@@ -116,6 +116,21 @@ namespace Robots.Tests
         }
 
         [Test]
+        public void CheckWorkMethodReduceBatteryCorrect()
+        {
+            robot = new Robot("Eli", 100);
+            robotManager = new RobotManager(2);
+
+            robotManager.Add(robot);
+
+            robotManager.Work("Eli", "job", 10);
+
+            var expectedBattry = 90;
+
+            Assert.AreEqual(expectedBattry, robot.Battery);
+        }
+
+        [Test]
         public void CheckIfRobotIsNull()
         {
             robot = new Robot("Eli", 100);
