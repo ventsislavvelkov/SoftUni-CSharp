@@ -16,7 +16,7 @@ namespace CounterStrike.Models.Maps
         }
         public string Start(ICollection<IPlayer> players)
         {
-            
+            throw new System.NotImplementedException();
         }
     }
 }
