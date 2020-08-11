@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VaporStore.Data.Models.Enums
+﻿namespace VaporStore.Data.Models.Enums
 {
-   public enum CardType
+    public enum CardType
     {
-        Debit,
-        Credit
-
+        Debit = 0,
+        Credit = 1,
     }
 }
