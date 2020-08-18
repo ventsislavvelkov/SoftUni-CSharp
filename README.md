@@ -27,6 +27,14 @@
 <td><a href="https://softuni.bg/trainings/2834/csharp-advanced-may-2020" rel="nofollow"> C# Advanced </a></td>
 <td><a href="https://softuni.bg/certificates/details/83255/9d29f56a" rel="nofollow"> Link</a></td>
 </tr>
+  <tr>
+<td><a href="https://softuni.bg/trainings/2835/csharp-oop-june-2020" rel="nofollow"> C# Advanced </a></td>
+<td><a href="https://softuni.bg/certificates/details/86560/43d3ae42" rel="nofollow"> Link</a></td>
+</tr>
+   <tr>
+<td><a href="https://softuni.bg/trainings/2843/entity-framework-core-june-2020" rel="nofollow"> C# Advanced </a></td>
+<td><a href="https://softuni.bg/certificates/details/86363/a2d30801" rel="nofollow"> Link</a></td>
+</tr>
 </tbody>
 </table>
 </article>
