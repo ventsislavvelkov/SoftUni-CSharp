@@ -1,0 +1,868 @@
+a, a:hover {
+     text-decoration: none !important;
+}
+ .myaccount_bottom_pitch ul li {
+     float: left !important;
+}
+ .myaccount_bottom_pitch ul li a {
+     font-size: 16px !important;
+}
+ .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+     color: #ffffff !important;
+}
+ .myaccount_bottom_pitch .nav-link {
+     padding: 0;
+}
+ .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active, .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+     border-color: transparent !important;
+}
+ a.nav-link.text-center {
+     color: #000000;
+}
+ .main_pitch {
+     position: absolute;
+     left: 0;
+     right: 0;
+     margin: auto;
+     top: 50%;
+     transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+     -ms-transform: translateY(-50%);
+     -o-transform: translateY(-50%);
+     -webkit-transform: translateY(-50%);
+}
+ .myaccount_bottom_pitch {
+     float: left;
+     width: 100%;
+     vertical-align: top;
+     position: relative;
+     padding-bottom: 3px;
+     margin-top: 0px;
+}
+ .myaccount_bottom_pitch:after {
+     position: absolute;
+     content: "";
+     bottom: 0;
+     left: 0;
+     right: 0;
+     background: url("../images/border.png");
+     background-repeat: repeat-x;
+     height: 6px;
+     width: 100%;
+     margin: auto;
+}
+ .myaccount_bottom_pitch ul li {
+     float: left;
+     position: relative;
+}
+ .myaccount_bottom_pitch ul li a {
+     font-size: 20px;
+     line-height: 20px;
+     color: #495057;
+     font-weight: 400;
+     display: block;
+     text-align: center;
+     line-height: 80px;
+     text-decoration: none;
+     position: relative;
+     width: 185px;
+}
+ .myaccount_bottom_pitch ul li .active span:before {
+     position: absolute;
+     content: "";
+     left: -14px;
+     right: 0;
+     width: 158px;
+     top: -4px;
+     margin: auto;
+     background-repeat: repeat-y;
+     background: url(../images/hover_bg.png);
+     height: 6px;
+}
+ .myaccount_bottom_pitch ul li .active:before {
+     position: absolute;
+     content: "";
+     left: -4px;
+     bottom: 0;
+     top: 0;
+     margin: auto;
+     background-repeat: repeat-x;
+     background: url("../images/hover_Vbg.png");
+     width: 6px;
+}
+ .myaccount_bottom_pitch ul li .active:after {
+     position: absolute;
+     content: "";
+     right: -4px;
+     bottom: 0;
+     top: 0;
+     margin: auto;
+     background-repeat: repeat-x;
+     background: url("../images/hover_Vbg.png");
+     width: 6px;
+}
+ .myaccount_bottom_pitch ul li.active a {
+     background: #e60000;
+}
+ .myaccount_bottom_pitch ul li a span.icon {
+     position: relative;
+     padding-left: 58px;
+}
+ .myaccount_bottom_pitch ul li a span.icon {
+     position: relative;
+     display: inline-block;
+     vertical-align: top;
+}
+ .myaccount_bottom_pitch ul li a span.icon:after {
+     position: absolute;
+     content: "\f03a";
+     top: 0;
+     bottom: 0;
+     left: 0;
+     margin: auto;
+     width: 50px;
+     height: 37px;
+}
+ .content_menu.myaccount_bottom_pitch ul li a span.icon:after {
+     font: normal normal normal 35px/1 FontAwesome;
+     color: #000000;
+     transition: all 1s;
+     -moz-transition: all 1s;
+     -ms-transition: all 1s;
+     -o-transition: all 1s;
+     -webkit-transition: all 1s;
+}
+ .content_menu.myaccount_bottom_pitch ul li.pizza a span.icon:after {
+     content: "\f0e4";
+}
+ .content_menu.myaccount_bottom_pitch ul li.burger a span.icon:after {
+     content: "\f022";
+}
+ .content_menu.myaccount_bottom_pitch ul li.salads a span.icon:after {
+     content: "\f007";
+}
+ .content_menu.myaccount_bottom_pitch ul li.fries a span.icon:after {
+     content: "\f124";
+}
+ .content_menu.myaccount_bottom_pitch ul li.drinks a span.icon:after {
+     content: "\f09d";
+}
+ .content_menu.myaccount_bottom_pitch ul li.drink a span.icon:after {
+     content: "\f27b";
+}
+ .myaccount_bottom_pitch ul li a.active span.icon:after {
+     color: #ffffff;
+}
+ .content_menu.myaccount_bottom_pitch ul li:hover a, .myaccount_bottom_pitch ul li .nav-link.active {
+     color: #fff;
+}
+ .content_menu.myaccount_bottom_pitch ul li:hover a span.icon:after {
+     color: #ffffff;
+}
+ .myaccount_bottom_pitch .main_bpitch {
+     display: inline-block;
+     width: 100%;
+     vertical-align: top;
+}
+ .myaccount_bottom_pitch ul li a:hover {
+     background: #e60000;
+}
+ .myaccount_bottom_pitch ul li a:hover:after {
+     position: absolute;
+     content: "";
+     left: 0;
+     right: 0;
+     top: -4px;
+     margin: auto;
+     background-repeat: repeat-y;
+     background: url("../images/hover_bg.png");
+     height: 6px;
+}
+ .myaccount_bottom_pitch ul li .active:hover:after {
+     position: absolute;
+     content: "";
+     left: 0;
+     right: 0;
+     top: -30px;
+     margin: auto;
+     background-repeat: repeat-y;
+     background: url("../images/hover_bg.png");
+     height: 6px;
+}
+ .myaccount_bottom_pitch ul li:hover:before {
+     position: absolute;
+     content: "";
+     left: -4px;
+     bottom: 0;
+     top: 0;
+     margin: auto;
+     background-repeat: repeat-x;
+     background: url("../images/hover_Vbg.png");
+     width: 6px;
+}
+ .myaccount_bottom_pitch ul li:hover:after {
+     position: absolute;
+     content: "";
+     right: -2px;
+     bottom: 0;
+     top: 0;
+     margin: auto;
+     background-repeat: repeat-x;
+     background: url("../images/hover_Vbg.png");
+     width: 6px;
+}
+ .profile-content-footer {
+     margin: -20px 0 0 40px;
+     float: left;
+}
+ .profile-content {
+     display: flex;
+     padding: 15px;
+}
+ .profile-content img {
+     border-radius: 50%;
+     padding: 0 30px;
+}
+ .offer-rate {
+     position: relative;
+     width: 70px;
+     height: 70px;
+}
+ .button-border {
+     position: absolute;
+     top: 5px;
+     left: -4px;
+     width: 70px;
+     height: 70px;
+     background: transparent;
+     border-radius: 50%;
+     border: 3px dashed #e81c0c;
+     -webkit-animation: Rotate 15s infinite linear;
+     -moz-animation: Rotate 15s infinite linear;
+     -ms-animation: Rotate 15s infinite linear;
+}
+ @-webkit-keyframes Rotate {
+     from {
+         -webkit-transform: rotate(0deg);
+    }
+     to {
+         -webkit-transform: rotate(359deg);
+    }
+}
+ @-moz-keyframes Rotate {
+     from {
+         -moz-transform: rotate(0deg);
+    }
+     to {
+         -moz-transform: rotate(359deg);
+    }
+}
+ @-ms-keyframes Rotate {
+     from {
+         -ms-transform: rotate(0deg);
+    }
+     to {
+         -ms-transform: rotate(359deg);
+    }
+}
+ .offer-entry {
+     display: flex;
+     padding: 10px;
+}
+ .my-account .P_itmesbox {
+     float: left;
+     width: 100%;
+     border: 2px solid #cfcfcf;
+     border-radius: 10px;
+     margin-bottom: 30px;
+     -moz-border-radius: 10px;
+     -ms-border-radius: 10px;
+     -o-border-radius: 10px;
+     -webkit-border-radius: 10px;
+     overflow: hidden;
+     -webkit-box-shadow: 9px 12px 21px -7px rgba(0, 0, 0, 0.75);
+     -moz-box-shadow: 9px 12px 21px -7px rgba(0, 0, 0, 0.75);
+     box-shadow: 9px 12px 21px -7px rgba(0, 0, 0, 0.75);
+}
+ .my-account .P_itmesbox:hover {
+     box-shadow: 9px 12px 21px -7px rgba(0, 0, 0, 0.75);
+}
+ .user-profile {
+     overflow: hidden;
+     background: #fff;
+}
+ .Myorder-card {
+     padding: 10px;
+}
+ .Myorder-card img {
+     border-radius: 10px;
+}
+ .user-profile h5 {
+     background: #e6e6e6;
+     margin: 0px;
+     padding: 12px 15px;
+     font-size: 18px;
+}
+ .offer-entry .offer-rate p {
+     position: relative;
+     font-size: 15px;
+     font-weight: 800;
+     color: #000000;
+     padding: 20px 18px;
+}
+ .offer-detail p {
+     padding: 10px 15px 0px 10px;
+}
+ .my-account .login_section h2.title {
+     display: inline;
+}
+ .recentOrders {
+     margin-top: -50px;
+}
+ .tab-pane {
+     margin-bottom: 50px;
+}
+ .recentOrders thead {
+     color: #000;
+     background-color: #e6e6e6;
+}
+ .my-account table {
+     border-collapse: inherit;
+}
+ .table td {
+     padding: 10px 0 10px 40px !important;
+}
+ .table th {
+     padding: 10px 0px 6px 7px !important;
+     text-align: center;
+}
+ .con {
+     color: #009933;
+}
+ .fai {
+     color: #e54c2a;
+}
+ .table td a {
+     color: #000000;
+     text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.4);
+}
+ .login_box_content {
+     overflow: hidden;
+     background: #fff;
+     border: 1px solid #e6e6e6;
+     border-radius: 3px;
+     padding: 15px;
+     margin-bottom: 20px;
+     margin-top: 40px;
+}
+ .editBAbtn, .editSAbtn {
+     float: right;
+     color: #ffffff;
+     background: #e80f0e;
+     margin-top: 5px;
+     font-weight: 500;
+     padding: 5px 25px;
+     border-radius: 3px;
+     transition: 1s ease;
+}
+ .editBAbtn:hover, .editSAbtn:hover {
+     text-decoration: none;
+     color: #000000;
+     background: #ffcc01;
+}
+ .my-account .pizza_items .PT_image {
+     width: 100%;
+     background: #ffffff;
+}
+ .my-account .pizza_items .PT_image:after {
+     content: none;
+}
+ #editBA, #editSA {
+     display: none;
+}
+ .my-account .login_box {
+     padding: 0 60px 50px 60px;
+}
+ .my-account .signup_right:after {
+     height: 400px;
+}
+ .my-account .red_btn, .my-account a.red_btn {
+     font-size: 15px;
+     border-radius: 3px;
+}
+ .card-entry, .user-add-card {
+     margin-bottom: 32px;
+     background: #fff;
+     border: 1px solid #e6e6e6;
+     border-radius: 3px;
+     position: relative;
+}
+ .card-entry, .user-add-card-body {
+     padding: 15px;
+}
+ .user-add-card h5 {
+     background: #e6e6e6;
+     margin: 0px;
+     padding: 12px 15px;
+     font-size: 18px;
+}
+ .card-entry .right {
+     position: absolute;
+     right: 10px;
+     bottom: 10px;
+}
+ .user-profile .card-entry .card-type p {
+     margin: 15px 0px 0px;
+     font-size: 15px;
+}
+/* Effect 5 */
+ .hi-icon-effect-5 .hi-icon {
+     overflow: hidden;
+     -webkit-transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+     -moz-transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+     transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+ .content_menu.myaccount_bottom_pitch ul li:hover a span.icon:after {
+     -webkit-animation: toRightFromLeft 0.5s forwards;
+     -moz-animation: toRightFromLeft 0.5s forwards;
+     animation: toRightFromLeft 0.5s forwards;
+}
+ @-webkit-keyframes toRightFromLeft {
+     49% {
+         -webkit-transform: translate(30%);
+    }
+     50% {
+         opacity: 0;
+         -webkit-transform: translate(-30%);
+    }
+     51% {
+         opacity: 1;
+    }
+}
+ @-moz-keyframes toRightFromLeft {
+     49% {
+         -moz-transform: translate(30%);
+    }
+     50% {
+         opacity: 0;
+         -moz-transform: translate(-30%);
+    }
+     51% {
+         opacity: 1;
+    }
+}
+ @keyframes toRightFromLeft {
+     49% {
+         transform: translate(30%);
+    }
+     50% {
+         opacity: 0;
+         transform: translate(-30%);
+    }
+     51% {
+         opacity: 1;
+    }
+}
+ .Myorder-card a, .Myorder-card button {
+     float: right;
+     color: #ffffff;
+     background: #e80f0e;
+     margin-top: 5px;
+     font-weight: 500;
+     padding: 5px 25px;
+     border-radius: 3px;
+     transition: 1s ease;
+     margin-right: 10px;
+}
+ .Myorder-card a:hover, .Myorder-card button:hover {
+     text-decoration: none;
+     color: #000000;
+     background: #ffcc01;
+}
+ .Myorder-card button, .form-row .Myorder-card a {
+     float: left;
+}
+ form .Myorder-card {
+     padding: 0px;
+}
+ .Myorder-card-content {
+     display: flex;
+}
+ .Myorder-card-text {
+     margin: 10px;
+}
+ .right-top {
+     position: absolute;
+     right: 15px;
+}
+ .right-top a {
+     font-size: 20px;
+     margin-left: 10px;
+     color: #000000;
+}
+ .recent-complaint .tab-content {
+     background: #ffffff;
+     padding: 20px;
+     border-left: 1px solid #e6e6e6;
+     border-right: 1px solid #e6e6e6;
+     border-bottom: 1px solid #e6e6e6;
+}
+ .recent-complaint .tab-content p:nth-child(2n+1) {
+     background: #f7f7f7 none repeat scroll 0 0;
+     margin: 0;
+     padding: 15px;
+}
+ .recent-complaint .tab-content p:nth-child(2n+0) {
+     background: #e6e6e6 none repeat scroll 0 0;
+     margin: 0;
+     padding: 15px;
+}
+ .submit-complaint {
+     overflow: hidden;
+     background: #ffffff;
+     padding: 25px 20px;
+     border: 1px solid #e6e6e6;
+}
+ .recent-complaint .tab-content a:hover {
+     color: #e54c2a;
+}
+ .recent-complaint .tab-content a span {
+     font-weight: 600;
+}
+ .recent-complaint .tab-content a {
+     color: #07253F;
+}
+ .user-personal-info h5 {
+     margin-bottom: 15px;
+}
+/*-----------------------------------------------------------------*/
+ @media (max-width: 575.98px) {
+     .myaccount_bottom_pitch ul li {
+         width: 50%;
+    }
+     .myaccount_bottom_pitch ul li a span.icon:after {
+         top: -20px;
+         left: 50px;
+    }
+     .myaccount_bottom_pitch ul li a {
+         text-align: left;
+    }
+     .myaccount_bottom_pitch ul li a span.icon {
+         padding-left: 0;
+         padding-top: 10px;
+         width: 100%;
+         text-align: center;
+    }
+     .myaccount_bottom_pitch ul li a {
+         width: 100%;
+    }
+     .content_menu.myaccount_bottom_pitch ul li a span.icon:after {
+         font: normal normal normal 20px/1 FontAwesome;
+    }
+     .myaccount_bottom_pitch ul li a {
+         line-height: 60px;
+    }
+     .myaccount_bottom_pitch ul li .active span:before {
+         left: -2px;
+         width: 145px;
+    }
+     .myaccount_bottom_pitch ul li .active:hover:after {
+         content: none;
+    }
+     .profile-content img {
+         padding: 0;
+         width: 80px;
+         height: 80px;
+    }
+     .profile-content-footer {
+         margin: -80px 0 0 5px;
+    }
+     .profile-overview, .pizza_items, .user-personal-info, #Savedcards, .recent-complaint {
+         margin-top: 20px;
+    }
+     .recentOrders {
+         margin-top: 0px;
+    }
+     .table td {
+         padding: 5px 5px 5px 5px !important;
+    }
+     .Myorder-card-content {
+         display: block;
+    }
+     .Myorder-card a, .Myorder-card button {
+         margin-right: 30px;
+    }
+     .login_section {
+         padding-top: 0px !important;
+    }
+     .my-account .login_box {
+         padding: 0px !important;
+    }
+     #Savedcards h4 {
+         font-size: 19px;
+    }
+     #ServiceRequests h4 {
+         margin-bottom: 1.5rem;
+    }
+     .nav_manu .menu li a:hover::after, .nav_manu .menu li a:focus::after, .nav_manu .menu li a:active::after {
+         content: none;
+    }
+     .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+     .card:hover .price_block .btn a::after, .P_itmesbox:hover .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+     .Cart .Cart_count{
+         display: none;
+    }
+     .cart_img {
+         display: block;
+         width: 55px;
+         float: right;
+         margin-right: 45px;
+         margin-top: -13px;
+    }
+     .open-main-nav {
+         top: 19px;
+         right: 13px;
+    }
+     .burger {
+         width: 20px;
+    }
+}
+ @media (min-width: 576px) and (max-width: 767.98px) {
+     .myaccount_bottom_pitch ul li {
+         width: 33%;
+    }
+     .myaccount_bottom_pitch ul li a span.icon:after {
+         top: -20px;
+         left: 15px;
+    }
+     .content_menu.myaccount_bottom_pitch ul li:hover a, .myaccount_bottom_pitch ul li .nav-link.active {
+         text-align: center;
+    }
+     .myaccount_bottom_pitch ul li a {
+         text-align: left;
+    }
+     .myaccount_bottom_pitch ul li a span.icon {
+         padding-left: 0px;
+         padding-top: 10px;
+    }
+     .myaccount_bottom_pitch ul li a {
+         width: 100%;
+    }
+     .content_menu.myaccount_bottom_pitch ul li a span.icon:after {
+         font: normal normal normal 20px/1 FontAwesome;
+    }
+     .myaccount_bottom_pitch ul li a {
+         line-height: 60px;
+         text-align: center;
+    }
+     .myaccount_bottom_pitch ul li .active span:before {
+         left: -32px;
+         width: 143px;
+    }
+     .myaccount_bottom_pitch ul li .active:hover:after {
+         content: none;
+    }
+     .profile-content img {
+         padding: 0;
+         width: 80px;
+         height: 80px;
+    }
+     .profile-content-footer {
+         margin: -80px 0 0 5px;
+    }
+     .profile-overview, .pizza_items, .user-personal-info, #Savedcards, .recent-complaint {
+         margin-top: 20px;
+    }
+     .recentOrders {
+         margin-top: 0px;
+    }
+     .table td {
+         padding: 5px 5px 5px 5px !important;
+    }
+     .Myorder-card a, .Myorder-card button {
+         margin-right: 30px;
+    }
+     .login_section {
+         padding-top: 0px !important;
+    }
+     .my-account .login_box {
+         padding: 0px !important;
+    }
+     #Savedcards h4 {
+         font-size: 19px;
+    }
+     #ServiceRequests h4 {
+         margin-bottom: 1.5rem;
+    }
+     .nav_manu .menu li a:hover::after, .nav_manu .menu li a:focus::after, .nav_manu .menu li a:active::after {
+         top: 40px;
+         right: 40px;
+    }
+     .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+     .card:hover .price_block .btn a::after, .P_itmesbox:hover .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+     .main-nav::before {
+         left: 130px;
+         width: 65%;
+         right: 0;
+    }
+     .main-nav ul {
+         height: 50%;
+    }
+     .Cart .Cart_count{
+         display: none;
+    }
+     .cart_img{
+         display: block;
+         width: 50px;
+         float: right;
+         margin-right: 60px;
+         margin-top: -13px;
+    }
+     .open-main-nav {
+         top: 15px;
+    }
+}
+ @media (min-width: 768px) and (max-width: 991.98px) {
+     .myaccount_bottom_pitch ul li {
+         width: 33%;
+    }
+     #Dashboard,#Myorders,#Profiles,#Savedcards,#ServiceRequests {
+         margin-top: 20px;
+    }
+     .profile-content img {
+         padding: 0 0px;
+    }
+     .profile-content-footer {
+         margin: -20px 0 0 10px;
+    }
+     .table td {
+         padding: 10px !important;
+    }
+     .recentOrders {
+         margin-top: -80px;
+    }
+     .myaccount_bottom_pitch ul li a {
+         width: 100%;
+    }
+     .login_section {
+         padding-top: 10px;
+    }
+     .my-account .login_section h2.title {
+         font-size: 25px;
+    }
+     .my-account .login_box {
+         padding: 0 0px 50px 0;
+    }
+     .my-account .red_btn, a.red_btn {
+         padding: 0 10px;
+    }
+     .nav_manu .menu li a:hover::after, .nav_manu .menu li a:focus::after, .nav_manu .menu li a:active::after {
+         top: 30px;
+         right: 22px;
+    }
+     .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+     .card:hover .price_block .btn a::after, .P_itmesbox:hover .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+     .H_banner {
+         background-position: center;
+         background-size: cover;
+         background-attachment: inherit;
+         height: 350px;
+    }
+     .nav_manu .menu li a {
+         padding: 10px 16px;
+    }
+     .open-main-nav {
+         display: none;
+    }
+     .nav_manu .menu li a:hover:before, .sticky .nav_manu .menu li a:hover:before {
+         background-size: 27%;
+         top: 17px;
+         right: -77px;
+    }
+     .nav_manu .menu li a:after, .sticky .nav_manu .menu li a:after {
+         top: 30px;
+         width: 60%;
+    }
+     .sticky .nav_manu .menu li a:hover:after, .nav_manu .menu li a:focus:after, .nav_manu .menu li a:active:after {
+         right: 22px;
+    }
+     .nav_manu .menu li a:hover:after, .nav_manu .menu li a:focus:after, .nav_manu .menu li a:active:after {
+         right: 22px;
+    }
+     .sticky .nav_manu .menu li a {
+         padding: 10px 13px !important;
+         margin-top: -5px;
+    }
+}
+ @media (min-width: 992px) and (max-width: 1199.98px) {
+     .myaccount_bottom_pitch ul li {
+         width: 16%;
+    }
+     .myaccount_bottom_pitch ul li a {
+         width: 100%;
+    }
+     .myaccount_bottom_pitch ul li a span.icon {
+         padding-left: 29px;
+    }
+     .content_menu.myaccount_bottom_pitch ul li a span.icon:after {
+         font: normal normal normal 25px/1 FontAwesome;
+    }
+     .myaccount_bottom_pitch ul li a span.icon:after {
+         top: 15px;
+         left: -11px;
+    }
+     .myaccount_bottom_pitch ul li .active span:before {
+         left: -3px;
+         width: 118px;
+    }
+     .tab-pane {
+         margin-bottom: 0px;
+    }
+     .my-account .login_box {
+         padding: 0 30px 50px 30px;
+    }
+     .my-account .red_btn, a.red_btn {
+         padding: 0 30px;
+    }
+     .nav_manu .menu li a:hover::after, .nav_manu .menu li a:focus::after, .nav_manu .menu li a:active::after {
+         top: 40px;
+         right: 40px;
+    }
+     .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+     .card:hover .price_block .btn a::after, .P_itmesbox:hover .price_block .btn a::after {
+         top: -12px;
+         left: -12px;
+    }
+    /*.nav_manu .menu li a {
+         padding: 22px 29px !important;
+         margin-top: -6px;
+    }
+     .sticky .nav_manu .menu li a {
+         padding: 21px 29px !important;
+         margin-top: -9px;
+    }
+    */
+}
+ @media (min-width: 1200px) {
+}

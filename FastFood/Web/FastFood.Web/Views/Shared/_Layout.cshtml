@@ -1,59 +1,299 @@
 ﻿@using FastFood.Common
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
 
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+    <title>Home page | Order Online Fast Food & Pizza</title>
+    <!-- Fonts Here-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <!-- Fonts here-->
+    <!-- Style Here -->
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my-account.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- JS -->
+    <script src="js/popper.min.js" defer></script>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/bootstrap.min.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+    <div class="wrapper">
+        <!-- Header Start Here -->
+        <header id="Header">
+            <div class="main_header">
+                <div class="top_nav" id="navbar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="logo">
+                                    <a href="index.html" title="Fast Food"><img src="images/logo.png" alt="Fast Food"></a>
+                                </div>
+                                <div class="nav_manu">
+                                    <div class="Menu_list">
+                                        <ul class="menu">
+                                            <li><a href="index.html" class="trans hvr-underline-from-left">Home</a></li>
+                                            <li><a href="about.html" class="trans">About</a></li>
+                                            <li><a href="menu.html" class="trans">Order</a></li>
+                                            <li><a href="login.html" class="trans">Login</a></li>
+                                            <li><a href="login.html" class="trans">Register</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="Cart">
+                                        <a href="cart.html" title="Количка">
+                                            <span class="Cart_count">Cart : (0) $00.00</span>
+                                            <!-- <i class="fa fa-shopping-cart" aria-hidden="true"></i> -->
+                                            <img class="cart_img" src="images/cart_1.webp" alt="cart_1">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="burger" class="open-main-nav">
+                    <span class="burger"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="H_banner home">
+                    <div class="main_pitch">
+                        <h1 class="page_title">Order Online Your Food</h1>
+                        <h3 class="cntct">Call us<span class="call_desk"><a href="tel:+359 894 212142" id="typewriter_num"></a></span></h3>
+                    </div>
+                </div>
+                <div class="bottom_pitch">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main_bpitch">
+                                    <ul>
+                                        <li class="pizza active"><a href="menu.html" class="trans" title="Pizza"><span class="icon">Pizza</span></a></li>
+                                        <li class="burger1"><a href="menu.html" class="trans" title="Burgers"><span class="icon">Burgers</span></a></li>
+                                        <li class="salads"><a href="menu.html" class="trans" title="Salads"><span class="icon">Salads</span></a></li>
+                                        <li class="fries"><a href="menu.html" class="trans" title="Fries"><span class="icon">Fries</span></a></li>
+                                        <li class="drinks"><a href="menu.html" class="trans" title="Drinks"><span class="icon">Drinks</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @this.RenderBody()
-        </main>
-    </div>
-    
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="device">
+                <nav class="main-nav" id="main-nav">
+                    <div class="logo">
+                        <a href="index.html" title="Crave Ordering"><img src="images/logoBlack.png" alt="Crave Ordering"></a>
+                    </div>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="menu.html">Order</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="login.html">Register</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- Header End Here -->
+        <!-- How to work section start here -->
+        <div class="hwork">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="main_hwork">
+                            <ul>
+                                <li class="order">
+                                    <div class="title"><img src="images/h_img1.png" alt=""></div>
+                                </li>
+                                <li class="deliver_L">
+                                    <div class="title"><img src="images/h_img2.png" alt="Delivery location"></div>
+                                </li>
+                                <li class="deliver_pick">
+                                    <div class="title"> <img src="images/h_img3.png" alt=" Delivery or Pick up "> </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+        <!-- How to work section start here -->
+        <div class="container">
+            <partial name="_CookieConsentPartial" />
+            <main role="main" class="pb-3">
+                @this.RenderBody()
+            </main>
+        </div>
+        <!-- Map Start here -->
+        <div class="map">
+            <iframe src="https://maps.google.com/maps?hl=en&amp;q=new%20varna%20city+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=6&amp;iwloc=B&amp;output=embed"></iframe>
+        </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
-    @this.RenderSection("Scripts", required: false)
+
+        <!-- Map End here -->
+        <!-- Footer Section here -->
+        <footer>
+            <div class="main_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="M_footer">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 quick_links">
+                                    <div class="title">Quick Links</div>
+                                    <div class="main_cnt">
+                                        <ul>
+                                            <li><a href="about.html" class="trans" title="About us">About us</a></li>
+                                            <li><a href="faq.html" class="trans" title="Faq">Faq</a></li>
+                                            <li><a href="contactus.html" class="trans" title="Contacts">Contacts</a></li>
+                                            <li><a href="login.html" class="trans" title="Login">Login</a></li>
+                                            <li><a href="login.html" class="trans" title="Register">Register</a></li>
+                                            <li><a href="terms_conditions.html" class="trans" title="Terms and conditions">Terms and conditions</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 location">
+                                    <div class="title">Our Location</div>
+                                    <div class="main_cnt"> <span class="address"><a href="#">234 Main Street, Uni 01, New Mexico City</a></span> <span class="time1">Mon - Fri: 08:00 am - 10:00 pm</span> <span class="time2">Sat - Sun: 10:00 am - 11:00 pm<strong></strong></span> <span class="conact"><a href="tel:+01234567890">+01 (234) 56 56 789</a></span> </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 subscribe">
+                                    <div class="title">Subscribe Us</div>
+                                    <div class="main_cnt">
+                                        <p class="sbcr_label">
+                                            Subscribe to the La Vie newsletter to
+                                            <br> get regular update about offers
+                                        </p>
+                                        <form method="post" id="subscribeform" action="thank-you.html">
+                                            <div class="sbcrb_input">
+                                                <input type="text" name="subscribeemail" class="form-control" placeholder="Enter your email">
+                                                <button class="subscribebutton send" name="getbutton" type="submit">
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="F_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="payment"> <span>Payment Options</span> <span class="pay_cards"><img src="images/card_img.png" alt=""></span> </div>
+                            <div class="social">
+                                <ul>
+                                    <li><a href="#" class="trans" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="trans" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="trans" title="Google Plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="trans" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" class="trans" title="Pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <p>© <a href="index.html" class="trans" title="Crave Ordering">Crave Ordering</a> 2019, All rights reserved </p>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section here -->
+    </div>
+    <!-- JS Here -->
+    <script src="js/custome.js" defer></script>
+    <script src="js/slick.js" defer></script>
+    <script src="js/jquery.validate.min.js" defer></script>
+    <!-- JS Here -->
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+@*<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ПИЦА</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">СУШИ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <partial name="_CookieConsentPartial" />
+            <main role="main" class="pb-3">
+                @this.RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        @this.RenderSection("Scripts", required: false)
+    </body>
+    </html>*@
