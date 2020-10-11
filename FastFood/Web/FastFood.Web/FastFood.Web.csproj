@@ -81,6 +81,9 @@
     <Content Update="wwwroot\images\2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\images\banner_bg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\images\banner_bg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

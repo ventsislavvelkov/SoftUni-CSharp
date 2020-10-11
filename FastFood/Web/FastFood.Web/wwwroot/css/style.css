@@ -498,17 +498,17 @@
      background-attachment: fixed;
      height: 389px;
 }
- .H_banner.home {
-     position: relative;
-     display: inline-block;
-     width: 100%;
-     vertical-align: top;
-     overflow: hidden;
-     background: url(../images/banner_bg.png) no-repeat;
-     background-position: top;
-     background-attachment: fixed;
-     height: 738px;
-}
+    .H_banner.home {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+        overflow: hidden;
+        background: url(../images/banner_bg.jpg) no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+        height: 738px;
+    }
  .H_banner img {
      max-width: inherit;
      margin-left: 50%;
@@ -687,13 +687,14 @@
      background: transparent;
 }
 /*------------------------mobile menu end-------------------------------------*/
- .bottom_pitch {
-     float: left;
-     width: 100%;
-     vertical-align: top;
-     position: relative;
-     padding-bottom: 3px;
-     margin-top: -81px;
+.bottom_pitch {
+    float: left;
+    width: 100%;
+    vertical-align: top;
+    position: relative;
+    padding-bottom: 3px;
+    margin-top: -81px;
+   
 }
  .bottom_pitch:after {
      position: absolute;
