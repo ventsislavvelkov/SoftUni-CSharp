@@ -8,7 +8,5 @@
        Tuna = 3,
        Hem = 4,
        Pepperoni = 5,
-       SmokedBacon = 6,
-       Chichen = 7,
     }
 }

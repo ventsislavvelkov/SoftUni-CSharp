@@ -11,6 +11,5 @@
         Ruccula = 6,
         FreshTomato = 7,
         Corn = 8,
-        Pickless = 9,
     }
 }
