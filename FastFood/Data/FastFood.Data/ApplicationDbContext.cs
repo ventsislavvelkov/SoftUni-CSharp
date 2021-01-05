@@ -28,7 +28,7 @@
 
         public DbSet<Drink> Drinks { get; set; }
 
-        public DbSet<FoodIngredients> FoodIngredients { get; set; }
+        public DbSet<Ingredients> FoodIngredients { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 
